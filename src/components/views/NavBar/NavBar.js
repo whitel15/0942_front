@@ -15,7 +15,7 @@ function NavBar() {
     window.addEventListener("scroll", updateScroll);
   });
   return (
-    <div>
+    <div style={{height:80, backgroundColor:"rgb(165, 191, 228)"}}>
       <div
         className={scrollPosition < 100 ? "original_header" : "change_header"}
       >
