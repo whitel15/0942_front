@@ -19,13 +19,13 @@ function NavBar() {
       <div
         className={scrollPosition < 100 ? "original_header" : "change_header"}
       >
-        <Link to="" className="title">
+        <Link to="" className="nav_title">
           0942
         </Link>
-        <Link to="" className="login">
+        <Link to="" className="nav_login">
           로그인
         </Link>
-        <Link to="" className="signup">
+        <Link to="" className="nav_signup">
           회원가입
         </Link>
       </div>
