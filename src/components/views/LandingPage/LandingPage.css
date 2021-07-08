@@ -25,7 +25,7 @@ html {
   color: black;
 }
 
-h1 {
+.landingPage h1 {
   font-size: 3.5rem;
   letter-spacing: 0.3rem;
 }
@@ -116,11 +116,22 @@ input::placeholder {
   background-color: rgb(236, 217, 217);
 }
 
+#handshake {
+  margin-left: 3rem;
+  width: 20vw;
+  max-width: 230px;
+}
+
 .intro_img {
   display: flex;
   flex-direction: column;
   margin-right: 15rem;
-  padding-top: 5em;
+  padding-top: 10rem;
+}
+
+.intro_img img {
+  width: 20vw;
+  max-width: 230px;
 }
 
 .intro_img #pizza {
@@ -133,7 +144,7 @@ input::placeholder {
   text-align: left;
 }
 
-button {
+.landingPage button {
   font-size: 1.5rem;
   padding: 1.6rem;
   margin: 0.8rem 0;
@@ -142,14 +153,14 @@ button {
   background-color: white;
 }
 
-button:hover {
+.landingPage button:hover {
   color: white;
   font-weight: 600;
   background-color: rgb(199, 152, 152);
 }
 
 @media (max-width: 768px) {
-  h1 {
+  .landingPage h1 {
     font-size: 5vw;
   }
   .search input {
@@ -158,7 +169,7 @@ button:hover {
   .search input[type="text"] {
     width: 50vw;
   }
-  .change_search {
+  .landingPage .change_search {
     display: none;
   }
   .landing_container {
@@ -174,6 +185,13 @@ button:hover {
   .intro_container1,
   .intro_container2 {
     flex-direction: column;
+  }
+  #handshake {
+    margin-left: 0rem;
+    width: 50vw;
+  }
+  .intro_img {
+    max-height: 50vh;
   }
   .intro_img img {
     width: 40vw;

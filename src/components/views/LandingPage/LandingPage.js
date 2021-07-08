@@ -22,7 +22,7 @@ function LandingPage() {
     window.addEventListener("scroll", updateScroll);
   });
   return (
-    <div>
+    <div className="landingPage">
       <div className="landing_first">
         <div className="landing_container">
           <Slide top cascade>
@@ -66,17 +66,12 @@ function LandingPage() {
           </LightSpeed>
           <p>주문금액 부족할 때, 배달비 부담될 때 이웃과 함께 주문해요.</p>
         </div>
-        <img src="/images/landing/handshake.png" alt="order" width="230px" />
+        <img id="handshake" src="/images/landing/handshake.png" alt="order" />
       </div>
       <div className="intro_container2">
         <div className="intro_img">
-          <img src="/images/landing/burger.png" alt="burger" width="230px" />
-          <img
-            id="pizza"
-            src="/images/landing/pizza.png"
-            alt="pizza"
-            width="230px"
-          />
+          <img src="/images/landing/burger.png" alt="burger" />
+          <img id="pizza" src="/images/landing/pizza.png" alt="pizza" />
         </div>
         <div className="intro_content">
           <Tada>
