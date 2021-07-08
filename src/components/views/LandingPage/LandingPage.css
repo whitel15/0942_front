@@ -104,7 +104,7 @@ input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .intro_container1 p,
@@ -161,10 +161,13 @@ input::placeholder {
 
 @media (max-width: 768px) {
   .landingPage h1 {
-    font-size: 5vw;
+    /* font-size: 6vw; */
+    font-size: 2.5rem;
+    margin-left: 8vw;
+    margin-right: 8vw;
   }
   .search input {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .search input[type="text"] {
     width: 50vw;
@@ -172,8 +175,11 @@ input::placeholder {
   .landingPage .change_search {
     display: none;
   }
+  .landing_first {
+    height: 90vh;
+  }
   .landing_container {
-    height: 60vh;
+    height: 50vh;
   }
   .landing_img {
     padding-top: 20vh;
