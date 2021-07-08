@@ -23,7 +23,7 @@ function LandingPage() {
   });
   return (
     <div>
-      <div className="first">
+      <div className="landing_first">
         <div className="landing_container">
           <Slide top cascade>
             <h1>가까운 이웃들과 배송비를 나눠보세요!</h1>
@@ -56,30 +56,6 @@ function LandingPage() {
           </span>
         </div>
       </div>
-      {/* <div className="intro_container">
-        <Slide top cascade>
-          <h1>0942 활용법</h1>
-        </Slide>
-        <div className="intro">
-          <div>
-            <div></div>
-            <p className="introduce">내가 사는 곳 인증하고 안전한 거래하기</p>
-            <p>인증하러 가기</p>
-          </div>
-          <div>
-            <div></div>
-            <p className="introduce">배달 음식을 나눠 시킬 때는 음식 탭</p>
-            <p>로그인하고 이용하기</p>
-          </div>
-          <div>
-            <div></div>
-            <p className="introduce">
-              옷, 신발, 문구 등 배송비를 나누고 싶을 때는 생활 탭
-            </p>
-            <p>로그인하고 이용하기</p>
-          </div>
-        </div>
-      </div> */}
       <div className="intro_container1">
         <div className="intro_content">
           <LightSpeed cascade>

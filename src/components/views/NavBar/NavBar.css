@@ -4,33 +4,34 @@
   font-family: "NanumSquare", sans-serif;
 }
 
-.title {
+.nav_title {
   text-decoration: none;
-  font-size: 40px;
+  font-size: 4.2rem;
   font-weight: 600;
   margin: 20px 0;
   float: left;
-  padding-left: 15%;
+  padding-left: 15vw;
 }
 
-.login,
-.signup {
+.nav_login,
+.nav_signup {
   float: right;
   margin: 25px 0;
+  font-size: 1.5rem;
   color: black;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 1rem 1.7rem;
   background-color: white;
   border-radius: 30px;
 }
 
-.login {
-  margin-left: 1em;
-  margin-right: 15%;
+.nav_login {
+  margin-left: 1.5rem;
+  margin-right: 15vw;
 }
 
-.login:hover,
-.signup:hover {
+.nav_login:hover,
+.nav_signup:hover {
   background-color: gray;
   font-weight: bold;
   color: white;
@@ -50,11 +51,11 @@
   top: 0;
 }
 
-.original_header .title {
+.original_header .nav_title {
   color: white;
 }
 
-.change_header .title {
+.change_header .nav_title {
   color: rgb(165, 191, 228);
 }
 
@@ -66,4 +67,20 @@
   height: 80px;
   top: 0;
   border-bottom: 1px solid #ebebeb;
+}
+
+@media (max-width: 768px) {
+  .change_header {
+    height: 10vh;
+  }
+  .nav_title {
+    margin: calc((10vh - 7vw) / 2) 0;
+    font-size: 7vw;
+  }
+  .nav_login,
+  .nav_signup {
+    margin-top: calc((10vh - 1vw - 2rem) / 2);
+    padding: 1rem 1.2rem;
+    font-size: 1vw;
+  }
 }

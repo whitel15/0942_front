@@ -4,7 +4,11 @@
   font-family: "NanumSquare", sans-serif;
 }
 
-.first {
+html {
+  font-size: 62.5%;
+}
+
+.landing_first {
   height: 100vh;
   background-color: rgb(198, 211, 228);
 }
@@ -14,7 +18,6 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  /* height: calc(100vh - 400px); */
   height: 50vh;
 }
 
@@ -23,12 +26,8 @@
 }
 
 h1 {
-  font-size: 2.2em;
-  letter-spacing: 2px;
-}
-
-.landing_container p {
-  font-size: small;
+  font-size: 3.5rem;
+  letter-spacing: 0.3rem;
 }
 
 /* 사람들 사진 */
@@ -38,7 +37,7 @@ h1 {
   background: url("/images/landing/background-share.png");
   text-align: right;
   padding-top: 10vh;
-  margin: 0 200px;
+  margin: 0 12vw;
 }
 
 .landing_img img {
@@ -52,7 +51,6 @@ h1 {
 }
 
 .change_search input {
-  font-size: 0.9em;
   background-color: rgb(238, 238, 238);
   padding: 1em;
   border-radius: 30px;
@@ -61,9 +59,9 @@ h1 {
 
 .search input {
   background-color: white;
-  font-size: 1.1em;
+  font-size: 1.8rem;
   border: none;
-  padding: 1em;
+  padding: 1.6rem;
 }
 
 input::placeholder {
@@ -78,12 +76,12 @@ input::placeholder {
 
 .search input[type="text"] {
   width: 25vw;
-  margin-right: 1em;
+  margin-right: 1.3rem;
 }
 
 .change_search input[type="text"] {
   width: 20vw;
-  margin-right: 1em;
+  margin-right: 1rem;
 }
 
 .search input[type="submit"],
@@ -91,11 +89,13 @@ input::placeholder {
   background-color: gray;
   color: white;
   font-weight: bold;
-  width: 100px;
+  width: 8vw;
+  min-width: 70px;
 }
 
 .change_search input[type="submit"] {
-  width: 80px;
+  width: 5vw;
+  min-width: 70px;
 }
 
 /* 소개 부분 */
@@ -107,6 +107,11 @@ input::placeholder {
   height: 100vh;
 }
 
+.intro_container1 p,
+.intro_container2 p {
+  font-size: 1.5rem;
+}
+
 .intro_container2 {
   background-color: rgb(236, 217, 217);
 }
@@ -114,7 +119,7 @@ input::placeholder {
 .intro_img {
   display: flex;
   flex-direction: column;
-  margin-right: 10em;
+  margin-right: 15rem;
   padding-top: 5em;
 }
 
@@ -129,9 +134,9 @@ input::placeholder {
 }
 
 button {
-  font-size: 1.1em;
-  padding: 1em;
-  margin: 8px 0;
+  font-size: 1.5rem;
+  padding: 1.6rem;
+  margin: 0.8rem 0;
   border: none;
   border-radius: 30px;
   background-color: white;
@@ -141,4 +146,39 @@ button:hover {
   color: white;
   font-weight: 600;
   background-color: rgb(199, 152, 152);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 5vw;
+  }
+  .search input {
+    font-size: 3vw;
+  }
+  .search input[type="text"] {
+    width: 50vw;
+  }
+  .change_search {
+    display: none;
+  }
+  .landing_container {
+    height: 60vh;
+  }
+  .landing_img {
+    padding-top: 20vh;
+    margin: 0 5vw;
+  }
+  .landing_img img {
+    max-height: 20vh;
+  }
+  .intro_container1,
+  .intro_container2 {
+    flex-direction: column;
+  }
+  .intro_img img {
+    width: 40vw;
+  }
+  .intro_content {
+    text-align: center;
+  }
 }
