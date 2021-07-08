@@ -8,7 +8,7 @@ function MainPage(props) {
     setSearch(e.target.value);
   };
   return (
-    <div className="mainpage">
+    <div className="mainPage">
       <div className="change_search">
         <input
           onChange={onChange}
@@ -20,7 +20,7 @@ function MainPage(props) {
           <input type="submit" value="Find" />
         </Link>
       </div>
-      <div className="menu_container">
+      <div className="category_container">
         <span>전체</span>
         <span>음식</span>
         <span>생활</span>
@@ -30,60 +30,64 @@ function MainPage(props) {
           <aside>
             <img
               src="https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg"
-              width="150px"
-              height="150px"
+              className="post_img"
               alt="img"
             />
           </aside>
           <main>
-            <p className="post_title">제목이 들어갈 공간입니다</p>
-            <p className="post_date">2021.07.05 pm 5:00</p>
-            <p className="post_content">내용이 들어갈 공간입니다</p>
+            <div className="post_userInfo">
+              <img
+                src="/images/main/user.png"
+                alt="user"
+                className="post_userImg"
+              />
+              <span className="post_id">yujin113</span>
+              <span className="post_date">5분 전</span>
+            </div>
+            <div className="post_content">
+              <p className="post_title">제목이 들어갈 공간입니다</p>
+              <span className="post_cost">배송비 : 3000원</span>
+              <span className="post_place">
+                배분 장소 : 어디어디어어어어어어어엉어어어어어엉
+              </span>
+              <p className="post_num">2/5명 모집 중</p>
+            </div>
           </main>
           <section>
-            <span className="post_num">2/5명 모집 중</span>
             <span role="img" aria-label="heart">
               ❤️ 3
             </span>
           </section>
         </div>
+
         <div className="post">
           <aside>
             <img
               src="https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg"
-              width="150px"
-              height="150px"
+              className="post_img"
               alt="img"
             />
           </aside>
           <main>
-            <p className="post_title">제목이 들어갈 공간입니다</p>
-            <p className="post_date">2021.07.05 pm 5:00</p>
-            <p className="post_content">내용이 들어갈 공간입니다</p>
+            <div className="post_userInfo">
+              <img
+                src="/images/main/user.png"
+                alt="user"
+                className="post_userImg"
+              />
+              <span className="post_id">yujin113</span>
+              <span className="post_date">5분 전</span>
+            </div>
+            <div className="post_content">
+              <p className="post_title">제목이 들어갈 공간입니다</p>
+              <span className="post_cost">배송비 : 3000원</span>
+              <span className="post_place">
+                배분 장소 : 어디어디어어어어어어어엉어어어어어엉
+              </span>
+              <p className="post_num">2/5명 모집 중</p>
+            </div>
           </main>
           <section>
-            <span className="post_num">2/5명 모집 중</span>
-            <span role="img" aria-label="heart">
-              ♡ 3
-            </span>
-          </section>
-        </div>
-        <div className="post">
-          <aside>
-            <img
-              src="https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg"
-              width="150px"
-              height="150px"
-              alt="img"
-            />
-          </aside>
-          <main>
-            <p className="post_title">제목이 들어갈 공간입니다</p>
-            <p className="post_date">2021.07.05 pm 5:00</p>
-            <p className="post_content">내용이 들어갈 공간입니다</p>
-          </main>
-          <section>
-            <span className="post_num">2/5명 모집 중</span>
             <span role="img" aria-label="heart">
               ❤️ 3
             </span>

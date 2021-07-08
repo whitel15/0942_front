@@ -75,12 +75,16 @@
   }
   .nav_title {
     margin: calc((10vh - 7vw) / 2) 0;
-    font-size: 7vw;
+    font-size: 8vw;
+    padding-left: 10vw;
   }
   .nav_login,
   .nav_signup {
     margin-top: calc((10vh - 1vw - 2rem) / 2);
     padding: 1rem 1.2rem;
-    font-size: 1vw;
+    font-size: 3vw;
+  }
+  .nav_login {
+    margin-right: 10vw;
   }
 }
