@@ -39,13 +39,20 @@ export default function TitleCategory(props) {
 
 
             </div>
-            {props.slider === true ?
-                <div className="titlecateg_title_div" >
+
+            <div className="titlecateg_title_div" >
+                {props.category === true ?
                     <div className="titlecateg_category_div">
                         <h2 className="titlecateg_category_h2">전체</h2>
                         <h2 className="titlecateg_category_h2_center" >음식</h2>
                         <h2 className="titlecateg_category_h2">생활</h2>
-                    </div>
+                    </div> 
+                    :
+                    ""
+                }
+
+                {props.slider === true ?
+
                     <div className="titlecateg_slide_div">
                         <div>
                             <p onClick={() => { setValue(1); console.log("clickl") }} className="titlecateg_slide_grid">동</p>
@@ -56,11 +63,10 @@ export default function TitleCategory(props) {
                         </div>
                         <p onClick={() => { setValue(2); console.log("click") }} className="titlecateg_slide_grid" >건물</p>
                     </div>
-                </div>
-                :
-                ""
-            }
-
+                    :
+                    ""
+                }
+            </div>
         </div>
     )
 }
