@@ -1,9 +1,13 @@
-import "./NavBar.css";
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
+import LeftNav from "./LeftNav";
+import Burger from "./Burger";
+import "./NavBar.css";
 
 function NavBar() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [open, setOpen] = useState(false);
+
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
@@ -14,12 +18,20 @@ function NavBar() {
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   });
+
   return (
-    <div style={{height:80, backgroundColor:"rgb(165, 191, 228)"}}>
+    <div className="navBar">
       <div
         className={scrollPosition < 100 ? "original_header" : "change_header"}
       >
-        <Link to="" className="nav_title">
+        <span
+          className={open === true ? "nav_burger_click" : "nav_burger"}
+          onClick={() => setOpen(!open)}
+        >
+          <Burger open={open} scrollPosition={scrollPosition} />
+        </span>
+        <div className="nav_left">{open === true ? <LeftNav /> : null}</div>
+        <Link to="/" className="nav_title">
           0942
         </Link>
         <Link to="" className="nav_login">

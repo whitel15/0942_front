@@ -69,6 +69,27 @@
   border-bottom: 1px solid #ebebeb;
 }
 
+.navBar {
+  position: fixed;
+  z-index: 5;
+}
+.nav_left {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  z-index: 15;
+}
+.nav_burger {
+  position: inherit;
+  left: calc(15vw - 7rem);
+  z-index: 20;
+}
+.nav_burger_click {
+  position: inherit;
+  left: calc(250px - 7rem);
+  z-index: 20;
+}
+
 @media (max-width: 768px) {
   .change_header {
     height: 10vh;
@@ -86,5 +107,11 @@
   }
   .nav_login {
     margin-right: 10vw;
+  }
+  .nav_left {
+    width: 50vw;
+  }
+  .nav_burger_click {
+    left: calc(50vw - 7rem);
   }
 }
