@@ -1,0 +1,49 @@
+#burger_wrap {
+  width: 3.5rem;
+  height: 4.2rem;
+  position: inherit;
+  cursor: pointer;
+  margin: calc((80px - 4.2rem) / 2) 10px;
+}
+.line {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  transition: all 0.35s;
+}
+.top {
+  top: 18%;
+}
+.middle {
+  top: 48%;
+}
+.bottom {
+  top: 78%;
+}
+
+.icon {
+  position: absolute;
+  height: 5px;
+  width: 100%;
+  background: rgb(165, 191, 228);
+  border-radius: 5px;
+  transition: all 0.35s;
+}
+.change .top {
+  transform: rotate(45deg);
+  top: 48%;
+}
+.change .middle,
+.change .bottom {
+  transform: rotate(-45deg);
+  top: 48%;
+}
+
+@media (max-width: 768px) {
+  #burger_wrap {
+    height: 8vw;
+    margin: calc((10vh - 7vw) / 2) 2vw;
+  }
+}

@@ -48,6 +48,7 @@ html {
 .change_search {
   position: fixed;
   top: 20px;
+  z-index: 5;
 }
 
 .change_search input {
@@ -192,17 +193,29 @@ input::placeholder {
   .intro_container2 {
     flex-direction: column;
   }
+  .intro_container2 {
+    padding-bottom: 3vh;
+  }
   #handshake {
     margin-left: 0rem;
     width: 50vw;
   }
   .intro_img {
     max-height: 50vh;
+    margin-bottom: -7vh;
+    padding-top: 0;
   }
   .intro_img img {
     width: 40vw;
   }
   .intro_content {
     text-align: center;
+  }
+  .intro_content p {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  .change_search {
+    z-index: 0;
   }
 }
