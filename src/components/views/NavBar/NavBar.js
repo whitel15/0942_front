@@ -7,27 +7,28 @@ function NavBar() {
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop
+      document.documentElement.scrollTop ||
+      document.body.scrollTop
     );
   };
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   });
   return (
-    <div style={{height:80, backgroundColor:"rgb(165, 191, 228)"}}>
+    <div style={{ height: 80, backgroundColor: "rgb(165, 191, 228)" }}>
       <div
         className={scrollPosition < 100 ? "original_header" : "change_header"}
       >
         <Link to="" className="nav_title">
           0942
         </Link>
-        <Link to="" className="nav_login">
+        <Link to="/login" className="nav_login">
           로그인
         </Link>
-        <Link to="" className="nav_signup">
+        <Link to="/register" className="nav_signup">
           회원가입
         </Link>
+
       </div>
     </div>
   );
