@@ -4,6 +4,7 @@ import Slide from "react-reveal/Slide";
 import LightSpeed from "react-reveal/LightSpeed";
 import Tada from "react-reveal/Tada";
 import { Link } from "react-router-dom";
+import SearchBar from "../NavBar/SearchBar";
 
 function LandingPage() {
   const [search, setSearch] = useState("");
@@ -28,7 +29,8 @@ function LandingPage() {
           <Slide top cascade>
             <h1>가까운 이웃들과 배송비를 나눠보세요!</h1>
           </Slide>
-          <div className={scrollPosition < 350 ? "search" : "change_search"}>
+          {scrollPosition >= 300 ? <SearchBar search_what={search} /> : null}
+          <div className={scrollPosition < 300 ? "search" : null}>
             <input
               onChange={onChange}
               value={search}
