@@ -23,9 +23,11 @@ export default function WritePage() {
 
     return (
         <div>
-            <TitleCategory slider={true}/>
+            <TitleCategory slider={true} category={true}/>
             <div className="write_content_out_div">
-                <div></div>
+                <div>
+                    
+                </div>
             </div>
         </div>
     )

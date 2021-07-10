@@ -1,0 +1,25 @@
+.leftNav {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
+}
+
+.leftNav a {
+  color: black;
+  font-size: 2rem;
+  text-decoration: none;
+  margin-left: 2rem;
+  padding: 2rem;
+}
+
+.leftNav:nth-child(1) {
+  padding-top: 10vh;
+}
+
+@media (max-width: 768px) {
+  .leftNav a {
+    margin-bottom: 0;
+  }
+}
