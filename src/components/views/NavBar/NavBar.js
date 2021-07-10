@@ -5,9 +5,13 @@ import Burger from "./Burger";
 import "./NavBar.css";
 
 function NavBar() {
+  const [search, setSearch] = useState("");
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
 
+  const onChange = e => {
+    setSearch(e.target.value);
+  };
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
@@ -30,10 +34,13 @@ function NavBar() {
         >
           <Burger open={open} scrollPosition={scrollPosition} />
         </span>
-        <div className="nav_left">{open === true ? <LeftNav /> : null}</div>
+        <div className={open === true ? "nav_left" : null}>
+          {open === true ? <LeftNav /> : null}
+        </div>
         <Link to="/" className="nav_title">
           0942
         </Link>
+
         <Link to="" className="nav_login">
           로그인
         </Link>

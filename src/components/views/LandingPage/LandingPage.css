@@ -12,7 +12,6 @@ html {
   height: 100vh;
   background-color: rgb(198, 211, 228);
 }
-
 .landing_container {
   display: flex;
   flex-direction: column;
@@ -20,11 +19,9 @@ html {
   align-items: center;
   height: 50vh;
 }
-
 .landing_container a {
   color: black;
 }
-
 .landingPage h1 {
   font-size: 3.5rem;
   letter-spacing: 0.3rem;
@@ -39,63 +36,33 @@ html {
   padding-top: 10vh;
   margin: 0 12vw;
 }
-
 .landing_img img {
   max-height: 40vh;
 }
 
 /* 검색바 */
-.change_search {
-  position: fixed;
-  top: 20px;
-  z-index: 5;
-}
-
-.change_search input {
-  background-color: rgb(238, 238, 238);
-  padding: 1em;
-  border-radius: 30px;
-  border: none;
-}
-
 .search input {
   background-color: white;
   font-size: 1.8rem;
   border: none;
   padding: 1.6rem;
 }
-
 input::placeholder {
   color: rgb(165, 165, 165);
 }
-
-.search input[type="text"]:focus,
-.change_search input[type="text"]:focus {
+.search input[type="text"]:focus {
   outline: none;
   border-bottom: 2px solid gray;
 }
-
 .search input[type="text"] {
   width: 25vw;
   margin-right: 1.3rem;
 }
-
-.change_search input[type="text"] {
-  width: 20vw;
-  margin-right: 1rem;
-}
-
-.search input[type="submit"],
-.change_search input[type="submit"] {
+.search input[type="submit"] {
   background-color: gray;
   color: white;
   font-weight: bold;
   width: 8vw;
-  min-width: 70px;
-}
-
-.change_search input[type="submit"] {
-  width: 5vw;
   min-width: 70px;
 }
 
@@ -107,12 +74,10 @@ input::placeholder {
   align-items: center;
   min-height: 100vh;
 }
-
 .intro_container1 p,
 .intro_container2 p {
   font-size: 1.5rem;
 }
-
 .intro_container2 {
   background-color: rgb(236, 217, 217);
 }
@@ -122,25 +87,21 @@ input::placeholder {
   width: 20vw;
   max-width: 230px;
 }
-
 .intro_img {
   display: flex;
   flex-direction: column;
   margin-right: 15rem;
   padding-top: 10rem;
 }
-
 .intro_img img {
   width: 20vw;
   max-width: 230px;
 }
-
 .intro_img #pizza {
   position: relative;
   top: -90px;
   left: 100px;
 }
-
 .intro_content {
   text-align: left;
 }
@@ -153,7 +114,6 @@ input::placeholder {
   border-radius: 30px;
   background-color: white;
 }
-
 .landingPage button:hover {
   color: white;
   font-weight: 600;
@@ -172,9 +132,6 @@ input::placeholder {
   }
   .search input[type="text"] {
     width: 50vw;
-  }
-  .landingPage .change_search {
-    display: none;
   }
   .landing_first {
     height: 90vh;
@@ -214,8 +171,5 @@ input::placeholder {
   .intro_content p {
     margin-left: 5vw;
     margin-right: 5vw;
-  }
-  .change_search {
-    z-index: 0;
   }
 }

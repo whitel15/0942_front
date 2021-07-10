@@ -3,6 +3,7 @@ import "./MainPage.css";
 import { Link } from "react-router-dom";
 import Post from "../../post/Post";
 import TitleCategory from "../TitleCategory";
+import SearchBar from "../NavBar/SearchBar";
 
 function MainPage(props) {
   const [search, setSearch] = useState(props.location.state.search);
@@ -17,7 +18,7 @@ function MainPage(props) {
       place: "장소가 들어갈 공간입니다",
       number: 3,
       content: "내용",
-      score: 90,
+      writer_score: 90,
       scrap: 2,
     },
     {
@@ -29,7 +30,7 @@ function MainPage(props) {
       place: "장소",
       number: 5,
       content: "내용",
-      score: 90,
+      writer_score: 90,
       scrap: 2,
     },
   ]);
@@ -40,25 +41,12 @@ function MainPage(props) {
   return (
     <div className="mainPage">
       <TitleCategory slider={true} category={true} />
-      <div className="change_search">
-        <input
-          onChange={onChange}
-          value={search}
-          type="text"
-          placeholder={search === "" ? "물품명을 검색해보세요" : search}
-        />
-        <Link to={{ pathname: "/main", state: { search } }}>
-          <input type="submit" value="Find" />
-        </Link>
-      </div>
-      {/* <div className="category_container">
-        <span>전체</span>
-        <span>음식</span>
-        <span>생활</span>
-      </div> */}
+      <SearchBar search_what={search} />
+
       <div className="main_container">
-        {posts.map(post => (
+        {posts.map((post, index) => (
           <Post
+            key={index}
             id={post.id}
             writer={post.writer}
             img={post.img}
