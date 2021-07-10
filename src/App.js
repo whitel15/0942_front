@@ -5,8 +5,9 @@ import NavBar from "./components/views/NavBar/NavBar";
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import MainPage from "./components/views/MainPage/MainPage";
 import Footer from "./components/views/Footer/Footer";
-import { BrowserRouter, Route } from "react-router-dom";
 import WritePage from "./components/views/WritePage/WritePage";
+import DetailPage from "./components/views/DetailPage/DetailPage";
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/main" component={MainPage} />
       <Route exact path="/write" component={WritePage} />
+      <Route exact path="/post/:id" component={DetailPage} />
       <Footer />
     </BrowserRouter>
   );
