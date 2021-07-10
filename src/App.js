@@ -6,6 +6,8 @@ import LandingPage from "./components/views/LandingPage/LandingPage";
 import MainPage from "./components/views/MainPage/MainPage";
 import Footer from "./components/views/Footer/Footer";
 import WritePage from "./components/views/WritePage/WritePage";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import DetailPage from "./components/views/DetailPage/DetailPage";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -17,6 +19,8 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/main" component={MainPage} />
       <Route exact path="/write" component={WritePage} />
+      <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/post/:id" component={DetailPage} />
       <Footer />
     </BrowserRouter>

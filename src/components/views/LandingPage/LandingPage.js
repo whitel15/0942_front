@@ -15,8 +15,8 @@ function LandingPage() {
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop
+      document.documentElement.scrollTop ||
+      document.body.scrollTop
     );
   };
   useEffect(() => {
@@ -42,7 +42,7 @@ function LandingPage() {
             </Link>
           </div>
           <p>
-            <Link to="/">Sign in</Link> for your address
+            <Link to="/login">Sign in</Link> for your address
           </p>
         </div>
         <div className="landing_img">
