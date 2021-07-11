@@ -13,7 +13,7 @@ function Post({
   place,
   number,
   content,
-  score,
+  writer_score,
   scrap,
 }) {
   return (
@@ -30,7 +30,8 @@ function Post({
           place,
           number,
           content,
-          score,
+          writer_score,
+          scrap,
         },
       }}
     >
@@ -77,7 +78,7 @@ Post.propTypes = {
   place: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
+  writer_score: PropTypes.number.isRequired,
   scrap: PropTypes.number,
 };
 

@@ -30,10 +30,12 @@
 }
 
 @media (max-width: 768px) {
-  .mainPage .searchBar input[type="text"] {
+  .mainPage .searchBar input[type="text"],
+  .detailPage .searchBar input[type="text"] {
     width: 50vw;
   }
-  .mainPage .searchBar {
+  .mainPage .searchBar,
+  .detailPage .searchBar {
     position: static;
     margin-bottom: 2vh;
     z-index: 0;
