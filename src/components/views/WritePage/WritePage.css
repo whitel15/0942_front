@@ -1,6 +1,8 @@
 .write_div{
     margin-top: 80px;
     z-index: 14;
+    background-color:  rgb(198, 211, 228);
+    padding-bottom: 50px;
 }
 .write_out_div{
     width: 70vw;
@@ -8,9 +10,14 @@
     align-items: center;
     justify-content: center;
     margin: auto;
-    border: 2vw solid #D8D7D7;
-    border-radius: 5px;
-    margin-bottom: 50px;
+    /* border: 2vw solid #D8D7D7; */
+    border: 2vw solid #fff;
+    border-radius: 15px;
+    margin-top: 20px;
+    /* margin-bottom: 50px; */
+    background-color: white;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
 
 .write_firtst_div{
