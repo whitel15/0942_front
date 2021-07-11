@@ -15,8 +15,8 @@ function NavBar() {
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
     );
   };
   useEffect(() => {
@@ -46,7 +46,6 @@ function NavBar() {
         <Link to="/register" className="nav_signup">
           회원가입
         </Link>
-
       </div>
     </div>
   );

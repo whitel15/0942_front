@@ -12,12 +12,14 @@ function MainPage(props) {
       id: 1,
       writer: "yujin113",
       img: "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
+      // img: "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
       date: "3분 전",
       title: "제목이 들어갈 공간입니다",
       cost: 2000,
       place: "장소가 들어갈 공간입니다",
       number: 3,
-      content: "내용",
+      content:
+        "내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다",
       writer_score: 90,
       scrap: 2,
     },
@@ -29,7 +31,8 @@ function MainPage(props) {
       cost: 4000,
       place: "장소",
       number: 5,
-      content: "내용",
+      content:
+        "내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다",
       writer_score: 90,
       scrap: 2,
     },
@@ -56,7 +59,7 @@ function MainPage(props) {
             place={post.place}
             number={post.number}
             content={post.content}
-            score={post.writer_score}
+            writer_score={post.writer_score}
             scrap={post.scrap}
           />
         ))}

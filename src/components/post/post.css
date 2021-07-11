@@ -12,7 +12,7 @@ a {
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
-.post:hover {
+.mainPage .post:hover {
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.5),
     0 8px 16px -8px rgba(0, 0, 0, 0.4), 0 -6px 16px -6px rgba(0, 0, 0, 0.4);
 }
@@ -23,7 +23,8 @@ a {
   height: 20%;
 }
 .post_userImg {
-  width: 30px;
+  max-height: 30px;
+  width: auto;
   margin-right: 1rem;
 }
 .post_id {
@@ -38,11 +39,14 @@ a {
 
 /* post 안의 content */
 .post main {
-  margin-left: 2.5rem;
+  margin-left: 1.5rem;
 }
 .post_img {
-  width: 150px;
-  margin-left: 1rem;
+  height: 150px;
+  width: auto;
+  max-width: 200px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   object-fit: cover;
 }
 .post_title {
@@ -50,7 +54,8 @@ a {
   font-weight: bold;
 }
 .post_cost,
-.post_place {
+.post_place,
+.post_plus {
   font-size: 1.5rem;
 }
 .post_cost {
@@ -70,25 +75,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  .mainPage .change_search {
-    position: static;
-    /* margin-top: -4vh; */
-    margin-bottom: 2vh;
-  }
-  .mainPage .change_search input[type="text"] {
-    width: 50vw;
-  }
-  .main_container {
-    width: 100vw;
-    min-height: 100vh;
-  }
-
-  .category_container span {
-    font-size: 1.5rem;
-    margin: 0 3rem;
-    margin-bottom: -1rem;
-  }
-
   .post {
     flex-direction: column;
     margin: 2rem auto;
@@ -98,7 +84,8 @@ a {
     font-size: 1.5rem;
   }
   .post_img {
-    width: 25vw;
+    height: 15vh;
+    width: auto;
     margin-left: 1rem;
     margin-bottom: 1rem;
   }
