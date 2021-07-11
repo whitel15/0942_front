@@ -13,16 +13,16 @@
 }
 
 .write_firtst_div{
-    width: 66vw; 
+    width: 90%; 
     /* 66vw */
 
     margin-top: 5px;
-    margin-left:2vw ;
+    margin-left:3vw ;
     margin-right: 2vw;
     display: flex;
 }
 .write_scroll_div{
-    width: 50vw;
+    width: 47vw;
     white-space: nowrap;
     overflow-x: scroll;
     -ms-overflow-style: none;
@@ -89,14 +89,65 @@
     margin-top: 10px;
 }
 .write_category{
+    /* display: flex;
     align-items: center;
-    justify-content: start;
-    display: flex;
-    margin-top: 10px;
+    justify-content: center; */
+    
+    width: 90%;
+    justify-content: center;
+    display:  block;
+    padding-left: 5%;
+}
+.write_category_div{
     width: 90%;
 }
 
+.write_category_p{
+    display: inline;
+    font-size: 17px;
+    font-weight: 700;
+    
+}
 
+.write_category_button_span{
+    width: 80px;
+    display: inline-flex;
+    font-size: 17px;
+    font-weight: 700;
+    height: 40px;
+    background-color: #D8D7D7;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.write_category_people_form{
+    width: 40px;
+    margin-left: 10px;
+    display: inline-block;
+    
+}
+.write_category_button_span_place{
+    width:80%;
+    display: inline-flex;
+    font-size: 17px;
+    font-weight: 700;
+    height: 40px;
+    background-color: #D8D7D7;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+.write_category_place_form{
+    
+    margin-left: 10px;
+    display: inline-block;
+    
+}
 
 @media only screen and (max-width: 767px) {    
     .write_div{
@@ -150,5 +201,14 @@
         font-weight: bold;
         width: 15vw;
     }
+
+    .write_category_people_form{
+        width: 25px;
+        margin-left: 10px;
+        display: inline-block;
+        
+    }
+
+
 }
 

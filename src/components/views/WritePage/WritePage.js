@@ -91,7 +91,25 @@ export default function WritePage() {
         count--;
     }
 
+    const [color, setColor] = useState(["#D8D7D7", "#D8D7D7"]);
+    const categoryClick1 = () => {
+        setColor(["#B5B3B3", "#D8D7D7"]);
+    }
+    const categoryClick2 = () => {
+        setColor(["#D8D7D7", "#B5B3B3"]);
+    }
 
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
+    const numOnly = (e) => {
+        const { value } = e.target;
+
+        if (value.match('.')) {
+            this.setState({ value: parseInt(value) })
+        }
+
+        return null;
+    }
 
     return (
         <div className="write_div">
@@ -125,13 +143,114 @@ export default function WritePage() {
                     </div>
                 </div>
 
-                <div className="write_category">
-                    <div style={{width:'60%',justifyContent:'start', alignItems:'start'}}>
-                        <p style={{display:'inline'}}>카테고리</p>
-                        <p style={{display:'inline'}}>카테고리</p>
+                {isMobile === true ?
+                    <div className="write_category">
+
+                        <div className="write_category_div">
+                            <span className="write_category_p" >카테고리 </span>
+                            <span className="write_category_button_span" onClick={() => { categoryClick1() }} style={{ backgroundColor: color[0] }}>음식</span>
+                            <span className="write_category_button_span" onClick={() => { categoryClick2() }} style={{ backgroundColor: color[1] }}>물건</span>
+
+
+                        </div>
+                        <br /><br /><br />
+                        <div className="write_category_div">
+                            <span className="write_category_p">모집 인원 </span>
+                            <form className="write_category_people_form" noValidate autoComplete="off">
+                                {/* <input type="text" name="name" /> */}
+                                <TextField
+                                    inputProps={{ style: { fontSize: 20, marginTop: '-17px' } }} // font size of input text
+                                    InputLabelProps={{ style: { fontSize: 0 }, shrink: false }} // font size of input label
+                                    className="write_category_people_text" id="standard-basic" hiddenLabel="true" placeholder="1"
+                                    type="number"
+                                    onInput={(e) => {
+                                        e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2)
+                                    }}
+                                />
+                            </form>
+                            <span className="write_category_p" > 명 </span>
+                            <span className="write_category_p" style={{ color: "#B5B3B3", fontSize: "15px" }}>(최대 인원 :99)</span>
+                            <br /><br /><br />
+                            <span className="write_category_p" >만날 장소 </span>
+                            <span className="write_category_button_span_place" style={{ width: '90%' }} >
+                                {/* <form className="write_category_place_form" noValidate autoComplete="off"> */}
+                                <span style={{ width: '90%' }}>
+                                    <TextField
+                                        inputProps={{ style: { fontSize: 20, marginTop: '-10px' } }} // font size of input text
+                                        InputLabelProps={{ style: { fontSize: 0 }, shrink: false }} // font size of input label
+                                        fullWidth
+                                        className="write_category_people_text" id="standard-basic" hiddenLabel="true" placeholder="장소를 입력하세요."
+
+                                        onInput={(e) => {
+                                            e.target.value = e.target.value.slice(0, 40)
+                                        }}
+                                    />
+                                </span>
+                                {/* </form> */}
+                            </span>
+                        </div>
+
+
+
                     </div>
-                    
+                    :
+                    <div className="write_category">
+                        <div className="write_category_div">
+                            <span className="write_category_p" >카테고리 </span>
+                            <span className="write_category_button_span" onClick={() => { categoryClick1() }} style={{ backgroundColor: color[0] }}>음식</span>
+                            <span className="write_category_button_span" onClick={() => { categoryClick2() }} style={{ backgroundColor: color[1] }}>물건</span>
+                            <span className="write_category_p" style={{ marginLeft: '5vw' }}>모집 인원</span>
+                            <form className="write_category_people_form" noValidate autoComplete="off">
+
+                                <TextField
+                                    inputProps={{ style: { fontSize: 15, marginTop: '-17px' } }} // font size of input text
+                                    InputLabelProps={{ style: { fontSize: 0 }, shrink: false }} // font size of input label
+                                    className="write_category_people_text" id="standard-basic" hiddenLabel="true" placeholder="1"
+                                    type="number"
+                                    onInput={(e) => {
+                                        e.target.value = Math.max(0, parseInt(e.target.value)).toString().slice(0, 2)
+                                    }}
+                                />
+
+                            </form>
+                            <span className="write_category_p" > 명 </span>
+                            <span className="write_category_p" style={{ color: "#B5B3B3", fontSize: "15px" }}>(최대 인원 :99)</span>
+                            <br /><br /><br />
+                            <span className="write_category_p" >만날 장소 </span>
+                            <span className="write_category_button_span_place"  >
+                                {/* <form className="write_category_place_form" noValidate autoComplete="off"> */}
+                                <span style={{ width: '90%' }}>
+                                    <TextField
+                                        inputProps={{ style: { fontSize: 15, marginTop: '-10px' } }} // font size of input text
+                                        InputLabelProps={{ style: { fontSize: 0 }, shrink: false }} // font size of input label
+                                        fullWidth
+                                        className="write_category_people_text" id="standard-basic" hiddenLabel="true" placeholder="장소를 입력하세요."
+
+                                        onInput={(e) => {
+                                            e.target.value = e.target.value.slice(0, 40)
+                                        }}
+                                    />
+                                </span>
+                                {/* </form> */}
+                            </span>
+                        </div>
+
+                    </div>
+
+                }
+
+                <br /><br />
+                <hr style={{ width: "90%" }} />
+
+                {/* <textarea /> */}
+                <div className="write_second_div" style={{ height: '30vh' }} >
+
+                    <textarea
+                        style={{ width: "90%", border: 'none', outline: 'none', height: '25vh', fontSize: 15 }}
+                        placeholder="내용을 입력하세요"
+                    />
                 </div>
+
 
             </div>
         </div>
