@@ -124,6 +124,7 @@ export default function WritePage() {
                     </div>
                     <div ref={scroll} className="write_scroll_div">
                         {imageUrl.map((url, i) => { return (<img className="write_image_preview_img" src={url} onClick={() => { imageClicktoDelete(url) }} />) })}
+                        <span>{count}/5</span>
                     </div>
 
                     <div className="write_upload_button_div">
