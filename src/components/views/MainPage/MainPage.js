@@ -11,8 +11,11 @@ function MainPage(props) {
     {
       id: 1,
       writer: "yujin113",
-      img: "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
-      // img: "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
+      img: [
+        "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
+        "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
+        "https://t1.daumcdn.net/cfile/blog/137F0217499D624605",
+      ],
       date: "3분 전",
       title: "제목이 들어갈 공간입니다",
       cost: 2000,

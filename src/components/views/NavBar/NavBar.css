@@ -66,6 +66,7 @@
   height: 80px;
   top: 0;
   border-bottom: 1px solid #ebebeb;
+  transition: all 0.3s;
 }
 
 /* 왼쪽바 */

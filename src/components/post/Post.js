@@ -38,7 +38,7 @@ function Post({
       <div className="post">
         <aside>
           {img != null ? (
-            <img src={img} alt={title} className="post_img" />
+            <img src={img[0]} alt={title} className="post_img" />
           ) : null}
         </aside>
         <main>
@@ -71,7 +71,7 @@ function Post({
 Post.propTypes = {
   id: PropTypes.number.isRequired,
   writer: PropTypes.string.isRequired,
-  img: PropTypes.string,
+  img: PropTypes.arrayOf(PropTypes.string),
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,

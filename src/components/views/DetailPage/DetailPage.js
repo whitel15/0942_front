@@ -3,12 +3,25 @@ import "./DetailPage.css";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function DetailPage(props) {
   const post = props.location.state;
+  const imgs = post.img;
+
   if (post === undefined) {
     props.history.push("/");
   }
+  const settings = {
+    className: "slider",
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+  };
 
   console.log(post);
   return (
@@ -29,16 +42,34 @@ function DetailPage(props) {
               <span className="post_score">{post.writer_score}점</span>
             </div>
             <aside>
-              {post.img != null ? (
-                <img src={post.img} alt={post.title} className="post_img" />
-              ) : null}
+              <div className={imgs != null ? "detail_slider" : null}>
+                <Slider {...settings}>
+                  {imgs != null
+                    ? imgs.map((img, index) => (
+                        <div>
+                          <img
+                            src={img}
+                            alt={post.title}
+                            className="post_img"
+                          />
+                        </div>
+                      ))
+                    : null}
+                </Slider>
+              </div>
             </aside>
           </div>
           <div className="detail_post_bottom">
             <hr />
             <p className="post_title">{post.title}</p>
-            <span className="post_cost">배송비 : {post.cost}원</span>
-            <span className="post_place">배분 장소 : {post.place}</span>
+            <p className="post_cost">
+              <strong>배송비 : </strong>
+              {post.cost}원
+            </p>
+            <p className="post_place">
+              <strong>배분 장소 : </strong>
+              {post.place}
+            </p>
             <p className="post_plus"> {post.content}</p>
             <p className="post_num">{post.number}명 모집 중</p>
           </div>
