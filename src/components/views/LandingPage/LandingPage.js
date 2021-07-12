@@ -15,8 +15,8 @@ function LandingPage() {
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop
+        document.documentElement.scrollTop ||
+        document.body.scrollTop
     );
   };
   useEffect(() => {
