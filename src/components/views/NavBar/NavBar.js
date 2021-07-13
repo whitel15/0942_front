@@ -5,13 +5,9 @@ import Burger from "./Burger";
 import "./NavBar.css";
 
 function NavBar() {
-  const [search, setSearch] = useState("");
   const [scrollPosition, setScrollPosition] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const onChange = e => {
-    setSearch(e.target.value);
-  };
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||

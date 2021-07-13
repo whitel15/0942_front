@@ -6,7 +6,8 @@ import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
 
 function MainPage(props) {
-  const [search, setSearch] = useState(props.location.state.search);
+  // const [search, setSearch] = useState(props.location.state.search);
+  const search = props.location.state.search;
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -41,9 +42,6 @@ function MainPage(props) {
     },
   ]);
 
-  const onChange = e => {
-    setSearch(e.target.value);
-  };
   return (
     <div className="mainPage">
       <TitleCategory slider={true} category={true} />

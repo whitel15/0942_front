@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./DetailPage.css";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { useMediaQuery } from "react-responsive";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function DetailPage(props) {
   const post = props.location.state;
   const imgs = post.img;
+
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   if (post === undefined) {
     props.history.push("/");
@@ -21,6 +24,14 @@ function DetailPage(props) {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
+  };
+  const mobile_settings = {
+    className: "slider",
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
   };
 
   console.log(post);
@@ -43,7 +54,36 @@ function DetailPage(props) {
             </div>
             <aside>
               <div className={imgs != null ? "detail_slider" : null}>
-                <Slider {...settings}>
+                {isMobile === true ? (
+                  <Slider {...mobile_settings}>
+                    {imgs != null
+                      ? imgs.map((img, index) => (
+                          <div>
+                            <img
+                              src={img}
+                              alt={post.title}
+                              className="post_img"
+                            />
+                          </div>
+                        ))
+                      : null}
+                  </Slider>
+                ) : (
+                  <Slider {...settings}>
+                    {imgs != null
+                      ? imgs.map((img, index) => (
+                          <div>
+                            <img
+                              src={img}
+                              alt={post.title}
+                              className="post_img"
+                            />
+                          </div>
+                        ))
+                      : null}
+                  </Slider>
+                )}
+                {/* <Slider {...settings}>
                   {imgs != null
                     ? imgs.map((img, index) => (
                         <div>
@@ -55,7 +95,7 @@ function DetailPage(props) {
                         </div>
                       ))
                     : null}
-                </Slider>
+                </Slider> */}
               </div>
             </aside>
           </div>
@@ -79,8 +119,11 @@ function DetailPage(props) {
         <Link to="/">
           <div>채팅</div>
         </Link>
-        <div className="detail_scrap" rol="img" aria-level="heart">
-          ❤️ {post.scrap}
+        <div className="detail_scrap">
+          <span role="img" aria-level="heart">
+            ❤️
+          </span>{" "}
+          {post.scrap}
         </div>
       </div>
     </div>
