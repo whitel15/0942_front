@@ -83,19 +83,6 @@ function DetailPage(props) {
                       : null}
                   </Slider>
                 )}
-                {/* <Slider {...settings}>
-                  {imgs != null
-                    ? imgs.map((img, index) => (
-                        <div>
-                          <img
-                            src={img}
-                            alt={post.title}
-                            className="post_img"
-                          />
-                        </div>
-                      ))
-                    : null}
-                </Slider> */}
               </div>
             </aside>
           </div>
