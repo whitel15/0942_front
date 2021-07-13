@@ -6,6 +6,8 @@ a {
 .post {
   display: flex;
   background-color: white;
+  width: 70vw;
+  max-width: 850px;
   margin: 1.7rem;
   padding: 2rem;
   border-radius: 20px;

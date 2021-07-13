@@ -47,6 +47,13 @@ function MainPage(props) {
       <TitleCategory slider={true} category={true} />
       <SearchBar search_what={search} />
 
+      <Link to="/write">
+        <input
+          class="main_input"
+          type="text"
+          placeholder="새 글을 작성해주세요!"
+        ></input>
+      </Link>
       <div className="main_container">
         {posts.map((post, index) => (
           <Post
