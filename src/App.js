@@ -9,6 +9,7 @@ import WritePage from "./components/views/WritePage/WritePage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import DetailPage from "./components/views/DetailPage/DetailPage";
+import ChattingPage from "./components/views/ChattingPage/ChattingPage";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/post/:id" component={DetailPage} />
+      <Route exact path="/chat" component={ChattingPage} />
       <Footer />
     </BrowserRouter>
   );

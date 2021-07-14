@@ -1,0 +1,77 @@
+.chat_div{
+    margin-top: 80px;
+    z-index: 14;
+    background-color:  rgb(198, 211, 228);
+    
+}
+
+.chat_out_div{
+    width: 70vw;
+    
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    
+    border: 2vw solid #fff;
+    border-radius: 15px;
+    margin-top: 20px;
+    
+    background-color: white;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.chat_innertitle_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.chat_nick_span{
+    font-size: 20px;
+}
+
+.chat_option_span{
+    float: right;
+    font-size: 20px;
+}
+.chat_chat_div{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.chat_chat_not_me_div{
+    /* margin-top: 20px; */
+    /* background-color: rgb(198, 211, 228); */
+    
+    padding: 10px;
+    display: flex;
+    
+}
+.chat_message_span{
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+@media only screen and (max-width: 767px) {    
+    .chat_out_div{
+        padding-top: 10px;
+        width: 95vw;
+        border: 0vw solid #D8D7D7;
+    }
+    .chat_nick_span{
+        font-size: 15px;
+    }
+    .chat_option_span{
+        font-size: 15px;
+    }
+    .chat_chat_not_me_div{
+        /* margin-top: 15px; */
+    }
+
+}
