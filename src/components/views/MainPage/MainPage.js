@@ -49,7 +49,7 @@ function MainPage(props) {
 
       <Link to="/write">
         <input
-          class="main_input"
+          className="main_input"
           type="text"
           placeholder="새 글을 작성해주세요!"
         ></input>
@@ -57,7 +57,7 @@ function MainPage(props) {
       <div className="main_container">
         {posts.map((post, index) => (
           <Post
-            key={index}
+            key={post.id}
             id={post.id}
             writer={post.writer}
             img={post.img}
