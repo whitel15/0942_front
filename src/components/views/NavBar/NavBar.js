@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, withRouter } from "react-router-dom";
 import LeftNav from "./LeftNav";
 import Burger from "./Burger";
@@ -6,7 +6,7 @@ import "./NavBar.css";
 
 function NavBar() {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const updateScroll = () => {
     setScrollPosition(
@@ -19,21 +19,35 @@ function NavBar() {
     window.addEventListener("scroll", updateScroll);
   });
 
+  const leftNav = useRef();
+
+  const clickOutside = ({ target }) => {
+    if (isOpen && !leftNav.current.contains(target)) setOpen(false);
+    console.log(isOpen);
+  }; // leftNav가 아닌 부분 클릭 시 닫히게 함
+
+  useEffect(() => {
+    window.addEventListener("click", clickOutside);
+    return () => {
+      window.removeEventListener("click", clickOutside);
+    };
+  });
+
   return (
     <div className="navBar">
       <div
         className={scrollPosition < 100 ? "original_header" : "change_header"}
       >
         <span
-          className={open === true ? "nav_burger_click" : "nav_burger"}
-          onClick={() => setOpen(!open)}
+          className={isOpen === true ? "nav_burger_click" : "nav_burger"}
+          onClick={() => setOpen(!isOpen)}
         >
-          <Burger open={open} scrollPosition={scrollPosition} />
+          <Burger open={isOpen} scrollPosition={scrollPosition} />
         </span>
-        <div className={open === true ? "nav_left" : null}>
-          {open === true ? <LeftNav /> : null}
+        <div className={isOpen === true ? "nav_left" : null} ref={leftNav}>
+          {isOpen === true ? <LeftNav /> : null}
         </div>
-        <Link to="/" className="nav_title">
+        <Link to="/" className="nav_title" ref={leftNav}>
           0942
         </Link>
         <Link to="/login" className="nav_login">
