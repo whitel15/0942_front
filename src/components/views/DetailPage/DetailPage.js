@@ -58,7 +58,7 @@ function DetailPage(props) {
                   <Slider {...mobile_settings}>
                     {imgs != null
                       ? imgs.map((img, index) => (
-                          <div>
+                          <div key={index}>
                             <img
                               src={img}
                               alt={post.title}
@@ -72,7 +72,7 @@ function DetailPage(props) {
                   <Slider {...settings}>
                     {imgs != null
                       ? imgs.map((img, index) => (
-                          <div>
+                          <div key={index}>
                             <img
                               src={img}
                               alt={post.title}
