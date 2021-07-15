@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em;
+  padding: 3rem;
   background-color: lightgray;
 }
 .bottom_container span {
-  color: rgb(95, 95, 95);
+  color: rgb(85, 85, 85);
   font-size: small;
-  margin: 5px;
+  margin: 1rem;
   background-color: lightgray;
 }

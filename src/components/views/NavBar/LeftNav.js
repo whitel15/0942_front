@@ -8,7 +8,7 @@ function LeftNav() {
       <Link to="/">Home</Link>
       <Link to="/login">Sign In</Link>
       <Link to="/register">Sign Up</Link>
-      <Link to="/">About Us</Link>
+      <Link to="/aboutUs">About Us</Link>
     </div>
   );
 }
