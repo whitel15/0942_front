@@ -41,6 +41,11 @@
     float: right;
     font-size: 20px;
 }
+
+.chat_message_table{
+    width: 70vw;
+    margin: 10px;
+}
 .chat_chat_div{
     margin-left: 15px;
     margin-right: 15px;
@@ -57,7 +62,14 @@
     font-size: 15px;
     margin-top: 2px;
 }
-
+.chat_chat_my_div{
+    /* margin-top: 20px; */
+    /* background-color: rgb(198, 211, 228); */
+    
+    padding: 10px;
+    display: flex;
+    
+}
 @media only screen and (max-width: 767px) {    
     .chat_out_div{
         padding-top: 10px;
@@ -69,6 +81,10 @@
     }
     .chat_option_span{
         font-size: 15px;
+    }
+    .chat_message_table{
+        width: 91vw;
+        margin: 10px;
     }
     .chat_chat_not_me_div{
         /* margin-top: 15px; */
