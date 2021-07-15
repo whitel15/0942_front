@@ -13,6 +13,7 @@ import ChattingPage from "./components/views/ChattingPage/ChattingPage";
 import AboutUs from "./components/views/AboutUs/AboutUs";
 import { BrowserRouter, Route } from "react-router-dom";
 
+
 function App() {
   return (
     <BrowserRouter>
