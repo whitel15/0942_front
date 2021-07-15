@@ -16,22 +16,25 @@
 }
 
 .Login_h4{
-    font-size: 35px;
+    font-size: 4.2rem;
     margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .Login_form{
     display: inline-block;
     align-items: center;
     height: 270px;
+    /* height: 40vh;  */
     width: 350px;
-    margin-bottom: 80px;
+    /* width: 25vw; */
+    margin-bottom: 9rem;
 }
 .Longin_textarea{
     align-content: center;
     border-radius: 22px;
-    margin-bottom: 35px;
+    /* margin-bottom: 35px; */
+    margin-bottom: 4rem;
     width: 100%;
     height: 64px;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
@@ -41,28 +44,28 @@
     font-family: 'Montserrat regular';
     width: 80%;
     margin-top: 2rem;
-    font-size: 20px;
+    font-size: 2rem;
     border: none;
     width: 80%;
 }
 
 .Login_button{
-    margin-top: 28px;
+    /* margin-top: 28px; */
+    margin-top: 3rem;
     width: 165px;
     height: 60px;
     border-radius: 30px;
     background: #B58DED;
     border: none;
-    font-size: 20px;
+    font-size: 2rem;
     color: #FFFFFF;
     cursor: pointer;
 }
 .Login_button:hover{
-  box-shadow: 0 4px 8px 0 rgba(181, 141, 237, 0.7), 0 6px 20px 0 rgba(181, 141, 237, 0.9);
+  box-shadow: 0 0.48rem 0.96rem 0 rgba(181, 141, 237, 0.7), 0 0.72rem 2.4rem 0 rgba(181, 141, 237, 0.9);
 }
 .Login_main{
     display: inline-block;
-
     background: #FFFFFF;
     width: 500px;
     height: 600px;
@@ -72,13 +75,26 @@
 }
 .Login_link{
     color: #305b83;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-decoration: none;
 }
 .Login_link:hover{
     text-decoration: underline;
 }
 .Login_register{
-    font-size: 18px;
+    font-size: 1.8rem;
     text-decoration: none;
-} 
+}
+
+@media (max-width: 768px) {
+    
+    .Login_main {
+    margin-top: 20vh;
+      width: 80vw;
+      margin-bottom: 20vh;
+    }
+    .Longin_textarea{
+        width: 28rem;
+        margin-left: 3vw;
+    }
+  }

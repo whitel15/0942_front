@@ -1,0 +1,46 @@
+.searchBar {
+  position: fixed;
+  top: 20px;
+  z-index: 5;
+}
+.searchBar input {
+  background-color: rgb(238, 238, 238);
+  padding: 1em;
+  border-radius: 30px;
+  border: none;
+}
+.searchBar input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid gray;
+}
+.searchBar input[type="submit"] {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+  width: 8vw;
+  min-width: 70px;
+}
+.searchBar input[type="submit"] {
+  width: 5vw;
+  min-width: 70px;
+}
+.searchBar input[type="text"] {
+  width: 20vw;
+  margin-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .mainPage .searchBar input[type="text"],
+  .detailPage .searchBar input[type="text"] {
+    width: 50vw;
+  }
+  .mainPage .searchBar,
+  .detailPage .searchBar {
+    position: static;
+    margin-bottom: 2vh;
+    z-index: 0;
+  }
+  .landingPage .searchBar {
+    display: none;
+  }
+}

@@ -10,7 +10,12 @@ function valuetext(value) {
     return `${value}°C`;
 }
 
-
+//props 인자종류
+//props.slider = slider 유무
+//props.category = 전체/음식/생활 카테고리 유무
+//props.allType = 전체 클릭시 실행할 함수
+//props.foodType = 음식 클릭시 실행할 함수
+//props.objectType = 생활 클릭시 실행할 함수
 export default function TitleCategory(props) {
 
     const [value, setValue] = React.useState(1);
@@ -43,9 +48,9 @@ export default function TitleCategory(props) {
             <div className="titlecateg_title_div" >
                 {props.category === true ?
                     <div className="titlecateg_category_div">
-                        <h2 className="titlecateg_category_h2">전체</h2>
-                        <h2 className="titlecateg_category_h2_center" >음식</h2>
-                        <h2 className="titlecateg_category_h2">생활</h2>
+                        <h2 onClick={()=>{props.allType;}} className="titlecateg_category_h2">전체</h2>
+                        <h2 onClick={()=>{props.foodType;}} className="titlecateg_category_h2_center" >음식</h2>
+                        <h2 onClick={()=>{props.objectType;}} className="titlecateg_category_h2">생활</h2>
                     </div> 
                     :
                     ""

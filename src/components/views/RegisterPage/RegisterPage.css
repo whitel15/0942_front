@@ -16,17 +16,20 @@
 }
 
 .Register_h4{
-    font-size: 35px;
+    font-size: 4.2rem;
     margin-top: 4rem;
     margin-bottom: 2rem;
 }
-
+.Register_pwchecktext{
+    color:red;
+    margin-left: 15rem;
+    font-size: 1.5rem;}
 .Register_form{
     display: inline-block;
     align-items: center;
-    height: 270px;
+    height: 290px;
     width: 350px;
-    margin-bottom: 400px;
+    margin-bottom: 33rem;
 }
 .Register_textarea{
     align-content: center;
@@ -36,24 +39,24 @@
     font-size: 15pt ;
     align-content: center;
     border-radius: 22px;
-    margin-bottom: 35px;
+    /* margin-bottom: 4rem; */
     width: 115px;
     height: 64px;
 }
 .Register_table{
     table-layout: auto; 
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 400px;
-    padding-left: 0px;
+    /* margin-top: 10vh;
+    margin-bottom: 10px; */
+     /* padding-left: 0px; */
+     width: 400px;
     margin: 0 auto;
+
 }
+
+
 .Register_table_id{
     table-layout: auto; 
-    margin-top: 10px;
-    margin-bottom: 10px;
     width: 400px;
-    padding-left: 0px;
     margin: 0 auto;
 }
 
@@ -61,20 +64,20 @@
     font-family: 'Montserrat regular';
     width: 80%;
     margin-top: 0.2rem;
-    font-size: 15px;
+    font-size: 1.6rem;
     border: none;
     width: 80%;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.19);
+    border-bottom:0.2rem solid rgba(0, 0, 0, 0.19);
 }
 
 .Register_button{
-    margin-top: 28px;
+    margin-top: 3rem;
     width: 165px;
     height: 60px;
     border-radius: 30px;
     background: #B58DED;
     border: none;
-    font-size: 20px;
+    font-size: 2rem;
     color: #FFFFFF;
     cursor: pointer;
 }
@@ -84,13 +87,12 @@
     border-radius: 3px;
     background: #969696;
     border: none;
-    font-size: 20px;
+    font-size: 1.34rem;
     color: #FFFFFF;
     cursor: pointer;
-    font-size: 10pt;
-    margin-left: 18pt;
+    margin-left: 2.2rem;
 }
-.Register_check_button{
+/* .Register_check_button{
     width: 80px;
     height: 30px;
     border-radius: 8px;
@@ -100,16 +102,17 @@
     color: #FFFFFF;
     cursor: pointer;
     font-size: 10pt;
-}
+} */
 .Register_address_button:hover{
     box-shadow: 0 2px 2px 0 rgba(82, 82, 82, 0.7), 0 2px 4px 0 rgba(102, 102, 102, 0.9);
 }
 .Register_button:hover{
-  box-shadow: 0 4px 8px 0 rgba(181, 141, 237, 0.7), 0 6px 20px 0 rgba(181, 141, 237, 0.9);
+    box-shadow: 0 0.48rem 0.96rem 0 rgba(181, 141, 237, 0.7), 0 0.72rem 2.4rem 0 rgba(181, 141, 237, 0.9);
 }
+/* 
 .Register_check_button:hover{
     box-shadow: 0 2px 2px 0 rgba(82, 82, 82, 0.7), 0 2px 4px 0 rgba(102, 102, 102, 0.9);
-}
+} */
 .Register_main{
     display: inline-block;
     background: #FFFFFF;
@@ -121,14 +124,14 @@
 }
 .Register_link{
     color: #305b83;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-decoration: none;
 }
 .Register_link:hover{
     text-decoration: underline;
 }
 .Register_register{
-    font-size: 18px;
+    font-size: 1.8rem;
     text-decoration: none;
 }
 
@@ -136,9 +139,41 @@
     .Register_main{
     display: inline-block;
     background: #FFFFFF;
-    width: 600px;
+    width: 80vw;
     height: 850px;
     margin-top: 10%;
     border-radius: 22px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} } 
+}
+
+.Register_textinput{
+    font-family: 'Montserrat regular';
+    margin-top: 0.2rem;
+    font-size: 0.2rem;
+    border: none;
+    /* width: 70%; */
+    width: 50px;
+    border-bottom:0.2rem solid rgba(0, 0, 0, 0.19);
+}
+.Register_name{
+    font-size: 1rem ;
+    align-content: center;
+    border-radius: 22px;
+    /* margin-bottom: 4rem; */
+    width: 115px;
+    height: 64px;
+}
+.Register_textarea{
+    align-content: center;
+    border: 0;
+    width: 3vw;
+}
+.Register_table{
+    table-layout: auto; 
+    /* margin-top: 10vh;
+    margin-bottom: 10px; */
+     /* padding-left: 0px; */
+     width: 60vw;
+    margin: 0 auto;
+}
+}
