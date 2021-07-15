@@ -40,7 +40,7 @@ function LandingPage() {
             </Link>
           </div>
           <p>
-            <Link to="/">Sign in</Link> for your address
+            <Link to="/login">Sign in</Link> for your address
           </p>
         </div>
         <div className="landing_img">

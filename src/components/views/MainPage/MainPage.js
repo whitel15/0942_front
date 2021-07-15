@@ -41,7 +41,7 @@ function MainPage(props) {
                 alt="user"
                 className="post_userImg"
               />
-              <span className="post_id">yujin113</span>
+              <span className="post_id"><Link to="/review">yujin113</Link></span>
               <span className="post_date">5분 전</span>
             </div>
             <div className="post_content">
@@ -75,7 +75,7 @@ function MainPage(props) {
                 alt="user"
                 className="post_userImg"
               />
-              <span className="post_id">yujin113</span>
+              <span className="post_id"><Link to="/review">yujin113</Link></span>
               <span className="post_date">5분 전</span>
             </div>
             <div className="post_content">
