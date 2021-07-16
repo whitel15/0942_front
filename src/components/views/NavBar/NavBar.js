@@ -23,7 +23,6 @@ function NavBar() {
 
   const clickOutside = ({ target }) => {
     if (isOpen && !leftNav.current.contains(target)) setOpen(false);
-    console.log(isOpen);
   }; // leftNav가 아닌 부분 클릭 시 닫히게 함
 
   useEffect(() => {

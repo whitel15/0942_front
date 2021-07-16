@@ -51,6 +51,10 @@
   padding-top: calc((40px - 1.5rem) / 2);
   margin-left: auto;
 }
+.detail_post_userInfo a {
+  font-size: 2rem;
+  padding-top: calc((40px - 2rem) / 2);
+}
 .detailPage .post_id {
   font-size: 2rem;
   padding-top: calc((40px - 2rem) / 2);

@@ -31,11 +31,13 @@
 
 @media (max-width: 768px) {
   .mainPage .searchBar input[type="text"],
-  .detailPage .searchBar input[type="text"] {
+  .detailPage .searchBar input[type="text"],
+  .userPage .searchBar input[type="text"] {
     width: 50vw;
   }
   .mainPage .searchBar,
-  .detailPage .searchBar {
+  .detailPage .searchBar,
+  .userPage .searchBar {
     position: static;
     margin-bottom: 2vh;
     z-index: 0;
