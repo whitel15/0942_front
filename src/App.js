@@ -11,6 +11,7 @@ import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 import DetailPage from "./components/views/DetailPage/DetailPage";
 import ChattingPage from "./components/views/ChattingPage/ChattingPage";
 import AboutUs from "./components/views/AboutUs/AboutUs";
+import UserPage from "./components/views/UserPage/UserPage";
 import { BrowserRouter, Route } from "react-router-dom";
 
 
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/post/:id" component={DetailPage} />
       <Route exact path="/chat" component={ChattingPage} />
       <Route exact path="/aboutUs" component={AboutUs} />
+      <Route exact path="/user/:id" component={UserPage} />
       <Footer />
     </BrowserRouter>
   );

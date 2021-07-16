@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DetailPage.css";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
@@ -34,7 +34,23 @@ function DetailPage(props) {
     adaptiveHeight: true,
   };
 
-  console.log(post);
+  // post.writer와 user_id가 같은 데이터 받아오기
+  const [user, setUser] = useState({
+    user_id: "yujin113",
+    user_count: 5,
+    user_score: 90,
+    review: [
+      {
+        review_content: "친절해요",
+        review_date: "21.07.15",
+      },
+      {
+        review_content: "시간 약속을 잘 지켜요",
+        review_date: "21.07.15",
+      },
+    ],
+  });
+
   return (
     <div className="detailPage">
       <SearchBar />
@@ -48,7 +64,19 @@ function DetailPage(props) {
                 alt="user"
                 className="post_userImg"
               />
-              <span className="post_id">{post.writer}</span>
+              <Link
+                to={{
+                  pathname: `/user/${post.writer}`,
+                  state: {
+                    user_id: user.user_id,
+                    user_count: user.user_count,
+                    user_score: user.user_score,
+                    review: user.review,
+                  },
+                }}
+              >
+                <span className="post_id">{post.writer}</span>{" "}
+              </Link>
               <span className="post_date">{post.date}</span>
               <span className="post_score">{post.writer_score}점</span>
             </div>
