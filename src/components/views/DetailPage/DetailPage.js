@@ -64,19 +64,7 @@ function DetailPage(props) {
                 alt="user"
                 className="post_userImg"
               />
-              <Link
-                to={{
-                  pathname: `/user/${post.writer}`,
-                  state: {
-                    user_id: user.user_id,
-                    user_count: user.user_count,
-                    user_score: user.user_score,
-                    review: user.review,
-                  },
-                }}
-              >
-                <span className="post_id">{post.writer}</span>{" "}
-              </Link>
+              <Link to="/review"><span className="post_id">{post.writer}</span></Link>
               <span className="post_date">{post.date}</span>
               <span className="post_score">{post.writer_score}점</span>
             </div>
