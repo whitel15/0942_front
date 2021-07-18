@@ -21,6 +21,9 @@ function LandingPage() {
   };
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+    };
   });
   return (
     <div className="landingPage">
