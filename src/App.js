@@ -25,7 +25,7 @@ function App() {
       <Route exact path="/write" component={WritePage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/review" component={ReviewPage} />
+      <Route exact path="/review/:id" component={ReviewPage} />
       <Route exact path="/post/:id" component={DetailPage} />
       <Route exact path="/chat/:id" component={ChattingPage} />
       <Route exact path="/aboutUs" component={AboutUs} />

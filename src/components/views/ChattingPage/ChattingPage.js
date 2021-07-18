@@ -86,7 +86,14 @@ export default function ChattingPage(props) {
           <div style={{ width: "50%" }}>
             <span className="chat_option_span">신고</span>{" "}
             <span className="chat_option_span"> | </span>{" "}
-            <Link to="/review">
+            <Link
+                to={{
+                  pathname: `/review/${writer}`,
+                  state: {
+                    writer: writer
+                  },
+                }}
+              >
             <span className="chat_option_span">후기 남기기 </span>
             </Link>
           </div>
