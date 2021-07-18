@@ -14,7 +14,6 @@ import AboutUs from "./components/views/AboutUs/AboutUs";
 import UserPage from "./components/views/UserPage/UserPage";
 import { BrowserRouter, Route } from "react-router-dom";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +25,7 @@ function App() {
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/post/:id" component={DetailPage} />
-      <Route exact path="/chat" component={ChattingPage} />
+      <Route exact path="/chat/:id" component={ChattingPage} />
       <Route exact path="/aboutUs" component={AboutUs} />
       <Route exact path="/user/:id" component={UserPage} />
       <Footer />
