@@ -69,6 +69,7 @@
     padding: 10px;
     display: flex;
     
+    
 }
 @media only screen and (max-width: 767px) {    
     .chat_out_div{
@@ -83,7 +84,7 @@
         font-size: 15px;
     }
     .chat_message_table{
-        width: 91vw;
+        width: 85vw;
         margin: 10px;
     }
     .chat_chat_not_me_div{
