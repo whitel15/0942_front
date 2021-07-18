@@ -15,6 +15,11 @@
     display: flex;
 }
 
+.Registerpage input:focus {
+    outline: none;
+    border-bottom:0.2rem solid rgb(80, 80, 80);
+}
+
 .Register_h4{
     font-size: 4.2rem;
     margin-top: 4rem;
@@ -28,7 +33,7 @@
     display: inline-block;
     align-items: center;
     height: 290px;
-    width: 350px;
+    width: 450px;
     margin-bottom: 33rem;
 }
 .Register_textarea{
@@ -36,7 +41,7 @@
     border: 0;
 }
 .Register_name{
-    font-size: 15pt ;
+    font-size: 2rem;
     align-content: center;
     border-radius: 22px;
     /* margin-bottom: 4rem; */
@@ -48,7 +53,7 @@
     /* margin-top: 10vh;
     margin-bottom: 10px; */
      /* padding-left: 0px; */
-     width: 400px;
+    width: 500px;
     margin: 0 auto;
 
 }
@@ -64,7 +69,7 @@
     font-family: 'Montserrat regular';
     width: 80%;
     margin-top: 0.2rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     border: none;
     width: 80%;
     border-bottom:0.2rem solid rgba(0, 0, 0, 0.19);
