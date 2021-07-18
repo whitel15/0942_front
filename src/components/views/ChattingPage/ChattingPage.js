@@ -1,6 +1,7 @@
 import React, { useRef, useState, setState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./ChattingPage.css";
+import { Link } from "react-router-dom";
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -85,7 +86,9 @@ export default function ChattingPage(props) {
           <div style={{ width: "50%" }}>
             <span className="chat_option_span">신고</span>{" "}
             <span className="chat_option_span"> | </span>{" "}
+            <Link to="/review">
             <span className="chat_option_span">후기 남기기 </span>
+            </Link>
           </div>
         </div>
         <hr style={{ margin: "10px" }} />
