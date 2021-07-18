@@ -147,7 +147,7 @@ export default function ChattingPage(props) {
             console.log(tmp);
             return (
               <tr style={{ textAlign: "right" }}>
-                <div>
+                <div style={{float:'right'}}>
                   <div className="chat_chat_my_div">
                     <div
                       className=""
