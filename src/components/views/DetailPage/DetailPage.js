@@ -119,7 +119,14 @@ function DetailPage(props) {
         </div>
       </div>
       <div className="detail_button">
-        <Link to="/">
+        <Link
+          to={{
+            pathname: `/chat/${post.writer}`,
+            state: {
+              writer: post.writer,
+            },
+          }}
+        >
           <div>채팅</div>
         </Link>
         <div className="detail_scrap">
