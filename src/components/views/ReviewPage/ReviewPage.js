@@ -13,7 +13,7 @@ export default function ReviewPage(props) {
   if (writer === undefined) {
     props.history.push("/main");
   }
-
+  
   const [value, setValue] = React.useState(50);
 
   const handleSliderChange = (event, newValue) => {
