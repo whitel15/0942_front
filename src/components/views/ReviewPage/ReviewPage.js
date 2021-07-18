@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function ReviewPage(props) {
-  const writer = props.location.state;
+  const writer = props.location.state.writer;
 
   console.log(writer);
 
@@ -14,7 +14,7 @@ export default function ReviewPage(props) {
     props.history.push("/main");
   }
 
-function InputSlider() {
+//function InputSlider() {
   const [value, setValue] = React.useState(50);
 
   const handleSliderChange = (event, newValue) => {
@@ -49,4 +49,4 @@ function InputSlider() {
     </div>
   )
 }
-}
+//}
