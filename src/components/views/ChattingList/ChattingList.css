@@ -1,0 +1,55 @@
+.ChattingList{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    background-color: rgb(198, 211, 228);
+    min-height: 100vh;
+    width: 100vw;
+    padding-bottom: 5rem;
+}
+
+.ChattingList_back{
+    background-color:#FFFFFF;
+    font-size: 1.8rem;
+    width: 70vw;
+    max-width: 850px;
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+.ChattingList_back:hover{
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.5),
+    0 8px 16px -8px rgba(0, 0, 0, 0.4), 0 -6px 16px -6px rgba(0, 0, 0, 0.4);
+}
+
+.ChattingList_userimg{
+    max-height: 40px;
+    width: auto;
+    margin-right: 1rem;
+}
+
+.ChattingList_ChatInfo {
+    display: flex;
+    height: 20%;
+  }
+.ChattingList_id{
+    font-size: 2rem;
+    padding-top: calc((40px - 2rem) / 2) ;
+    /* padding-top: calc((30px - 1.5rem) / 2); */
+    margin-right: 2rem;
+}
+.ChattingList_date {
+    font-size: 1.7rem;
+    color: gray;
+    padding-top: calc((40px - 1.7rem) / 2) ;
+  }
+
+.ChattingList_lastchat{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}

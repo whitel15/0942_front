@@ -13,6 +13,7 @@ import ChattingPage from "./components/views/ChattingPage/ChattingPage";
 import AboutUs from "./components/views/AboutUs/AboutUs";
 import UserPage from "./components/views/UserPage/UserPage";
 import { BrowserRouter, Route } from "react-router-dom";
+import ChattingList from "./components/views/ChattingList/ChattingList";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/post/:id" component={DetailPage} />
       <Route exact path="/chat/:id" component={ChattingPage} />
       <Route exact path="/aboutUs" component={AboutUs} />
+      <Route exact path="/chattinglist" component={ChattingList} />
       <Route exact path="/user/:id" component={UserPage} />
       <Footer />
     </BrowserRouter>
