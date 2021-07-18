@@ -117,7 +117,7 @@ class RegisterPage extends Component {
                                     /></td>
                                 </tr>
                             </tbody></table>
-                        <p className="Register_pwchecktext">{this.state.pMessage}</p>
+                        <span className="Register_pwchecktext">{this.state.pMessage}</span>
                         <table className="Register_table">
                             <tbody>
                                 <tr>
@@ -178,7 +178,8 @@ class RegisterPage extends Component {
                         />
                     </form>
 
-                    <div className="Register_register">이미 계정이 있으신가요? &nbsp; &nbsp;
+                    <div className="Register_register">
+                        <span>이미 계정이 있으신가요?</span> &nbsp; &nbsp;
                         <Link to="/login" className="Register_link">
                             로그인하기
                         </Link>

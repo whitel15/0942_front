@@ -112,7 +112,7 @@
 
 .write_category_p{
     display: inline;
-    font-size: 17px;
+    font-size: 1.8rem;
     font-weight: 700;
     
 }
@@ -135,7 +135,6 @@
     width: 40px;
     margin-left: 10px;
     display: inline-block;
-    
 }
 .write_category_button_span_place{
     width:80%;
@@ -214,7 +213,6 @@
         width: 25px;
         margin-left: 10px;
         display: inline-block;
-        
     }
 
 
