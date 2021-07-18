@@ -1,8 +1,9 @@
 .chat_div{
-    margin-top: 80px;
+    padding-top: 100px;
     z-index: 14;
     background-color:  rgb(198, 211, 228);
-    
+    min-height: 100vh;
+    padding-bottom: 10rem;
 }
 
 .chat_out_div{
@@ -20,7 +21,7 @@
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 
-    padding-top: 10px;
+    /* padding-top: 10px; */
     padding-bottom: 10px;
 }
 
@@ -34,12 +35,14 @@
 }
 
 .chat_nick_span{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .chat_option_span{
     float: right;
-    font-size: 20px;
+    font-size: 17px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .chat_message_table{
@@ -59,7 +62,7 @@
     
 }
 .chat_message_span{
-    font-size: 15px;
+    font-size: 17px;
     margin-top: 2px;
 }
 .chat_chat_my_div{
@@ -77,15 +80,23 @@
         width: 95vw;
         border: 0vw solid #D8D7D7;
     }
+    .chat_innertitle_div {
+        padding-top: 10px;
+    }
     .chat_nick_span{
-        font-size: 15px;
+        font-size: 20px;
     }
     .chat_option_span{
         font-size: 15px;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
     .chat_message_table{
         width: 85vw;
         margin: 10px;
+    }
+    .chat_message_span{
+        font-size: 15px;
     }
     .chat_chat_not_me_div{
         /* margin-top: 15px; */

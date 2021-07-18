@@ -17,6 +17,9 @@ function NavBar() {
   };
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
+    return () => {
+      window.removeEventListener("click", updateScroll);
+    };
   });
 
   const leftNav = useRef();

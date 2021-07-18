@@ -31,7 +31,7 @@
 .Review_h5{
     font-size: 20px;
     margin-top: 4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .Review_range{
@@ -86,21 +86,27 @@
     border-radius: 22px;
     border:none;
     background-color: rgb(217, 217, 245);
-    margin-bottom: 2rem;
-    width: 90%;
+    margin-bottom: 2.5rem;
+    width: 80%;
     height: 90px;
     box-shadow: 0 4px 8px 0 rgba(217, 217, 245), 0 6px 20px 0 rgba(134, 163, 240, 0.9);
     resize:none;
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+.Review_textarea:focus {
+    outline: none;
 }
 
 .Review_button{
-    margin-top: 28px;
+    margin-top: 5px;
     width: 165px;
     height: 60px;
     border-radius: 20px;
     background: #a8b2eb;
     border: none;
-    font-size: 25px;
+    font-size: 23px;
     color: #ffffff;
     cursor: pointer;
 }

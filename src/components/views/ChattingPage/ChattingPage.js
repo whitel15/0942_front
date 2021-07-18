@@ -104,7 +104,7 @@ export default function ChattingPage(props) {
             </Link>
           </div>
         </div>
-        <hr style={{ margin: "10px" }} />
+        <hr style={{ margin: "15px" }} />
         {/* <div className="chat_chat_div">
                     {othersChat.map((chat, i) => {
                         var tmp = sliceMessage(chat);
@@ -129,8 +129,9 @@ export default function ChattingPage(props) {
                     className=""
                     style={{
                       width: messageBoxWidth,
-                      backgroundColor: "#c4c4c4",
+                      backgroundColor: "rgb(220, 220, 220)",
                       borderRadius: "15px",
+                      padding: "1.5rem",
                     }}
                   >
                     {tmp.map(m => {
@@ -148,6 +149,7 @@ export default function ChattingPage(props) {
                         verticalAlign: "bottom",
                         position: "absolute",
                         bottom: 0,
+                        left: "0.5rem",
                       }}
                     >
                       오후 <br/>11:10
@@ -175,7 +177,7 @@ export default function ChattingPage(props) {
                         style={{
                           verticalAlign: "bottom",
                           position:'absolute',
-                          right:0,
+                          right: "0.5rem",
                           bottom: 0,
                         }}
                       >
@@ -188,8 +190,9 @@ export default function ChattingPage(props) {
                       className=""
                       style={{
                         width: messageBoxWidth,
-                        backgroundColor: "#c4c4c4",
+                        backgroundColor: "rgb(198, 211, 228)",
                         borderRadius: "15px",
+                        padding: "1.5rem",
                       }}
                     >
                       {tmp.map(m => {

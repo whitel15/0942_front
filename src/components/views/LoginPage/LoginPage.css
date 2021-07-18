@@ -15,6 +15,10 @@
     display: flex;
 }
 
+.Loginpage input:focus {
+    outline: none;
+}
+
 .Login_h4{
     font-size: 4.2rem;
     margin-top: 4rem;
