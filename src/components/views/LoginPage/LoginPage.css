@@ -34,23 +34,16 @@
     /* width: 25vw; */
     margin-bottom: 9rem;
 }
-.Longin_textarea{
-    align-content: center;
-    border-radius: 22px;
-    /* margin-bottom: 35px; */
-    margin-bottom: 4rem;
-    width: 100%;
-    height: 64px;
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .Login_textinput{
     font-family: 'Montserrat regular';
     width: 80%;
     margin-top: 2rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
+    padding: 2rem;
     border: none;
-    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .Login_button{
@@ -91,14 +84,31 @@
 }
 
 @media (max-width: 768px) {
-    
     .Login_main {
-    margin-top: 20vh;
-      width: 80vw;
-      margin-bottom: 20vh;
+        margin-top: 20vh;
+        width: 80vw;
+        height: 65vh;
+        min-height: 500px;
+        padding: 0 1rem;
+        margin-bottom: 20vh;
     }
-    .Longin_textarea{
-        width: 28rem;
-        margin-left: 3vw;
+    .Login_h4 {
+        font-size: 4rem;
+    }
+    .Login_form {
+        width: 80vw;
+        margin-bottom: 5rem;
+    }
+    .Login_textinput {
+        font-size: 1.8rem;
+        width: 50vw;
+    }
+    .Login_button {
+        width: 120px;
+        height: 50px;
+        font-size: 1.7rem;
+    }
+    .Login_register *{
+        font-size: 1.5rem;
     }
   }

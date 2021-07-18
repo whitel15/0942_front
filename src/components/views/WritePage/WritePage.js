@@ -124,7 +124,7 @@ export default function WritePage() {
                     </div>
                     <div ref={scroll} className="write_scroll_div">
                         {imageUrl.map((url, i) => { return (<img className="write_image_preview_img" src={url} onClick={() => { imageClicktoDelete(url) }} />) })}
-                        <span>{count}/5</span>
+                        <span style={{ marginLeft: "1rem" }}>{count}/5</span>
                     </div>
 
                     <div className="write_upload_button_div">
@@ -177,7 +177,7 @@ export default function WritePage() {
                                 {/* <form className="write_category_place_form" noValidate autoComplete="off"> */}
                                 <span style={{ width: '90%' }}>
                                     <TextField
-                                        inputProps={{ style: { fontSize: 20, marginTop: '-10px' } }} // font size of input text
+                                        inputProps={{ style: { fontSize: 20, marginTop: '-15px' } }} // font size of input text
                                         InputLabelProps={{ style: { fontSize: 0 }, shrink: false }} // font size of input label
                                         fullWidth
                                         className="write_category_people_text" id="standard-basic" hiddenLabel="true" placeholder="장소를 입력하세요."
@@ -247,7 +247,7 @@ export default function WritePage() {
                 <div className="write_second_div" style={{ height: '30vh' }} >
 
                     <textarea
-                        style={{ width: "90%", border: 'none', outline: 'none', height: '25vh', fontSize: 15 }}
+                        style={{ width: "90%", border: 'none', outline: 'none', height: '25vh', fontSize: '1.8rem' }}
                         placeholder="내용을 입력하세요"
                     />
                 </div>
