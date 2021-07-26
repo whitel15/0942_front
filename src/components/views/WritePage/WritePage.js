@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 let count = 0;
 
 export default function WritePage() {
-    axios.get('http://localhost:8080/image')
+    axios.get('http://localhost:8080/write/image')
         .then(response => {
             //response.data 출력
             console.log("success");

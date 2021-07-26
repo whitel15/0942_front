@@ -22,7 +22,7 @@ class RegisterPage extends Component {
         let addr = this.state.firstAddress + ' ' + this.state.secondAddress;
         console.log(this.state.USER_ID, this.state.USER_PW, addr, this.state.USER_PHONE, this.state.USER_EMAIL);
         axios
-            .post('http://localhost:8080/regitest1', {
+            .post('http://localhost:8080/register/post', {
                 USER_ID: this.state.USER_ID,
                 USER_PW: this.state.USER_PW,
                 USER_PHONE: this.state.USER_PHONE,
@@ -42,7 +42,7 @@ class RegisterPage extends Component {
                 console.log(error)
             });
 
-        axios.get('http://localhost:8080/test1', { maxRedirects: 0 })
+        axios.get('http://localhost:8080/register/get', { maxRedirects: 0 })
             .then(response => {
 
                 console.log(response.data);
