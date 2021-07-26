@@ -2,6 +2,7 @@ import "./RegisterPage.css";
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import DaumPostCode from 'react-daum-postcode';
+import axios from "axios";
 class RegisterPage extends Component {
     constructor() {
         super();
@@ -13,9 +14,64 @@ class RegisterPage extends Component {
             firstAddress: '',     //주소api를 통해받는 주소
             secondAddress: '',   //직접 작성하는 상세주소
             isDaumPost: false,    //주소 api불러오기
+            
         };
     }
 
+    postUserInfo = () => {
+        let addr = this.state.firstAddress + ' ' + this.state.secondAddress;
+        console.log(this.state.USER_ID, this.state.USER_PW, addr, this.state.USER_PHONE, this.state.USER_EMAIL);
+        axios
+            .post('http://localhost:8080/regitest1', {
+                USER_ID: this.state.USER_ID,
+                USER_PW: this.state.USER_PW,
+                USER_PHONE: this.state.USER_PHONE,
+                USER_EMAIL: this.state.USER_EMAIL,
+                USER_ADDR: addr
+            }
+                , {
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    }
+                }
+            )
+            .then(function (response) {
+                console.log(JSON.stringify(response.data))
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+        axios.get('http://localhost:8080/test1', { maxRedirects: 0 })
+            .then(response => {
+
+                console.log(response.data);
+            }) // SUCCESS
+            .catch(response => { console.log(response); }); // ERROR
+
+    };
+
+    handleIdChange=(e)=>{
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    handleEmailChange =(e)=>{
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+    handlePhoneChange =(e)=>{
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    handleSecondAddress =(e)=>{
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+    
     handleConfirmPassword = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -83,6 +139,8 @@ class RegisterPage extends Component {
                                             className="Register_textinput"
                                             maxLength="10"
                                             minLength="4"
+                                            value={this.state.USER_ID}
+                                            onChange={this.handleIdChange}
                                         //최소, 최대 자리 수 정하기
                                         />
                                         {/*중복검사 버튼 <button id="confirm" type="button" className="Register_check_button">중복검사</button> */}
@@ -131,6 +189,7 @@ class RegisterPage extends Component {
                                             name="USER_EMAIL"
                                             placeholder="e-mail을 입력해주세요"
                                             className="Register_textinput"
+                                            onChange={this.handleEmailChange}
                                         />
                                     </td>
                                 </tr>
@@ -146,6 +205,7 @@ class RegisterPage extends Component {
                                             placeholder="000-0000-0000"
                                             pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}"
                                             className="Register_textinput"
+                                            onChange={this.handlePhoneChange}
                                         /></td>
                                 </tr>
                                 <tr>
@@ -164,7 +224,7 @@ class RegisterPage extends Component {
                                             />
                                         )}
                                         <input type="text" id="firstAddress" value={firstAddress} placeholder="주소" className="Register_textinput" />
-                                        <input type="text" name="secondAddress" id="secondAddress" placeholder="상세주소" className="Register_textinput" />
+                                        <input type="text" name="secondAddress"  id="secondAddress" placeholder="상세주소" className="Register_textinput" onChange={this.handleSecondAddress} />
                                         {/* firstAddress + secondAddress = USER_ADDR */}
 
                                     </td>
@@ -175,6 +235,7 @@ class RegisterPage extends Component {
                             type="submit"
                             value="Register"
                             className="Register_button"
+                            onClick={this.postUserInfo}
                         />
                     </form>
 
