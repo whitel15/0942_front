@@ -53,27 +53,27 @@
     background-color: #D8D7D7;
     border-radius: 10px;
 }
+.write_plus_div:hover {
+    cursor: pointer;
+}
 
 .write_plus_icon{
     color:#000;
     font-size: 30px;
 }
 
-.write_upload_button_div{
+.write_upload_button{
     width: 100px;
     height: 40px;
     background-color: #D8D7D7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    
-    border-radius: 20px;
-}
-.write_upload_button{
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+    border-radius: 20px;
+    border: none;
+}
+.write_upload_button:hover {
+    cursor: pointer;
 }
 .write_input_form{
     width: 90%;
@@ -88,13 +88,30 @@
     height: 70px;
     align-self: center;
 }
-
 .write_second_div{
     width: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
     margin-top: 10px;
+}
+.write_second_div2{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+}
+.write_second_div2 textarea {
+    width: 90%;
+    height: 25vh;
+    border: none;
+    outline: none;
+    font-size: 1.8rem;
+    background-color: rgb(240, 240, 240);
 }
 .write_category{
     /* display: flex;
@@ -130,6 +147,9 @@
     justify-content: center;
     margin-left: 5px;
 }
+.write_category_button_span:hover {
+    cursor: pointer;
+}
 
 .write_category_people_form{
     width: 40px;
@@ -142,18 +162,19 @@
     font-size: 17px;
     font-weight: 700;
     height: 40px;
-    background-color: #D8D7D7;
     border-radius: 20px;
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin-left: 5px;
 }
 .write_category_place_form{
-    
-    margin-left: 10px;
     display: inline-block;
-    
+}
+
+.write_category_cost_form{
+    width: 70px;
+    margin-left: 15px;
+    display: inline-block;
 }
 
 @media only screen and (max-width: 767px) {    
@@ -163,6 +184,7 @@
     
     .write_out_div{
         padding-top: 10px;
+        padding-bottom: 10px;
         width: 95vw;
         border: 0vw solid #D8D7D7;
     }
@@ -183,6 +205,9 @@
         height: 15vw;
         background-color: #D8D7D7;
     }
+    .write_plus_div:hover {
+        cursor: pointer;
+    }
     .write_scroll_div{
         width: 50vw;/*95vw-15vw-15vw*/
         white-space: nowrap;
@@ -192,17 +217,7 @@
         width: 15vw;
         height: 15vw;
     }
-    .write_upload_button_div{
-        width: 15vw;
-        height: 40px;
-        background-color: #D8D7D7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-self: center;
-        
-        border-radius: 20px;
-    }
+
     .write_upload_button{
         font-size: 15px;
         font-weight: bold;
@@ -214,7 +229,6 @@
         margin-left: 10px;
         display: inline-block;
     }
-
 
 }
 
