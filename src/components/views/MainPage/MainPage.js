@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MainPage.css";
 import { Link } from "react-router-dom";
 import Post from "../../post/Post";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
+import axios from "axios";
+import { PostAddSharp } from "@material-ui/icons";
 
 function MainPage(props) {
   // const [search, setSearch] = useState(props.location.state.search);
@@ -11,7 +13,7 @@ function MainPage(props) {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      writer: "yujin113",
+      userId: "yujin113",
       img: [
         "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
         "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
@@ -21,26 +23,21 @@ function MainPage(props) {
       title: "제목이 들어갈 공간입니다",
       cost: 2000,
       place: "장소가 들어갈 공간입니다",
-      number: 3,
+      invite_num: 3,
       content:
         "내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다",
       writer_score: 90,
-      scrap: 2,
-    },
-    {
-      id: 2,
-      writer: "solux",
-      date: "1분 전",
-      title: "이미지 안올리는 경우에는 이렇게 뜹니다",
-      cost: 4000,
-      place: "장소",
-      number: 5,
-      content:
-        "내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다",
-      writer_score: 90,
-      scrap: 2,
-    },
+      scrap_num: 2,
+    }
   ]);
+
+  useEffect(() => {
+    axios.get("/main/post")
+    .then((response) => {
+      setPosts(oldArray => [...oldArray, ...response.data])
+      // setPosts(response.data)
+      })
+  }, [])
 
   return (
     <div className="mainPage">
@@ -59,16 +56,16 @@ function MainPage(props) {
           <Post
             key={post.id}
             id={post.id}
-            writer={post.writer}
+            writer={post.userId}
             img={post.img}
             date={post.date}
             title={post.title}
             cost={post.cost}
             place={post.place}
-            number={post.number}
+            invite_num={post.invite_num}
             content={post.content}
             writer_score={post.writer_score}
-            scrap={post.scrap}
+            scrap_num={post.scrap_num}
           />
         ))}
       </div>

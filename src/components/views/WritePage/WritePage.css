@@ -10,11 +10,9 @@
     align-items: center;
     justify-content: center;
     margin: auto;
-    /* border: 2vw solid #D8D7D7; */
     border: 2vw solid #fff;
     border-radius: 15px;
     margin-top: 20px;
-    /* margin-bottom: 50px; */
     background-color: white;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.025), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
@@ -23,7 +21,6 @@
 .write_firtst_div{
     width: 90%; 
     /* 66vw */
-
     margin-top: 5px;
     margin-left:3vw ;
     margin-right: 2vw;
@@ -102,7 +99,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 5px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(230, 230, 230);
     border-radius: 20px;
 }
 .write_second_div2 textarea {
@@ -111,7 +108,7 @@
     border: none;
     outline: none;
     font-size: 1.8rem;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(230, 230, 230);
 }
 .write_category{
     /* display: flex;
