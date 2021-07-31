@@ -52,14 +52,8 @@ export default function WritePage() {
         if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
             console.log(e.target.files[0])
-            // setPutImage(e.target.files[0]); // 파일 상태 업데이트
-            setPutImage(oldArray => [...oldArray, e.target.files[0]])
-            console.log(putImage)
-            // setImageUrl(reader.readAsDataURL(e.target.files[0]));
-            // alert("주소:" + URL.createObjectURL(e.target.files[0]));
-            // .push(URL.createObjectURL(e.target.files[0]));
+            setPutImage(oldArray => [...oldArray, e.target.files[0]]) // 파일 상태 업데이트
             setImageUrl(oldArray => [...oldArray, URL.createObjectURL(e.target.files[0])])
-            console.log(imageUrl);
             count++;
         }
     };
@@ -125,21 +119,21 @@ export default function WritePage() {
     }
 
     const postUpload = () => {
-        // if (title === "") {
-        //     alert("제목을 입력하세요."); return;
-        // }
-        // if (category === "") {
-        //     alert("카테고리를 눌러주세요."); return;
-        // }
-        // if (place === "") {
-        //     alert("장소를 입력하세요."); return;
-        // }
-        // if (cost === 0) {
-        //     alert("가격을 입력하세요."); return;
-        // }
-        // if (content === "") {
-        //     alert("내용을 입력하세요."); return;
-        // }
+        if (title === "") {
+            alert("제목을 입력하세요."); return;
+        }
+        if (category === "") {
+            alert("카테고리를 눌러주세요."); return;
+        }
+        if (place === "") {
+            alert("장소를 입력하세요."); return;
+        }
+        if (cost === 0) {
+            alert("가격을 입력하세요."); return;
+        }
+        if (content === "") {
+            alert("내용을 입력하세요."); return;
+        }
         let post = {
             USER_ID : "yujin",
             POST_TITLE: title,
@@ -151,7 +145,11 @@ export default function WritePage() {
             POST_COST: cost,
         }
         const formData = new FormData();
-        formData.append("images", putImage[0]);
+        console.log(putImage);
+        console.log(putImage.length);
+        for (let i = 0; i < putImage.length; i++) {
+            formData.append('images', putImage[i]);
+        }
         formData.append("post", new Blob([JSON.stringify(post)], {type: "application/json"}))
         console.log(formData);
         axios.post('http://localhost:8080/write/upload', formData,
