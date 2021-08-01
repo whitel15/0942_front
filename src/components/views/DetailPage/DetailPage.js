@@ -7,10 +7,13 @@ import Slider from "react-slick";
 import { useMediaQuery } from "react-responsive";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function DetailPage(props) {
   const post = props.location.state;
   const imgs = post.imgs;
+  let history = useHistory();
 
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
@@ -51,6 +54,16 @@ function DetailPage(props) {
     ],
   });
 
+  const [isDelete, setDelete] = useState(false)
+  const deletePost = (e) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      axios.post(`/main/post/delete/${post.id}`)
+      .then((response) => {
+        history.push("/main")
+      })
+    }
+  }
+
   return (
     <div className="detailPage">
       <SearchBar />
@@ -58,6 +71,10 @@ function DetailPage(props) {
       <div className="detail_container">
         <div className="detail_post">
           <div className="detail_post_top">
+            <div className="detail_ud">
+              <span>수정</span>
+              <span onClick={deletePost}>삭제</span>
+            </div>
             <div className="detail_post_userInfo">
               <img
                 src="/images/main/user.png"

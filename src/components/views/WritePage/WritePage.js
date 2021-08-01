@@ -157,7 +157,7 @@ export default function WritePage(props) {
                 }
             }
         ).then((response) => 
-            history.push("/")
+            history.push("/main")
         );
     };
 
