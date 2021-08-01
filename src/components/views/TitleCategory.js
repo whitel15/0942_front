@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import './TitleCategory.css';
 import { useMediaQuery } from 'react-responsive';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import axios from "axios";
 
 function valuetext(value) {
     return `${value}°C`;
@@ -23,6 +24,13 @@ export default function TitleCategory(props) {
         setValue(newValue);
     };
 
+    const [address, setAddress] = useState("주소 들어갈 부분")
+    // useEffect(() => {
+    //     axios.get("/address")
+    //     .then((response) => {
+    //       })
+    // }, [])
+
 
     const isDesktopOrLaptop = useMediaQuery({
         query: '(min-device-width: 1224px)'
@@ -39,7 +47,7 @@ export default function TitleCategory(props) {
         <div>
             <div className="titlecateg_title_div">
                 <div className="titlecateg_title_innerdiv">
-                    <h1 className="titlecateg_h1">용산구 청파동 OO 건물</h1>
+                    <h1 className="titlecateg_h1">{address}</h1>
                 </div>
 
 

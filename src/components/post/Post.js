@@ -6,15 +6,15 @@ import "./post.css";
 function Post({
   id,
   writer,
-  img,
+  imgs,
   date,
   title,
   cost,
   place,
-  number,
+  invite_num,
   content,
   writer_score,
-  scrap,
+  scrap_num,
 }) {
   return (
     <Link
@@ -23,22 +23,22 @@ function Post({
         state: {
           id,
           writer,
-          img,
+          imgs,
           date,
           title,
           cost,
           place,
-          number,
+          invite_num,
           content,
           writer_score,
-          scrap,
+          scrap_num,
         },
       }}
     >
       <div className="post">
         <aside>
-          {img != null ? (
-            <img src={img[0]} alt={title} className="post_img" />
+          {imgs.length != 0 ? (
+            <img src={imgs[0]} alt={title} className="post_img" />
           ) : null}
         </aside>
         <main>
@@ -55,12 +55,12 @@ function Post({
             <p className="post_title">{title}</p>
             <span className="post_cost">배송비 : {cost}원</span>
             <span className="post_place">배분 장소 : {place}</span>
-            <p className="post_num">{number}명 모집 중</p>
+            <p className="post_num">{invite_num}명 모집 중</p>
           </div>
         </main>
         <section>
           <span role="img" aria-label="heart">
-            ❤️ {scrap}
+            ❤️ {scrap_num}
           </span>
         </section>
       </div>
@@ -76,10 +76,10 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   cost: PropTypes.number.isRequired,
   place: PropTypes.string.isRequired,
-  number: PropTypes.number.isRequired,
+  invite_num: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
   writer_score: PropTypes.number.isRequired,
-  scrap: PropTypes.number,
+  scrap_num: PropTypes.number,
 };
 
 export default Post;

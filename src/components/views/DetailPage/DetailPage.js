@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function DetailPage(props) {
   const post = props.location.state;
-  const imgs = post.img;
+  const imgs = post.imgs;
 
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
@@ -81,10 +81,10 @@ function DetailPage(props) {
               <span className="post_score">{post.writer_score}점</span>
             </div>
             <aside>
-              <div className={imgs != null ? "detail_slider" : null}>
+              <div className={imgs.length != 0 ? "detail_slider" : null}>
                 {isMobile === true ? (
                   <Slider {...mobile_settings}>
-                    {imgs != null
+                    {imgs.length != 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img
@@ -98,7 +98,7 @@ function DetailPage(props) {
                   </Slider>
                 ) : (
                   <Slider {...settings}>
-                    {imgs != null
+                    {imgs.length != 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img
@@ -126,7 +126,7 @@ function DetailPage(props) {
               {post.place}
             </p>
             <p className="post_plus"> {post.content}</p>
-            <p className="post_num">{post.number}명 모집 중</p>
+            <p className="post_num">{post.invite_num}명 모집 중</p>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ function DetailPage(props) {
           <span role="img" aria-level="heart">
             ❤️
           </span>{" "}
-          {post.scrap}
+          {post.scrap_num}
         </div>
       </div>
     </div>
