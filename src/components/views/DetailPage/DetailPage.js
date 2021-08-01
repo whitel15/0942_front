@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 
 function DetailPage(props) {
+  const [islogedId, setIslogedId] = useState(localStorage.getItem("user"));
   const post = props.location.state;
   const imgs = post.imgs;
   let history = useHistory();
@@ -74,16 +75,18 @@ function DetailPage(props) {
         <div className="detail_container">
           <div className="detail_post">
             <div className="detail_post_top">
-              <div className="detail_ud">
-                <Link to={{ pathname: `/write/${post.id}`,
-                  state: {
-                    id: post.id, writer: post.writer ,imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
-                    invite_num: post.invite_num, content: post.content, writer_score: post.writer_score, scrap_num: post.scrap_num,
-                  },}}>
-                <span>수정</span>
-                </Link>
-                <span onClick={deletePost}>삭제</span>
-              </div>
+              {islogedId !== null ?
+                <div className="detail_ud">
+                  <Link to={{ pathname: `/write/${post.id}`,
+                    state: {
+                      id: post.id, writer: post.writer ,imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
+                      invite_num: post.invite_num, content: post.content, writer_score: post.writer_score, scrap_num: post.scrap_num,
+                    },}}>
+                  <span>수정</span>
+                  </Link>
+                  <span onClick={deletePost}>삭제</span>
+                </div> : <div></div>
+              }
               <div className="detail_post_userInfo">
                 <img
                   src="/images/main/user.png"

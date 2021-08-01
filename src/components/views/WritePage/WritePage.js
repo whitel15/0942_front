@@ -11,6 +11,10 @@ import TextField from '@material-ui/core/TextField';
 let count = 0;
 
 export default function WritePage(props) {
+    const [islogedId, setIslogedId]=useState(localStorage.getItem("user"));
+    useEffect(() => {
+        if(islogedId==null){alert("로그인 먼저 해주세요!"); history.push('/login')}
+    }, [])
     let post = props.location.state;
     let postImgs = [];
     let postTitle = "";
@@ -135,7 +139,7 @@ export default function WritePage(props) {
             alert("내용을 입력하세요."); return;
         }
         let post = {
-            USER_ID : "yujin",
+            USER_ID : localStorage.getItem("user"),
             POST_TITLE: title,
             POST_CATEGORY: category,
             POST_INVITE_NUM: inviteNum,
