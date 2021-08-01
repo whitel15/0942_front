@@ -37,7 +37,7 @@ function Post({
     >
       <div className="post">
         <aside>
-          {imgs.length != 0 ? (
+          {imgs.length !== 0 ? (
             <img src={imgs[0]} alt={title} className="post_img" />
           ) : null}
         </aside>

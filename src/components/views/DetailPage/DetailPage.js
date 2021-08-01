@@ -57,7 +57,7 @@ function DetailPage(props) {
   const [isDelete, setDelete] = useState(false)
   const deletePost = (e) => {
     if (window.confirm("삭제하시겠습니까?")) {
-      axios.post(`/main/post/delete/${post.id}`)
+      axios.post(`http://localhost:8080/main/post/delete/${post.id}`)
       .then((response) => {
         history.push("/main")
       })
@@ -98,10 +98,10 @@ function DetailPage(props) {
               <span className="post_score">{post.writer_score}점</span>
             </div>
             <aside>
-              <div className={imgs.length != 0 ? "detail_slider" : null}>
+              <div className={imgs.length !== 0 ? "detail_slider" : null}>
                 {isMobile === true ? (
                   <Slider {...mobile_settings}>
-                    {imgs.length != 0
+                    {imgs.length !== 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img
@@ -115,7 +115,7 @@ function DetailPage(props) {
                   </Slider>
                 ) : (
                   <Slider {...settings}>
-                    {imgs.length != 0
+                    {imgs.length !== 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img
