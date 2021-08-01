@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Post from "../../post/Post";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
+import Pagination from "../Pagination/Pagination";
 import axios from "axios";
 
 function MainPage(props) {
@@ -11,26 +12,7 @@ function MainPage(props) {
   if (props.location.state !== undefined) {
     search = props.location.state.search;
   }
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      userId: "yujin113",
-      images: [
-        "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
-        "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
-        "https://t1.daumcdn.net/cfile/blog/137F0217499D624605",
-      ],
-      date: "3분 전",
-      title: "제목이 들어갈 공간입니다",
-      cost: 2000,
-      place: "장소가 들어갈 공간입니다",
-      invite_num: 3,
-      content:
-        "내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다내용이 들어갈 공간입니다",
-      writer_score: 90,
-      scrap_num: 2,
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:8080/main/post")
@@ -39,6 +21,15 @@ function MainPage(props) {
       console.log(response.data)
       })
   }, [])
+
+  const [currentPage, setCurrentPage] = useState(1);
+  let count = 10;
+
+  const lastIdx = currentPage * count;
+  const firstIdx = lastIdx - count;
+  const currentPosts = (postList) => {
+    return postList.slice(firstIdx, lastIdx);
+  }
 
   return (
     <div className="mainPage">
@@ -53,7 +44,7 @@ function MainPage(props) {
         ></input>
       </Link>
       <div className="main_container">
-        {posts.map((post, index) => (
+        {currentPosts(posts).map((post, index) => (
           <Post
             key={post.id}
             id={post.id}
@@ -69,6 +60,7 @@ function MainPage(props) {
             scrap_num={post.scrap_num}
           />
         ))}
+        <Pagination total={posts.length} count={count} paginate={setCurrentPage} />
       </div>
     </div>
   );
