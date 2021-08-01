@@ -10,6 +10,7 @@ import NavBar from "../NavBar/NavBar";
 // import LoginSession from "../LoginSession";
 
 function MainPage(props) {
+  const [islogedId, setIslogedId] = useState(localStorage.getItem("user"));
   let search = "";
   if (props.location.state !== undefined) {
     search = props.location.state.search;
@@ -56,13 +57,17 @@ function MainPage(props) {
         <TitleCategory slider={true} category={true} />
         <SearchBar search_what={search} />
 
-        <Link to="/write/0">
-          <input
-            className="main_input"
-            type="text"
-            placeholder="새 글을 작성해주세요!"
-          ></input>
-        </Link>
+        {islogedId !== null? (
+            <Link to="/write/0">
+              <input
+                className="main_input"
+                type="text"
+                placeholder="새 글을 작성해주세요!"
+              ></input>
+            </Link>
+            ) : (
+            <div></div>
+        )}
         <div className="main_container">
           {isLoading? (
             <div className="main_loading">Loading...</div>
