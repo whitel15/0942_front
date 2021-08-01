@@ -5,16 +5,14 @@ import Post from "../../post/Post";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
 import axios from "axios";
-import { PostAddSharp } from "@material-ui/icons";
 
 function MainPage(props) {
-  // const [search, setSearch] = useState(props.location.state.search);
   const search = props.location.state.search;
   const [posts, setPosts] = useState([
     {
       id: 1,
       userId: "yujin113",
-      img: [
+      images: [
         "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg",
         "https://ochairs.co.kr/web/product/big/201910/9685bacc0bc669a3e548ddd2a417f2e1.jpg",
         "https://t1.daumcdn.net/cfile/blog/137F0217499D624605",
@@ -35,7 +33,7 @@ function MainPage(props) {
     axios.get("/main/post")
     .then((response) => {
       setPosts(oldArray => [...oldArray, ...response.data])
-      // setPosts(response.data)
+      console.log(response.data)
       })
   }, [])
 
@@ -57,7 +55,7 @@ function MainPage(props) {
             key={post.id}
             id={post.id}
             writer={post.userId}
-            img={post.img}
+            imgs={post.images}
             date={post.date}
             title={post.title}
             cost={post.cost}

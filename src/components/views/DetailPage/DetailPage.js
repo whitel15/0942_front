@@ -10,8 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function DetailPage(props) {
   const post = props.location.state;
-  console.log(post);
-  const imgs = post.img;
+  const imgs = post.imgs;
 
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
@@ -82,10 +81,10 @@ function DetailPage(props) {
               <span className="post_score">{post.writer_score}점</span>
             </div>
             <aside>
-              <div className={imgs != null ? "detail_slider" : null}>
+              <div className={imgs.length != 0 ? "detail_slider" : null}>
                 {isMobile === true ? (
                   <Slider {...mobile_settings}>
-                    {imgs != null
+                    {imgs.length != 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img
@@ -99,7 +98,7 @@ function DetailPage(props) {
                   </Slider>
                 ) : (
                   <Slider {...settings}>
-                    {imgs != null
+                    {imgs.length != 0
                       ? imgs.map((img, index) => (
                           <div key={index}>
                             <img

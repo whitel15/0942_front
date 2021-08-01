@@ -4,12 +4,13 @@ import { useMediaQuery } from 'react-responsive';
 import TitleCategory from "../TitleCategory";
 import { AiOutlinePlus } from "react-icons/ai";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import TextField from '@material-ui/core/TextField';
 
 let count = 0;
 
-export default function WritePage() {
+export default function WritePage(props) {
     // axios.get('http://localhost:8080/write/image')
     //     .then(response => {
     //         //response.data 출력
@@ -19,6 +20,7 @@ export default function WritePage() {
     //         console.log(response);
     //         // alert('fail'); 
     //     }); // ERROR
+    let history = useHistory();
 
     const [logoLoading, setLogoLoading] = useState(false);
     const [imgBase64, setImgBase64] = useState(""); // 파일 base64
@@ -61,7 +63,6 @@ export default function WritePage() {
     const imageClicktoDelete = (url) => {
         // imageUrl.filter(item=>item!==url);
         const index = imageUrl.indexOf(url);
-        console.log(index);
         var array = [...imageUrl];
         if (index !== -1) {
             array.splice(index, 1);
@@ -145,20 +146,19 @@ export default function WritePage() {
             POST_COST: cost,
         }
         const formData = new FormData();
-        console.log(putImage);
-        console.log(putImage.length);
         for (let i = 0; i < putImage.length; i++) {
             formData.append('images', putImage[i]);
         }
         formData.append("post", new Blob([JSON.stringify(post)], {type: "application/json"}))
-        console.log(formData);
         axios.post('http://localhost:8080/write/upload', formData,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             }
-        ).then((response) => console.log(response));
+        ).then((response) => 
+            history.push("/")
+        );
     };
 
     return (
@@ -173,7 +173,7 @@ export default function WritePage() {
                         <input ref={logoImageInput} type='file' className="write_imgInput" id='logoImg' accept='image/*' name='file' onChange={onImgChange} style={{ display: 'none' }} />
                     </div>
                     <div ref={scroll} className="write_scroll_div">
-                        {imageUrl.map((url, i) => { return (<img className="write_image_preview_img" src={url} onClick={() => { imageClicktoDelete(url) }} />) })}
+                        {imageUrl.map((url, i) => { return (<img id={i} className="write_image_preview_img" src={url} onClick={() => { imageClicktoDelete(url) }} />) })}
                         <span style={{ marginLeft: "1rem" }}>{count}/5</span>
                     </div>
 

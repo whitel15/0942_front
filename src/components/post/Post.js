@@ -6,7 +6,7 @@ import "./post.css";
 function Post({
   id,
   writer,
-  img,
+  imgs,
   date,
   title,
   cost,
@@ -23,7 +23,7 @@ function Post({
         state: {
           id,
           writer,
-          img,
+          imgs,
           date,
           title,
           cost,
@@ -37,8 +37,8 @@ function Post({
     >
       <div className="post">
         <aside>
-          {img != null ? (
-            <img src={img[0]} alt={title} className="post_img" />
+          {imgs.length != 0 ? (
+            <img src={imgs[0]} alt={title} className="post_img" />
           ) : null}
         </aside>
         <main>
