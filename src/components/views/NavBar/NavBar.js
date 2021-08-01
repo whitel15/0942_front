@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory, withRouter } from "react-router-dom";
 import LeftNav from "./LeftNav";
 import Burger from "./Burger";
 import "./NavBar.css";
@@ -11,8 +11,8 @@ function NavBar() {
   const updateScroll = () => {
     setScrollPosition(
       window.scrollY ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop
+      document.documentElement.scrollTop ||
+      document.body.scrollTop
     );
   };
   useEffect(() => {
@@ -27,6 +27,28 @@ function NavBar() {
   const clickOutside = ({ target }) => {
     if (isOpen && !leftNav.current.contains(target)) setOpen(false);
   }; // leftNav가 아닌 부분 클릭 시 닫히게 함
+
+
+  //로그인부분
+  const [logedinuser, setLogedinuser] = useState(window.localStorage.getItem("user"));
+  const history = useHistory();
+  // setLogedinuser( window.localStorage.getItem("user"));
+  useEffect(()=>{
+    const isLogined = window.localStorage.getItem("logined");
+    setLogedinuser( window.localStorage.getItem("user"));
+    // window.addEventListener('unload', function(e){console.log("이동함"); setLogedinuser(logedinuser)})
+    history.listen((location)=>{
+      console.log("이동함"); 
+      // window.location.reload();
+      // setLogedinuser(window.localStorage.getItem("user"));
+    })
+    if (logedinuser) {
+      // console.log("로그인됨!:", logedinuser);
+    }
+    else{
+      // console.log("로그인안됨!:", logedinuser);
+    }
+  })
 
   useEffect(() => {
     window.addEventListener("click", clickOutside);
@@ -52,12 +74,28 @@ function NavBar() {
         <Link to="/" className="nav_title" ref={leftNav}>
           0942
         </Link>
-        <Link to="/login" className="nav_login">
-          로그인
-        </Link>
-        <Link to="/register" className="nav_signup">
-          회원가입
-        </Link>
+        {logedinuser == null ?
+          <span>
+            <Link to="/login" className="nav_login">
+              로그인
+            </Link>
+            <Link to="/register" className="nav_signup">
+              회원가입
+            </Link>
+          </span>
+          :
+          <span>
+            <Link >
+            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.clear(); setLogedinuser(null); }}>
+              {logedinuser} 님
+            </h3>
+            </Link>
+            {/* <h3 onClick={localStorage.clear()}>
+              {logedinuser}
+            </h3> */}
+          </span>
+        }
+
       </div>
     </div>
   );
