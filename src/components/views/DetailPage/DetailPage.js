@@ -54,12 +54,14 @@ function DetailPage(props) {
     ],
   });
 
+  const [isDelete, setDelete] = useState(false)
   const deletePost = (e) => {
-    axios.post(`/main/post/delete/${post.id}`)
-    .then((response) => {
-      history.push("/")
-    })
-    console.log(post)
+    if (window.confirm("삭제하시겠습니까?")) {
+      axios.post(`/main/post/delete/${post.id}`)
+      .then((response) => {
+        history.push("/main")
+      })
+    }
   }
 
   return (

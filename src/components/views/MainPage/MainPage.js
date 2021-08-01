@@ -7,7 +7,10 @@ import SearchBar from "../NavBar/SearchBar";
 import axios from "axios";
 
 function MainPage(props) {
-  const search = props.location.state.search;
+  const [search, setSearch] = useState("")
+  if (props.location.state !== undefined) {
+    setSearch(props.location.state.search);
+  }
   const [posts, setPosts] = useState([
     {
       id: 1,
