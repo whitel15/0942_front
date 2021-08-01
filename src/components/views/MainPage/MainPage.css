@@ -10,6 +10,11 @@
   padding-bottom: 5rem;
 }
 
+.main_loading {
+  font-size: 2rem;
+  margin-top: 10rem;
+}
+
 .main_container {
   margin-top: 1rem;
 }
@@ -34,5 +39,9 @@
   }
   .main_input {
     font-size: 1.5rem;
+  }
+  .main_loading {
+    text-align: center;
+    margin-top: 5rem;
   }
 }

@@ -23,7 +23,7 @@ function App() {
       {/* <NavBar /> */}
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/main" component={MainPage} />
-      <Route exact path="/write" component={WritePage} />
+      <Route exact path="/write/:id" component={WritePage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/review/:id" component={ReviewPage} />

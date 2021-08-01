@@ -67,7 +67,7 @@ function DetailPage(props) {
 
   return (
     <div>
-      <NavBar/>
+    <NavBar />
       <div className="detailPage">
         <SearchBar />
         <TitleCategory slider={true} category={true} />
@@ -75,7 +75,13 @@ function DetailPage(props) {
           <div className="detail_post">
             <div className="detail_post_top">
               <div className="detail_ud">
+                <Link to={{ pathname: `/write/${post.id}`,
+                  state: {
+                    id: post.id, writer: post.writer ,imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
+                    invite_num: post.invite_num, content: post.content, writer_score: post.writer_score, scrap_num: post.scrap_num,
+                  },}}>
                 <span>수정</span>
+                </Link>
                 <span onClick={deletePost}>삭제</span>
               </div>
               <div className="detail_post_userInfo">
@@ -106,69 +112,69 @@ function DetailPage(props) {
                     <Slider {...mobile_settings}>
                       {imgs.length !== 0
                         ? imgs.map((img, index) => (
-                          <div key={index}>
-                            <img
-                              src={img}
-                              alt={post.title}
-                              className="post_img"
-                            />
-                          </div>
-                        ))
-                        : null}
-                    </Slider>
-                  ) : (
-                    <Slider {...settings}>
-                      {imgs.length !== 0
-                        ? imgs.map((img, index) => (
-                          <div key={index}>
-                            <img
-                              src={img}
-                              alt={post.title}
-                              className="post_img"
-                            />
-                          </div>
-                        ))
-                        : null}
-                    </Slider>
-                  )}
-                </div>
-              </aside>
+                            <div key={index}>
+                              <img
+                                src={img}
+                                alt={post.title}
+                                className="post_img"
+                              />
+                            </div>
+                          ))
+                          : null}
+                      </Slider>
+                    ) : (
+                      <Slider {...settings}>
+                        {imgs.length !== 0
+                          ? imgs.map((img, index) => (
+                            <div key={index}>
+                              <img
+                                src={img}
+                                alt={post.title}
+                                className="post_img"
+                              />
+                            </div>
+                          ))
+                          : null}
+                      </Slider>
+                    )}
+                  </div>
+                </aside>
+              </div>
+              <div className="detail_post_bottom">
+                <hr />
+                <p className="post_title">{post.title}</p>
+                <p className="post_cost">
+                  <strong>배송비 : </strong>
+                  {post.cost}원
+                </p>
+                <p className="post_place">
+                  <strong>배분 장소 : </strong>
+                  {post.place}
+                </p>
+                <p className="post_plus"> {post.content}</p>
+                <p className="post_num">{post.invite_num}명 모집 중</p>
+              </div>
             </div>
-            <div className="detail_post_bottom">
-              <hr />
-              <p className="post_title">{post.title}</p>
-              <p className="post_cost">
-                <strong>배송비 : </strong>
-                {post.cost}원
-              </p>
-              <p className="post_place">
-                <strong>배분 장소 : </strong>
-                {post.place}
-              </p>
-              <p className="post_plus"> {post.content}</p>
-              <p className="post_num">{post.invite_num}명 모집 중</p>
+          </div>
+          <div className="detail_button">
+            <Link
+              to={{
+                pathname: `/chat/${post.writer}`,
+                state: {
+                  writer: post.writer,
+                },
+              }}
+            >
+              <div>채팅</div>
+            </Link>
+            <div className="detail_scrap">
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {post.scrap_num}
             </div>
           </div>
         </div>
-        <div className="detail_button">
-          <Link
-            to={{
-              pathname: `/chat/${post.writer}`,
-              state: {
-                writer: post.writer,
-              },
-            }}
-          >
-            <div>채팅</div>
-          </Link>
-          <div className="detail_scrap">
-            <span role="img" aria-level="heart">
-              ❤️
-            </span>{" "}
-            {post.scrap_num}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
