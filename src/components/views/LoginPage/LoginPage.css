@@ -28,11 +28,11 @@
 .Login_form{
     display: inline-block;
     align-items: center;
-    height: 270px;
+    height: 200px;
     /* height: 40vh;  */
     width: 350px;
     /* width: 25vw; */
-    margin-bottom: 9rem;
+    margin-bottom: 3rem;
 }
 .Login_textinput{
     font-family: 'Montserrat regular';
@@ -48,7 +48,7 @@
 
 .Login_button{
     /* margin-top: 28px; */
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
     width: 165px;
     height: 60px;
     border-radius: 30px;
@@ -57,6 +57,7 @@
     font-size: 2rem;
     color: #FFFFFF;
     cursor: pointer;
+    margin-bottom: 5rem;
 }
 .Login_button:hover{
   box-shadow: 0 0.48rem 0.96rem 0 rgba(181, 141, 237, 0.7), 0 0.72rem 2.4rem 0 rgba(181, 141, 237, 0.9);
@@ -97,7 +98,8 @@
     }
     .Login_form {
         width: 80vw;
-        margin-bottom: 5rem;
+        margin-bottom: 1rem;
+        /* margin-bottom: 5rem; */
     }
     .Login_textinput {
         font-size: 1.8rem;
@@ -107,6 +109,7 @@
         width: 120px;
         height: 50px;
         font-size: 1.7rem;
+        margin-bottom: 5rem;
     }
     .Login_register *{
         font-size: 1.5rem;

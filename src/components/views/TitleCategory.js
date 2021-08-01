@@ -24,12 +24,18 @@ export default function TitleCategory(props) {
         setValue(newValue);
     };
 
-    const [address, setAddress] = useState("주소 들어갈 부분")
-    // useEffect(() => {
-    //     axios.get("/address")
-    //     .then((response) => {
-    //       })
-    // }, [])
+    const [address, setAddress] = useState("주소 들어갈 부분");
+
+    useEffect(() => {
+        const isLogined = window.localStorage.getItem("logined");
+        const loggedInUser = window.localStorage.getItem("user");
+        if (loggedInUser) {
+            console.log("로그인됨!:", loggedInUser);
+        }
+        else{
+            
+        }
+    }, [])
 
 
     const isDesktopOrLaptop = useMediaQuery({
@@ -56,10 +62,10 @@ export default function TitleCategory(props) {
             <div className="titlecateg_title_div" >
                 {props.category === true ?
                     <div className="titlecateg_category_div">
-                        <h2 onClick={()=>{props.allType;}} className="titlecateg_category_h2">전체</h2>
-                        <h2 onClick={()=>{props.foodType;}} className="titlecateg_category_h2_center" >음식</h2>
-                        <h2 onClick={()=>{props.objectType;}} className="titlecateg_category_h2">생활</h2>
-                    </div> 
+                        <h2 onClick={() => { props.allType; }} className="titlecateg_category_h2">전체</h2>
+                        <h2 onClick={() => { props.foodType; }} className="titlecateg_category_h2_center" >음식</h2>
+                        <h2 onClick={() => { props.objectType; }} className="titlecateg_category_h2">생활</h2>
+                    </div>
                     :
                     ""
                 }
