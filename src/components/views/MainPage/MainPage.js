@@ -7,9 +7,9 @@ import SearchBar from "../NavBar/SearchBar";
 import axios from "axios";
 
 function MainPage(props) {
-  const [search, setSearch] = useState("")
+  let search = "";
   if (props.location.state !== undefined) {
-    setSearch(props.location.state.search);
+    search = props.location.state.search;
   }
   const [posts, setPosts] = useState([
     {
@@ -33,7 +33,7 @@ function MainPage(props) {
   ]);
 
   useEffect(() => {
-    axios.get("/main/post")
+    axios.get("http://localhost:8080/main/post")
     .then((response) => {
       setPosts(oldArray => [...oldArray, ...response.data])
       console.log(response.data)
