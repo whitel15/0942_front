@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <NavBar />
+      {/* <NavBar /> */}
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/main" component={MainPage} />
       <Route exact path="/write" component={WritePage} />
