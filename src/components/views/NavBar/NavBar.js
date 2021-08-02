@@ -34,7 +34,6 @@ function NavBar() {
   const history = useHistory();
   // setLogedinuser( window.localStorage.getItem("user"));
   useEffect(()=>{
-    const isLogined = window.localStorage.getItem("logined");
     setLogedinuser( window.localStorage.getItem("user"));
     // window.addEventListener('unload', function(e){console.log("이동함"); setLogedinuser(logedinuser)})
     history.listen((location)=>{
@@ -85,11 +84,11 @@ function NavBar() {
           </span>
           :
           <span>
-            <Link >
-            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.clear(); setLogedinuser(null); }}>
+            {/* <Link > */}
+            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.removeItem("user"); setLogedinuser(null); }}>
               {logedinuser} 님
             </h3>
-            </Link>
+            {/* </Link> */}
             {/* <h3 onClick={localStorage.clear()}>
               {logedinuser}
             </h3> */}
