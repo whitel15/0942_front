@@ -29,6 +29,7 @@ function MainPage(props) {
   //   }
   // }, []);
 
+  const [all, setAll] = useState([]); // 모든 포스트
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -37,9 +38,21 @@ function MainPage(props) {
     .then((response) => {
       setLoading(false);
       setPosts(oldArray => [...oldArray, ...response.data])
+      setAll(oldArray => [...oldArray, ...response.data])
       console.log(response.data)
       })
   }, [])
+
+  useEffect(() => {
+    var result = [];
+    all.map((post, index) => {
+      if (post.title.includes(search) || post.content.includes(search) || post.place.includes(search)) {
+        result.push(post)
+      }
+    })
+    console.log(result)
+    setPosts(result)
+  }, [props])
 
   const [currentPage, setCurrentPage] = useState(1);
   let count = 10;

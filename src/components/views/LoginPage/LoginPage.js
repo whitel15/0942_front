@@ -4,20 +4,12 @@ import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../NavBar/NavBar";
+import { Redirect } from 'react-router-dom';
+
 
 export default function LoginPage (){
 
-  // constructor() {
-  //   const search = "";
-  //   super();
-  //   this.state = {
-  //   };
-  // }
-
-  // location = {
-  //   pathname: '/main',
-  //   state: { search: "" }
-  // }
+  const logintomain =React.useRef(null);
 
   const [search, setSearch] = useState("");
   const [id, setId]=useState('');
@@ -57,37 +49,22 @@ export default function LoginPage (){
             // this.setState({ redirect: true });
           }
           else {
-            localStorage.setItem("user", id)
-            localStorage.setItem("logined", "ok")
-            console.log(response.data)
-            window.location.replace("/main")
-            // localStorage.clear()
+            localStorage.setItem("user", id);
+            localStorage.setItem("logined", "ok");
+            console.log(response.data);
+            alert('회원가입 완료! 메인으로 이동합니다.');
+            logintomain.current.click();
           }
         }
 
       })
       .catch(function (error) {
         console.log(error)
-        
         alert(error)
       });
-
-      
   }
-
-  // handleIDchange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
   
-  // handlePWchange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
 
-  // render() {
     return (
       <div>
       <NavBar/>
@@ -117,11 +94,8 @@ export default function LoginPage (){
             {/* <button value="LOGIN" className="Login_button" onClick={this.sendServerLogin} >Login</button> */}
           </form>
 
-
-
-          <Link onClick={sendServerLogin}>
-            <button value="LOGIN" className="Login_button" >Login</button>
-          </Link>
+          <Link to={{ pathname: "/main", state: { search } }} ref={logintomain}/>
+          <button value="LOGIN" className="Login_button" onClick={sendServerLogin} >Login</button>
 
           <div className="Login_register">
 
