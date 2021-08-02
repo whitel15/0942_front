@@ -87,6 +87,20 @@
   z-index: 15;
 }
 
+.nav_logedinuserId{
+  float: right;
+  margin: 25px 0;
+  font-size: 1.5rem;
+  color: black;
+  
+  padding: 1rem 1.7rem;
+
+  margin-left: 1.5vw;
+  margin-right: 15vw;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .change_header {
     height: 10vh;
@@ -111,5 +125,8 @@
   }
   .nav_burger_click {
     left: calc(50vw - 7rem);
+  }
+  .nav_logedinuserId{
+    margin-right: 10vw;
   }
 }

@@ -3,36 +3,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./post.css";
 
-function Post({
-  id,
-  writer,
-  imgs,
-  date,
-  title,
-  cost,
-  place,
-  invite_num,
-  content,
-  writer_score,
-  scrap_num,
-}) {
+function Post({ id, writer, imgs, date, title, cost, place, invite_num, content, writer_score, scrap_num, category }) {
   return (
     <Link
       to={{
         pathname: `/post/${id}`,
-        state: {
-          id,
-          writer,
-          imgs,
-          date,
-          title,
-          cost,
-          place,
-          invite_num,
-          content,
-          writer_score,
-          scrap_num,
-        },
+        state: { id, writer, imgs, date, title, cost, place, invite_num, content, writer_score, scrap_num, category },
       }}
     >
       <div className="post">
