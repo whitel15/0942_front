@@ -7,7 +7,7 @@ import SearchBar from "../NavBar/SearchBar";
 import axios from "axios";
 
 function MainPage(props) {
-  let search = "";
+  let search="";
   if (props.location.state !== undefined) {
     search = props.location.state.search;
   }

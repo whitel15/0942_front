@@ -23,8 +23,8 @@ export default function ReviewPage(props) {
   return (
     <div className="ReviewPage">
       <div className="ReviewPage_main">
-        <form className="ReviewPage_form">
-          <h4 className="Review_h4">{writer}</h4>
+        <form className="ReviewPage_form" >
+          <h4 className="Review_h4">yujin113</h4>
           <hr className="Review_hr" width="90%" size="5" color="#a8b2eb"></hr>
           <h5 className="Review_h5">점수를 매겨주세요!</h5>
           <div className="Review_range">
@@ -46,5 +46,5 @@ export default function ReviewPage(props) {
         </form>
       </div>
     </div>
-  );
+  )
 }
