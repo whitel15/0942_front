@@ -60,7 +60,7 @@ export default function LoginPage (){
             localStorage.setItem("user", id)
             localStorage.setItem("logined", "ok")
             console.log(response.data)
-            alert('회원가입 완료! 메인으로 이동합니다.')
+            window.location.replace("/main")
             // localStorage.clear()
           }
         }
@@ -119,7 +119,7 @@ export default function LoginPage (){
 
 
 
-          <Link to={{ pathname: "/main", state: { search } }} onClick={sendServerLogin}>
+          <Link onClick={sendServerLogin}>
             <button value="LOGIN" className="Login_button" >Login</button>
           </Link>
 

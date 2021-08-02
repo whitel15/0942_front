@@ -48,7 +48,7 @@ function NavBar() {
     else{
       // console.log("로그인안됨!:", logedinuser);
     }
-  })
+  }, [])
 
   useEffect(() => {
     window.addEventListener("click", clickOutside);
@@ -86,7 +86,7 @@ function NavBar() {
           :
           <span>
             <Link >
-            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.clear(); setLogedinuser(null); }}>
+            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.clear(); setLogedinuser(null); window.location.replace("/main")}}>
               {logedinuser} 님
             </h3>
             </Link>
