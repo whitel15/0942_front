@@ -24,7 +24,7 @@ export default function TitleCategory(props) {
         setValue(newValue);
     };
 
-    const [address, setAddress] = useState("주소 들어갈 부분");
+    const [address, setAddress] = useState(localStorage.getItem("currentLocation"));
 
     useEffect(() => {
         const isLogined = window.localStorage.getItem("logined");

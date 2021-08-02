@@ -2,6 +2,7 @@ import React, { useRef, useState, setState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./ChattingPage.css";
 import { Link } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -83,16 +84,18 @@ export default function ChattingPage(props) {
   };
 
   return (
-    <div className="chat_div">
-      <div className="chat_out_div">
-        <div className="chat_innertitle_div">
-          <div style={{ width: "50%" }}>
-            <span className="chat_nick_span">{writer}</span>
-          </div>
-          <div style={{ width: "50%" }}>
-            <span className="chat_option_span">신고</span>{" "}
-            <span className="chat_option_span"> | </span>{" "}
-            <Link
+    <div>
+      <NavBar/>
+      <div className="chat_div">
+        <div className="chat_out_div">
+          <div className="chat_innertitle_div">
+            <div style={{ width: "50%" }}>
+              <span className="chat_nick_span">{writer}</span>
+            </div>
+            <div style={{ width: "50%" }}>
+              <span className="chat_option_span">신고</span>{" "}
+              <span className="chat_option_span"> | </span>{" "}
+              <Link
                 to={{
                   pathname: `/review/${writer}`,
                   state: {
@@ -100,12 +103,12 @@ export default function ChattingPage(props) {
                   },
                 }}
               >
-            <span className="chat_option_span">후기 남기기 </span>
-            </Link>
+                <span className="chat_option_span">후기 남기기 </span>
+              </Link>
+            </div>
           </div>
-        </div>
-        <hr style={{ margin: "15px" }} />
-        {/* <div className="chat_chat_div">
+          <hr style={{ margin: "15px" }} />
+          {/* <div className="chat_chat_div">
                     {othersChat.map((chat, i) => {
                         var tmp = sliceMessage(chat);
                         console.log(tmp);
@@ -118,55 +121,26 @@ export default function ChattingPage(props) {
                     })}
                 </div> */}
 
-        <table className="chat_message_table">
-          {othersChat.map((chat, i) => {
-            var tmp = sliceMessage(chat);
-            console.log(tmp);
-            return (
-              <tr>
-                <div className="chat_chat_not_me_div">
-                  <div
-                    className=""
-                    style={{
-                      width: messageBoxWidth,
-                      backgroundColor: "rgb(220, 220, 220)",
-                      borderRadius: "15px",
-                      padding: "1.5rem",
-                    }}
-                  >
-                    {tmp.map(m => {
-                      return <div className="chat_message_span">{m}</div>;
-                    })}
-                  </div>
-                  <div
-                    style={{
-                      height: (window.innerWidth * 0.03 * chat) / maxlength,
-                      position: "relative",
-                    }}
-                  >
+          <table className="chat_message_table">
+            {othersChat.map((chat, i) => {
+              var tmp = sliceMessage(chat);
+              console.log(tmp);
+              return (
+                <tr>
+                  <div className="chat_chat_not_me_div">
                     <div
+                      className=""
                       style={{
-                        verticalAlign: "bottom",
-                        position: "absolute",
-                        bottom: 0,
-                        left: "0.5rem",
+                        width: messageBoxWidth,
+                        backgroundColor: "rgb(220, 220, 220)",
+                        borderRadius: "15px",
+                        padding: "1.5rem",
                       }}
                     >
-                      오후 <br/>11:10
+                      {tmp.map(m => {
+                        return <div className="chat_message_span">{m}</div>;
+                      })}
                     </div>
-                  </div>
-                </div>
-              </tr>
-            );
-          })}
-
-          {myChat.map((chat, i) => {
-            var tmp = sliceMessage(chat);
-            console.log(tmp);
-            return (
-              <tr>
-                <div style={{ float: 'right' }}>
-                  <div className="chat_chat_my_div">
                     <div
                       style={{
                         height: (window.innerWidth * 0.03 * chat) / maxlength,
@@ -176,30 +150,59 @@ export default function ChattingPage(props) {
                       <div
                         style={{
                           verticalAlign: "bottom",
-                          position:'absolute',
-                          right: "0.5rem",
+                          position: "absolute",
                           bottom: 0,
+                          left: "0.5rem",
                         }}
                       >
-                        오후
-                        <br/>
-                        11:10
+                        오후 <br />11:10
                       </div>
                     </div>
-                    <div
-                      className=""
-                      style={{
-                        width: messageBoxWidth,
-                        backgroundColor: "rgb(198, 211, 228)",
-                        borderRadius: "15px",
-                        padding: "1.5rem",
-                      }}
-                    >
-                      {tmp.map(m => {
-                        return <div className="chat_message_span">{m}</div>;
-                      })}
-                    </div>
-                    {/* <div
+                  </div>
+                </tr>
+              );
+            })}
+
+            {myChat.map((chat, i) => {
+              var tmp = sliceMessage(chat);
+              console.log(tmp);
+              return (
+                <tr>
+                  <div style={{ float: 'right' }}>
+                    <div className="chat_chat_my_div">
+                      <div
+                        style={{
+                          height: (window.innerWidth * 0.03 * chat) / maxlength,
+                          position: "relative",
+                        }}
+                      >
+                        <div
+                          style={{
+                            verticalAlign: "bottom",
+                            position: 'absolute',
+                            right: "0.5rem",
+                            bottom: 0,
+                          }}
+                        >
+                          오후
+                          <br />
+                          11:10
+                        </div>
+                      </div>
+                      <div
+                        className=""
+                        style={{
+                          width: messageBoxWidth,
+                          backgroundColor: "rgb(198, 211, 228)",
+                          borderRadius: "15px",
+                          padding: "1.5rem",
+                        }}
+                      >
+                        {tmp.map(m => {
+                          return <div className="chat_message_span">{m}</div>;
+                        })}
+                      </div>
+                      {/* <div
                       style={{
                         height: (window.innerWidth * 0.03 * chat) / maxlength,
                         position: "relative",
@@ -215,12 +218,13 @@ export default function ChattingPage(props) {
                         오후 11:10
                       </div>
                     </div> */}
+                    </div>
                   </div>
-                </div>
-              </tr>
-            );
-          })}
-        </table>
+                </tr>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </div>
   );
