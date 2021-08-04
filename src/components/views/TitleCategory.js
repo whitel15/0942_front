@@ -1,11 +1,13 @@
 import React, { Component, useState, useEffect } from "react";
 import './TitleCategory.css';
+import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function valuetext(value) {
     return `${value}°C`;
@@ -49,10 +51,26 @@ export default function TitleCategory(props) {
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
+    let history = useHistory();
+
+    const goBack = () => {
+        if (history.location.pathname.includes('/post')) {
+            history.goBack();
+        }
+        if (history.location.pathname.includes('/write')) {
+            history.goBack();
+        }
+        console.log(history);
+        if (history.location.pathname.includes('/user')) {
+            history.goBack();
+            history.goBack();
+        }
+    }
+
     return (
         <div>
             <div className="titlecateg_title_div">
-                <div className="titlecateg_title_innerdiv">
+                <div className="titlecateg_title_innerdiv" onClick={goBack}>
                     <h1 className="titlecateg_h1">{address}</h1>
                 </div>
 

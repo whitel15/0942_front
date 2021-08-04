@@ -75,7 +75,7 @@ function DetailPage(props) {
         <div className="detail_container">
           <div className="detail_post">
             <div className="detail_post_top">
-              {islogedId !== null ?
+              {islogedId !== null  && islogedId === post.writer ?
                 <div className="detail_ud">
                   <Link to={{ pathname: `/write/${post.id}`,
                     state: {
