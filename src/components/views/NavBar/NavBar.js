@@ -85,7 +85,7 @@ function NavBar() {
           :
           <span>
             {/* <Link > */}
-            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.removeItem("user"); setLogedinuser(null); }}>
+            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.removeItem("user"); setLogedinuser(null); window.location.replace('/main');}}>
               {logedinuser} 님
             </h3>
             {/* </Link> */}

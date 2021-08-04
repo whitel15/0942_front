@@ -7,7 +7,19 @@ import SearchBar from "../NavBar/SearchBar";
 import Pagination from "../Pagination/Pagination";
 import axios from "axios";
 import NavBar from "../NavBar/NavBar";
+import { useHistory } from "react-router-dom";
+// import { getPost } from "./getPost";
+import { cacheAdapterEnhancer } from "axios-extensions";
 // import LoginSession from "../LoginSession";
+
+const instance = axios.create({
+  baseUR: "/",
+  Accept: "application/json",
+  headers: { "Cache-Control": "no-cache" },
+  adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
+    enabledByDefault: false,
+  }),
+});
 
 function MainPage(props) {
   const [islogedId, setIslogedId] = useState(localStorage.getItem("user"));
@@ -16,6 +28,8 @@ function MainPage(props) {
     search = props.location.state.search;
   }
   console.log("검색어:", search);
+  let history = useHistory();
+  // console.log(history);
 
   // useEffect(() => {
   //   const isLogined = window.localStorage.getItem("logined");
@@ -34,14 +48,18 @@ function MainPage(props) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/main/post")
-    .then((response) => {
+    const fetchPost = async () => {
+      const response = await instance.get("http://localhost:8080/main/post", {
+        forceUpdate: history.action === "PUSH",
+        cache: true,
+      });
+
       setLoading(false);
-      setPosts(oldArray => [...oldArray, ...response.data])
-      setAll(oldArray => [...oldArray, ...response.data])
-      console.log(response.data)
-      })
-  }, [])
+      setPosts([...response.data]);
+      setAll([...response.data]);
+    };
+    fetchPost();
+  }, [history.action]);
 
   useEffect(() => {
     var result = [];
