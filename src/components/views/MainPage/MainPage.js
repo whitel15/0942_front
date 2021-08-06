@@ -8,7 +8,6 @@ import Pagination from "../Pagination/Pagination";
 import axios from "axios";
 import NavBar from "../NavBar/NavBar";
 import { useHistory } from "react-router-dom";
-// import { getPost } from "./getPost";
 import { cacheAdapterEnhancer } from "axios-extensions";
 // import LoginSession from "../LoginSession";
 
@@ -27,9 +26,8 @@ function MainPage(props) {
   if (props.location.state !== undefined) {
     search = props.location.state.search;
   }
-  console.log("검색어:", search);
+
   let history = useHistory();
-  // console.log(history);
 
   // useEffect(() => {
   //   const isLogined = window.localStorage.getItem("logined");
@@ -59,8 +57,10 @@ function MainPage(props) {
       setAll([...response.data]);
     };
     fetchPost();
+    return () => {
+    }
   }, [history.action]);
-
+  
   useEffect(() => {
     var result = [];
     all.map((post, index) => {
@@ -70,6 +70,8 @@ function MainPage(props) {
     })
     console.log(result)
     setPosts(result)
+    return () => {
+    }
   }, [props])
 
   const [currentPage, setCurrentPage] = useState(1);
