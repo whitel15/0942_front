@@ -140,6 +140,7 @@
 .detail_button a:hover,
 .detail_scrap:hover {
   background-color: rgb(230, 233, 236);
+  cursor: pointer;
 }
 
 .detail_ud {
