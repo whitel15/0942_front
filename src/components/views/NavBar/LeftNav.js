@@ -9,6 +9,7 @@ function LeftNav() {
       <Link to="/login">Sign In</Link>
       <Link to="/register">Sign Up</Link>
       <Link to="/aboutUs">About Us</Link>
+      <Link to="/myScrap">내 스크랩</Link>
     </div>
   );
 }

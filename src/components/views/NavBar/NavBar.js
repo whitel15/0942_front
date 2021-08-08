@@ -23,11 +23,19 @@ function NavBar() {
   });
 
   const leftNav = useRef();
+  console.log(leftNav);
 
   const clickOutside = ({ target }) => {
-    if (isOpen && !leftNav.current.contains(target)) setOpen(false);
+    console.log(target)
+    if (isOpen) setOpen(false);
   }; // leftNav가 아닌 부분 클릭 시 닫히게 함
-
+  
+  useEffect(() => {
+    window.addEventListener("click", clickOutside);
+    return () => {
+      window.removeEventListener("click", clickOutside);
+    };
+  });
 
   //로그인부분
   const [logedinuser, setLogedinuser] = useState(window.localStorage.getItem("user"));
@@ -49,12 +57,6 @@ function NavBar() {
     }
   }, [])
 
-  useEffect(() => {
-    window.addEventListener("click", clickOutside);
-    return () => {
-      window.removeEventListener("click", clickOutside);
-    };
-  });
 
   return (
     <div className="navBar">
@@ -70,7 +72,7 @@ function NavBar() {
         <div className={isOpen === true ? "nav_left" : null} ref={leftNav}>
           {isOpen === true ? <LeftNav /> : null}
         </div>
-        <Link to="/" className="nav_title" ref={leftNav}>
+        <Link to="/" className="nav_title" >
           0942
         </Link>
         {logedinuser == null ?
