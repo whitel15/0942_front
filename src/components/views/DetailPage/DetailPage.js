@@ -175,6 +175,9 @@ function DetailPage(props) {
                 <p className="post_cost">
                   <strong>배송비 : </strong>
                   {post.cost}원
+                  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                  <strong>인당 배송비 : </strong>
+                  {post.percost}원
                 </p>
                 <p className="post_place">
                   <strong>배분 장소 : </strong>

@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 import "./post.css";
 
 function Post({ id, writer, imgs, date, title, cost, place, invite_num, content, writer_score, scrap_num, category }) {
+  const percost = Math.round(cost / (invite_num + 1));
   return (
     <Link
       to={{
         pathname: `/post/${id}`,
-        state: { id, writer, imgs, date, title, cost, place, invite_num, content, writer_score, scrap_num, category },
+        state: { id, writer, imgs, date, title, cost, place, invite_num, content, writer_score, scrap_num, category, percost },
       }}
     >
       <div className="post">
@@ -29,7 +30,8 @@ function Post({ id, writer, imgs, date, title, cost, place, invite_num, content,
           </div>
           <div className="post_content">
             <p className="post_title">{title}</p>
-            <span className="post_cost">배송비 : {cost}원</span>
+            {/* <span className="post_cost">배송비 : {cost}원</span> */}
+            <span className="post_cost">인당 배송비 : {percost}원</span>
             <span className="post_place">배분 장소 : {place}</span>
             <p className="post_num">{invite_num}명 모집 중</p>
           </div>
