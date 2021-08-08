@@ -1,0 +1,18 @@
+.scrapPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    background-color: rgb(198, 211, 228);
+    min-height: 100vh;
+    width: 100vw;
+    padding-bottom: 5rem;
+}
+.scrapPage h1 {
+    font-size: 3.5rem;
+}
+
+.scrap_container {
+    margin-top: 1rem;
+}
