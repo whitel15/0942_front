@@ -23,10 +23,8 @@ function NavBar() {
   });
 
   const leftNav = useRef();
-  console.log(leftNav);
 
   const clickOutside = ({ target }) => {
-    console.log(target)
     if (isOpen) setOpen(false);
   }; // leftNav가 아닌 부분 클릭 시 닫히게 함
   

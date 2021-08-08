@@ -55,7 +55,7 @@ function App() {
       <Route exact path="/aboutUs" component={AboutUs} />
       <Route exact path="/chattinglist" component={ChattingList} />
       <Route exact path="/user/:id" component={UserPage} />
-      <Route exact path="/:id/myScrap" component={ScrapPage} />
+      <Route exact path="/myscrap/:id" component={ScrapPage} />
       <Footer />
     </BrowserRouter>
   );

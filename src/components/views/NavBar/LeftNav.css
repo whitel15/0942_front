@@ -14,6 +14,10 @@
   padding: 2rem;
 }
 
+.leftNav_isLogined a {
+  display: block;
+}
+
 .leftNav:nth-child(1) {
   padding-top: 10vh;
 }
