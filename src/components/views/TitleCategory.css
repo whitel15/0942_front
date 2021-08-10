@@ -10,6 +10,10 @@
     /* display: inline; */
   }
 
+.titlecateg_title_innerdiv:hover {
+    cursor: pointer;
+}
+
 
 .titlecateg_slide_div{
     flex: 0 0 auto;

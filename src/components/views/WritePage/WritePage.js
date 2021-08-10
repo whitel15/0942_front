@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import TextField from '@material-ui/core/TextField';
 
-let count = 0;
 
 export default function WritePage(props) {
     const [islogedId, setIslogedId]=useState(localStorage.getItem("user"));
@@ -37,14 +36,17 @@ export default function WritePage(props) {
         }
     }
     let history = useHistory();
+    const [count, setCount] = useState(postImgs.length);
+    const [originImgLenth, setOriginImgLenth] = useState(postImgs.length) // 수정 시 원래 있던 이미지의 길이 (삭제에 이용)
     
     const [logoLoading, setLogoLoading] = useState(false);
     const [imgBase64, setImgBase64] = useState(""); // 파일 base64
-    const [imageUrl, setImageUrl] = useState([]);
+    const [imageUrl, setImageUrl] = useState(postImgs);
+    const [deleteImageUrl, setDeleteImageUrl] = useState([]); // 수정 시 원래 있던 이미지 중 삭제 버튼 누른 url들
     const logoImageInput = useRef();
     const scroll = useRef();
     
-    const [putImage, setPutImage] = useState([]);
+    const [putImage, setPutImage] = useState([]); // 전달할 이미지 파일
     
     const imagePreviews = [];
     
@@ -72,7 +74,7 @@ export default function WritePage(props) {
             console.log(e.target.files[0])
             setPutImage(oldArray => [...oldArray, e.target.files[0]]) // 파일 상태 업데이트
             setImageUrl(oldArray => [...oldArray, URL.createObjectURL(e.target.files[0])])
-            count++;
+            setCount(count + 1);
         }
     };
     
@@ -80,11 +82,18 @@ export default function WritePage(props) {
         // imageUrl.filter(item=>item!==url);
         const index = imageUrl.indexOf(url);
         var array = [...imageUrl];
+        var deleteArray = [...deleteImageUrl];
         if (index !== -1) {
             array.splice(index, 1);
             setImageUrl(array);
         }
-        count--;
+        if (index !== -1 && index < originImgLenth) {
+            setOriginImgLenth(originImgLenth - 1)
+            deleteArray.push(postImgs[index])
+            postImgs.splice(index, 1);
+            setDeleteImageUrl(deleteArray);
+        }
+        setCount(count - 1);
     }
     
     const [color, setColor] = useState(["#D8D7D7", "#D8D7D7"]);
@@ -153,7 +162,7 @@ export default function WritePage(props) {
             formData.append('images', putImage[i]);
         }
         formData.append("post", new Blob([JSON.stringify(post)], {type: "application/json"}))
-        if (props.match.params.id == 0) {
+        if (props.match.params.id == 0) { // 글 작성
             axios.post('http://localhost:8080/write/upload', formData,
                 {
                     headers: {
@@ -163,16 +172,20 @@ export default function WritePage(props) {
             ).then((response) => 
                 history.push("/main")
             );
-        } else {
+        } else { // 글 수정
+            console.log(putImage)
+            console.log(deleteImageUrl)
+            console.log(post)
+            formData.append('imgurls[]', new Blob([JSON.stringify(deleteImageUrl)], {type: 'application/json'}));
             axios.post(`http://localhost:8080/main/post/update/${props.match.params.id}`, formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-            ).then((response) => 
-                history.push("/main")
-            );
+            ).then((response) => {
+                history.push('/main')
+            });
         }
     };
 

@@ -15,6 +15,7 @@ import AboutUs from "./components/views/AboutUs/AboutUs";
 import UserPage from "./components/views/UserPage/UserPage";
 import { BrowserRouter, Route } from "react-router-dom";
 import ChattingList from "./components/views/ChattingList/ChattingList";
+import ScrapPage from "./components/views/ScrapPage/ScrapPage";
 
 
 /*global kakao*/
@@ -54,6 +55,7 @@ function App() {
       <Route exact path="/aboutUs" component={AboutUs} />
       <Route exact path="/chattinglist" component={ChattingList} />
       <Route exact path="/user/:id" component={UserPage} />
+      <Route exact path="/myscrap/:id" component={ScrapPage} />
       <Footer />
     </BrowserRouter>
   );

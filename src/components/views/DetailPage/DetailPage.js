@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DetailPage.css";
 import TitleCategory from "../TitleCategory";
 import SearchBar from "../NavBar/SearchBar";
@@ -65,6 +65,32 @@ function DetailPage(props) {
         })
     }
   }
+  
+  const [isScrapped, setScrapped] = useState(false);
+  const [scrapnum, setScrapnum] = useState(post.scrap_num);
+  useEffect(() => {
+    axios.post(`http://localhost:8080/main/post/${post.id}/scrapped`, { USER_ID: localStorage.getItem("user")})
+    .then((response) => {
+      console.log(response.data)
+      if (response.data != 0) {
+        setScrapped(true);
+      }
+    })
+  }, [])
+
+  const clickScrap = async () => {
+    if (isScrapped == false) {
+      setScrapped(true);
+      setScrapnum(scrapnum + 1);
+    } else {
+      setScrapped(false);
+      setScrapnum(scrapnum - 1);
+    }
+    const response = await axios.post(`http://localhost:8080/main/post/${post.id}/scrap`, { USER_ID: localStorage.getItem("user") })
+    console.log(response.data)
+    console.log("스크랩" + isScrapped + " " + scrapnum)
+  }
+
 
   return (
     <div>
@@ -75,7 +101,7 @@ function DetailPage(props) {
         <div className="detail_container">
           <div className="detail_post">
             <div className="detail_post_top">
-              {islogedId !== null ?
+              {islogedId !== null  && islogedId === post.writer ?
                 <div className="detail_ud">
                   <Link to={{ pathname: `/write/${post.id}`,
                     state: {
@@ -149,6 +175,9 @@ function DetailPage(props) {
                 <p className="post_cost">
                   <strong>배송비 : </strong>
                   {post.cost}원
+                  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                  <strong>인당 배송비 : </strong>
+                  {post.percost}원
                 </p>
                 <p className="post_place">
                   <strong>배분 장소 : </strong>
@@ -170,11 +199,11 @@ function DetailPage(props) {
             >
               <div>채팅</div>
             </Link>
-            <div className="detail_scrap">
+            <div className="detail_scrap" onClick={clickScrap}>
               <span role="img" aria-level="heart">
                 ❤️
               </span>{" "}
-              {post.scrap_num}
+              {scrapnum}
             </div>
           </div>
         </div>
