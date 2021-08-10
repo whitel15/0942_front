@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./LeftNav.css";
 
 function LeftNav() {
-  let loginId = useState(localStorage.getItem("user"))
+  let loginId = localStorage.getItem("user");
   return (
     <div className="leftNav">
       <Link to="/">Home</Link>

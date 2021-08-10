@@ -29,7 +29,12 @@ function ScrapPage() {
         const response = await instance.get(`http://localhost:8080/scrap/${user}`, {
           forceUpdate: history.action === "PUSH",
           cache: true,
-        });
+        }, {
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+        }
+        );
   
         setLoading(false);
         setPosts([...response.data]);
