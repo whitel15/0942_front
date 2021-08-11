@@ -83,11 +83,35 @@ function MainPage(props) {
     return postList.slice(firstIdx, lastIdx);
   }
 
+  const allType = () => {
+    setPosts(all)
+  }
+
+  const foodType = () => {
+    var result = [];
+    all.map((post, index) => {
+      if (post.category === "FOOD") {
+        result.push(post)
+      }
+    })
+    setPosts(result)
+  }
+
+  const objectType = () => {
+    var result = [];
+    all.map((post, index) => {
+      if (post.category === "ITEM") {
+        result.push(post)
+      }
+    })
+    setPosts(result)
+  }
+
   return (
     <div>
       <NavBar />
       <div className="mainPage">
-        <TitleCategory slider={true} category={true} />
+        <TitleCategory slider={true} category={true} allType={allType} foodType={foodType} objectType={objectType} />
         <SearchBar search_what={search} />
 
         {islogedId !== null? (

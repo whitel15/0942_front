@@ -82,9 +82,9 @@ export default function TitleCategory(props) {
             <div className="titlecateg_title_div" >
                 {props.category === true ?
                     <div className="titlecateg_category_div">
-                        <h2 onClick={() => { props.allType; }} className="titlecateg_category_h2">전체</h2>
-                        <h2 onClick={() => { props.foodType; }} className="titlecateg_category_h2_center" >음식</h2>
-                        <h2 onClick={() => { props.objectType; }} className="titlecateg_category_h2">생활</h2>
+                        <h2 onClick={() => { props.allType(); }} className="titlecateg_category_h2">전체</h2>
+                        <h2 onClick={() => { props.foodType(); }} className="titlecateg_category_h2_center" >음식</h2>
+                        <h2 onClick={() => { props.objectType(); }} className="titlecateg_category_h2">생활</h2>
                     </div>
                     :
                     ""
