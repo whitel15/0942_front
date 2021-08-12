@@ -41,18 +41,14 @@ function DetailPage(props) {
 
   // post.writer와 user_id가 같은 데이터 받아오기
   const [user, setUser] = useState({
-    user_id: "yujin113",
-    user_count: 5,
-    user_score: 90,
+    user_id: post.writer,
+    user_count: 3,
+    user_score: post.REVIEW_POINT,
     review: [
       {
-        review_content: "친절해요",
-        review_date: "21.07.15",
-      },
-      {
-        review_content: "시간 약속을 잘 지켜요",
-        review_date: "21.07.15",
-      },
+        review_content: post.REVIEW_CONTENT,
+        review_date: post.REVIEW_DATE,
+      }
     ],
   });
 
@@ -105,7 +101,7 @@ function DetailPage(props) {
                 <div className="detail_ud">
                   <Link to={{ pathname: `/write/${post.id}`,
                     state: {
-                      id: post.id, writer: post.writer ,imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
+                      id: post.id, writer: post.writer, imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
                       invite_num: post.invite_num, content: post.content, writer_score: post.writer_score, scrap_num: post.scrap_num,
                     },}}>
                   <span>수정</span>

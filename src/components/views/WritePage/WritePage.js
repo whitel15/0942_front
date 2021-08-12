@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import TextField from '@material-ui/core/TextField';
 
-
 export default function WritePage(props) {
     const [islogedId, setIslogedId]=useState(localStorage.getItem("user"));
     useEffect(() => {
@@ -69,7 +68,7 @@ export default function WritePage(props) {
                 setImgBase64(base64.toString()); // 파일 base64 상태 업데이트
             }
         }
-        if (e.target.files[0]) {
+        if (e.target.files[0]) {[[[]]]
             reader.readAsDataURL(e.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
             console.log(e.target.files[0])
             setPutImage(oldArray => [...oldArray, e.target.files[0]]) // 파일 상태 업데이트
