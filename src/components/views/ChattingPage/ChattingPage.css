@@ -74,6 +74,44 @@
     
     
 }
+.chat_send_div{
+    width: 74vw;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    margin-top: 10px;
+}
+.chat_message_textinput{
+    font-family: 'Montserrat regular';
+    width: 85%;
+    align-self: center;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 1rem; */
+    font-size: 2rem;
+    padding: 2rem;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
+}
+.chat_send_empty{
+    width: 3%;
+}
+.chat_send_button{
+    width: 12%;
+    height: 60px;
+    border-radius: 30px;
+    background: #B58DED;
+    border: none;
+    font-size: 2rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-bottom: 5rem;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 0px;
+}
+
 @media only screen and (max-width: 767px) {    
     .chat_out_div{
         padding-top: 10px;
@@ -101,5 +139,5 @@
     .chat_chat_not_me_div{
         /* margin-top: 15px; */
     }
-
+    
 }
