@@ -301,7 +301,7 @@ export default function ChattingPage(props) {
                             left: "0.5rem",
                           }}
                         >
-                          오후 <br />11:10
+                          {messagenoon} <br />{messagehour}:{messageminute}
                         </div>
                       </div>
                     </div>
