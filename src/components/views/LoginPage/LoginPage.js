@@ -22,7 +22,6 @@ export default function LoginPage (){
   }
 
   const sendServerLogin = () => {
-    // console.log(this.state.LOGIN_INPUT_ID)
 
     axios
       .post('http://localhost:8080/login/post', {
@@ -52,7 +51,7 @@ export default function LoginPage (){
             localStorage.setItem("user", id);
             localStorage.setItem("logined", "ok");
             console.log(response.data);
-            alert('회원가입 완료! 메인으로 이동합니다.');
+            alert('로그인 성공! 메인으로 이동합니다...');
             logintomain.current.click();
           }
         }
