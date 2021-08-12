@@ -37,7 +37,7 @@ export default function ChattingPage(props) {
   let messagecount = 0;
   const [allChat, setAllChat] = useState([]);
   const [isMyMessage, setIsMymessage] = useState([]);
-  const [messageTime, setMessageTime]=useState([]);
+  const [messageTime, setMessageTime] = useState([]);
   // let messageyear = "";
   // let messagemonth = "";
   // let messagedate = "";
@@ -70,18 +70,15 @@ export default function ChattingPage(props) {
         for (let i = 0; i < messagecount; i++) {
 
           if (response.data[i]) {
-            if (response.data[i].who == "me") {
-              console.log(response.data[i].message);
-              console.log(typeof (response.data[i].time));//2021-08-12T20:12:24
 
-              setAllChat(oldArray => [...oldArray, response.data[i].message]);
-              setIsMymessage(oldArray => [...oldArray, response.data[i].who]);
-              setMessageTime(oldArray => [...oldArray, response.data[i].time]);
+            console.log(response.data[i].message);
+            console.log(typeof (response.data[i].time));//2021-08-12T20:12:24
 
-            }
-            else {
-              console.log(response.data[i].message);
-            }
+            setAllChat(oldArray => [...oldArray, response.data[i].message]);
+            setIsMymessage(oldArray => [...oldArray, response.data[i].who]);
+            setMessageTime(oldArray => [...oldArray, response.data[i].time]);
+
+
             // setAllChat(allChat.concat(response.data[i]))
           }
         }
@@ -211,16 +208,16 @@ export default function ChattingPage(props) {
                 </div> */}
 
           <table className="chat_message_table">
-            
+
             {allChat.map((chat, i) => {
               var tmp = sliceMessage(chat);
               // console.log(tmp);
-              let messageyear = String( messageTime[i]).substring(0, 4);
-              let messagemonth = String( messageTime[i]).substring(5, 7);
-              let messagedate = String( messageTime[i]).substring(8, 10);
-              let messagehour = parseInt(String( messageTime[i]).substring(11, 13));
-              let messageminute = parseInt(String( messageTime[i]).substring(14, 16));
-              let messagesecond = parseInt(String( messageTime[i]).substring(16));
+              let messageyear = String(messageTime[i]).substring(0, 4);
+              let messagemonth = String(messageTime[i]).substring(5, 7);
+              let messagedate = String(messageTime[i]).substring(8, 10);
+              let messagehour = parseInt(String(messageTime[i]).substring(11, 13));
+              let messageminute = parseInt(String(messageTime[i]).substring(14, 16));
+              let messagesecond = parseInt(String(messageTime[i]).substring(16));
               let messagenoon = "오후";
               if (messagehour > 11) {
                 messagenoon = "오후";
@@ -229,6 +226,7 @@ export default function ChattingPage(props) {
               else {
                 messagenoon = "오전";
               }
+              
               if (isMyMessage[i] == "me") {
                 return (
                   <tr>
