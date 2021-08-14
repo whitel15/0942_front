@@ -4,6 +4,12 @@ import "./LeftNav.css";
 
 function LeftNav() {
   let loginId = localStorage.getItem("user");
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <div className="leftNav">
       <Link to="/">Home</Link>
@@ -15,6 +21,7 @@ function LeftNav() {
         </div>
       ) : (
         <div className="leftNav_isLogined">
+          <Link onClick={logout}>Logout</Link>
           <Link
             to={{
               pathname: `/myscrap/${loginId}`,

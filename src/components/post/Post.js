@@ -56,7 +56,6 @@ Post.propTypes = {
   place: PropTypes.string.isRequired,
   invite_num: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired,
-  writer_score: PropTypes.number.isRequired,
   scrap_num: PropTypes.number,
 };
 

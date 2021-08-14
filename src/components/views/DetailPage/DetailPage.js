@@ -39,23 +39,6 @@ function DetailPage(props) {
     adaptiveHeight: true,
   };
 
-  // post.writer와 user_id가 같은 데이터 받아오기
-  const [user, setUser] = useState({
-    user_id: "yujin113",
-    user_count: 5,
-    user_score: 90,
-    review: [
-      {
-        review_content: "친절해요",
-        review_date: "21.07.15",
-      },
-      {
-        review_content: "시간 약속을 잘 지켜요",
-        review_date: "21.07.15",
-      },
-    ],
-  });
-
   const [isDelete, setDelete] = useState(false)
   const deletePost = (e) => {
     if (window.confirm("삭제하시겠습니까?")) {
@@ -66,19 +49,23 @@ function DetailPage(props) {
     }
   }
   
+  const [isLoading, setLoading] = useState(false);
   const [isScrapped, setScrapped] = useState(false);
   const [scrapnum, setScrapnum] = useState(post.scrap_num);
   useEffect(() => {
+    setLoading(false);
     axios.post(`http://localhost:8080/main/post/${post.id}/scrapped`, { USER_ID: localStorage.getItem("user")})
     .then((response) => {
       console.log(response.data)
       if (response.data != 0) {
         setScrapped(true);
       }
+      setLoading(true);
     })
   }, [])
 
   const clickScrap = async () => {
+    setLoading(false);
     if (isScrapped == false) {
       setScrapped(true);
       setScrapnum(scrapnum + 1);
@@ -87,6 +74,7 @@ function DetailPage(props) {
       setScrapnum(scrapnum - 1);
     }
     const response = await axios.post(`http://localhost:8080/main/post/${post.id}/scrap`, { USER_ID: localStorage.getItem("user") })
+    setLoading(true);
     console.log(response.data)
     console.log("스크랩" + isScrapped + " " + scrapnum)
   }
@@ -94,25 +82,40 @@ function DetailPage(props) {
 
   return (
     <div>
-    <NavBar />
+      <NavBar />
       <div className="detailPage">
         <SearchBar />
         <TitleCategory slider={true} category={true} />
         <div className="detail_container">
           <div className="detail_post">
             <div className="detail_post_top">
-              {islogedId !== null  && islogedId === post.writer ?
+              {islogedId !== null && islogedId === post.writer ? (
                 <div className="detail_ud">
-                  <Link to={{ pathname: `/write/${post.id}`,
-                    state: {
-                      id: post.id, writer: post.writer ,imgs: post.imgs, date: post.date, title: post.title, cost: post.cost, place: post.place,
-                      invite_num: post.invite_num, content: post.content, writer_score: post.writer_score, scrap_num: post.scrap_num,
-                    },}}>
-                  <span>수정</span>
+                  <Link
+                    to={{
+                      pathname: `/write/${post.id}`,
+                      state: {
+                        id: post.id,
+                        writer: post.writer,
+                        imgs: post.imgs,
+                        date: post.date,
+                        title: post.title,
+                        cost: post.cost,
+                        place: post.place,
+                        invite_num: post.invite_num,
+                        content: post.content,
+                        writer_score: post.writer_score,
+                        scrap_num: post.scrap_num,
+                      },
+                    }}
+                  >
+                    <span>수정</span>
                   </Link>
                   <span onClick={deletePost}>삭제</span>
-                </div> : <div></div>
-              }
+                </div>
+              ) : (
+                <div></div>
+              )}
               <div className="detail_post_userInfo">
                 <img
                   src="/images/main/user.png"
@@ -122,18 +125,16 @@ function DetailPage(props) {
                 <Link
                   to={{
                     pathname: `/user/${post.writer}`,
-                    state: {
-                      user_id: user.user_id,
-                      user_count: user.user_count,
-                      user_score: user.user_score,
-                      review: user.review,
-                    },
                   }}
                 >
                   <span className="post_id">{post.writer}</span>{" "}
                 </Link>
                 <span className="post_date">{post.date}</span>
-                <span className="post_score">{post.writer_score}점</span>
+                {post.writer_score == null ?
+                  <span className="post_score">점</span>
+                  :
+                  <span className="post_score">{post.writer_score}점</span>
+                }
               </div>
               <aside>
                 <div className={imgs.length !== 0 ? "detail_slider" : null}>
@@ -149,12 +150,12 @@ function DetailPage(props) {
                               />
                             </div>
                           ))
-                          : null}
-                      </Slider>
-                    ) : (
-                      <Slider {...settings}>
-                        {imgs.length !== 0
-                          ? imgs.map((img, index) => (
+                        : null}
+                    </Slider>
+                  ) : (
+                    <Slider {...settings}>
+                      {imgs.length !== 0
+                        ? imgs.map((img, index) => (
                             <div key={index}>
                               <img
                                 src={img}
@@ -163,32 +164,33 @@ function DetailPage(props) {
                               />
                             </div>
                           ))
-                          : null}
-                      </Slider>
-                    )}
-                  </div>
-                </aside>
-              </div>
-              <div className="detail_post_bottom">
-                <hr />
-                <p className="post_title">{post.title}</p>
-                <p className="post_cost">
-                  <strong>배송비 : </strong>
-                  {post.cost}원
-                  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                  <strong>인당 배송비 : </strong>
-                  {post.percost}원
-                </p>
-                <p className="post_place">
-                  <strong>배분 장소 : </strong>
-                  {post.place}
-                </p>
-                <p className="post_plus"> {post.content}</p>
-                <p className="post_num">{post.invite_num}명 모집 중</p>
-              </div>
+                        : null}
+                    </Slider>
+                  )}
+                </div>
+              </aside>
+            </div>
+            <div className="detail_post_bottom">
+              <hr />
+              <p className="post_title">{post.title}</p>
+              <p className="post_cost">
+                <strong>배송비 : </strong>
+                {post.cost}원 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <strong>인당 배송비 : </strong>
+                {post.percost}원
+              </p>
+              <p className="post_place">
+                <strong>배분 장소 : </strong>
+                {post.place}
+              </p>
+              <p className="post_plus"> {post.content}</p>
+              <p className="post_num">{post.invite_num}명 모집 중</p>
             </div>
           </div>
-          <div className="detail_button">
+        </div>
+        <div className="detail_button">
+        {islogedId !== null && islogedId === post.writer ?
+          null :
             <Link
               to={{
                 pathname: `/chat/${post.writer}`,
@@ -199,14 +201,32 @@ function DetailPage(props) {
             >
               <div>채팅</div>
             </Link>
+          }
+          {islogedId !== null && islogedId === post.writer ?
+            <div className="detail_scrap" onClick={() => {alert("내가 쓴 글은 스크랩할 수 없습니다.")}} style={{width:"70vw", maxWidth:"850px"}}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+            {scrapnum}
+            </div>
+            :
+            isLoading ?
             <div className="detail_scrap" onClick={clickScrap}>
               <span role="img" aria-level="heart">
                 ❤️
               </span>{" "}
               {scrapnum}
             </div>
-          </div>
+            :
+            <div className="detail_scrap">
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {scrapnum}
+            </div>
+          }
         </div>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 
 
 export default function WritePage(props) {
+    const postId = props.match.params.id;
     const [islogedId, setIslogedId]=useState(localStorage.getItem("user"));
     useEffect(() => {
         if(islogedId==null){alert("로그인 먼저 해주세요!"); history.push('/login')}
@@ -22,6 +23,7 @@ export default function WritePage(props) {
     let postInviteNum = 1;
     let postContent = "";
     let postCategory = "";
+    let postScrapNum = 0;
     if (props.location.state !== undefined) {
         postImgs = post.imgs;
         postTitle = post.title;
@@ -34,7 +36,9 @@ export default function WritePage(props) {
         } else {
             postCategory = "물건";
         }
+        postScrapNum = post.scrap_num;
     }
+    console.log(postScrapNum);
     let history = useHistory();
     const [count, setCount] = useState(postImgs.length);
     const [originImgLenth, setOriginImgLenth] = useState(postImgs.length) // 수정 시 원래 있던 이미지의 길이 (삭제에 이용)
@@ -73,6 +77,7 @@ export default function WritePage(props) {
             reader.readAsDataURL(e.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
             console.log(e.target.files[0])
             setPutImage(oldArray => [...oldArray, e.target.files[0]]) // 파일 상태 업데이트
+            console.log(putImage);
             setImageUrl(oldArray => [...oldArray, URL.createObjectURL(e.target.files[0])])
             setCount(count + 1);
         }
@@ -152,7 +157,7 @@ export default function WritePage(props) {
             POST_TITLE: title,
             POST_CATEGORY: category,
             POST_INVITE_NUM: inviteNum,
-            POST_SCRAP_NUM: 0,
+            POST_SCRAP_NUM: postScrapNum,
             POST_CONTENT: content,
             POST_PLACE: place,
             POST_COST: cost,
@@ -170,7 +175,7 @@ export default function WritePage(props) {
                     }
                 }
             ).then((response) => 
-                history.push("/main")
+                history.push('/main')
             );
         } else { // 글 수정
             console.log(putImage)
