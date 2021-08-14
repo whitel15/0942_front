@@ -125,7 +125,11 @@ function DetailPage(props) {
                   <span className="post_id">{post.writer}</span>{" "}
                 </Link>
                 <span className="post_date">{post.date}</span>
-                <span className="post_score">{post.writer_score}점</span>
+                {post.writer_score == null ?
+                  <span className="post_score">점</span>
+                  :
+                  <span className="post_score">{post.writer_score}점</span>
+                }
               </div>
               <aside>
                 <div className={imgs.length !== 0 ? "detail_slider" : null}>
