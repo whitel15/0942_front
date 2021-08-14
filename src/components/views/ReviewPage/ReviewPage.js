@@ -36,7 +36,7 @@ export default function ReviewPage({ match }) {
       .post(`http://localhost:8080/review/to/${writer}`, review)
       .then((response) => {
         console.log(response);
-        history.push(`/user/${writer}`)
+        history.push(`user/${writer}`)
       });
   };
 
