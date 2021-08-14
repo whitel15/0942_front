@@ -49,19 +49,23 @@ function DetailPage(props) {
     }
   }
   
+  const [isLoading, setLoading] = useState(false);
   const [isScrapped, setScrapped] = useState(false);
   const [scrapnum, setScrapnum] = useState(post.scrap_num);
   useEffect(() => {
+    setLoading(false);
     axios.post(`http://localhost:8080/main/post/${post.id}/scrapped`, { USER_ID: localStorage.getItem("user")})
     .then((response) => {
       console.log(response.data)
       if (response.data != 0) {
         setScrapped(true);
       }
+      setLoading(true);
     })
   }, [])
 
   const clickScrap = async () => {
+    setLoading(false);
     if (isScrapped == false) {
       setScrapped(true);
       setScrapnum(scrapnum + 1);
@@ -70,6 +74,7 @@ function DetailPage(props) {
       setScrapnum(scrapnum - 1);
     }
     const response = await axios.post(`http://localhost:8080/main/post/${post.id}/scrap`, { USER_ID: localStorage.getItem("user") })
+    setLoading(true);
     console.log(response.data)
     console.log("스크랩" + isScrapped + " " + scrapnum)
   }
@@ -205,7 +210,15 @@ function DetailPage(props) {
             {scrapnum}
             </div>
             :
+            isLoading ?
             <div className="detail_scrap" onClick={clickScrap}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {scrapnum}
+            </div>
+            :
+            <div className="detail_scrap">
               <span role="img" aria-level="heart">
                 ❤️
               </span>{" "}
