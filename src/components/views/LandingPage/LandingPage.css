@@ -27,6 +27,10 @@ html {
   letter-spacing: 0.3rem;
 }
 
+.landing_bt:hover {
+  cursor: pointer;
+}
+
 /* 사람들 사진 */
 .landing_img {
   display: flex;

@@ -44,7 +44,7 @@ function LandingPage() {
                 placeholder="물품명을 검색해보세요"
               />
               <Link to={{ pathname: "/main", state: { search } }}>
-                <input type="submit" value="Find" />
+                <input type="submit" value="Find" className="landing_bt" />
               </Link>
             </div>
             <p>
