@@ -38,21 +38,15 @@ export default function ChattingPage(props) {
   const [allChat, setAllChat] = useState([]);
   const [isMyMessage, setIsMymessage] = useState([]);
   const [messageTime, setMessageTime] = useState([]);
-  // let messageyear = "";
-  // let messagemonth = "";
-  // let messagedate = "";
-  // let messagehour = 0;
-  // let messageminute = 0;
-  // let messagesecond = 0;
-  // let messagenoon = "오후";
 
   const getMessagesFromServer = () => {
+    console.log(props.location.state.postnum);
     setAllChat([]);
     setIsMymessage([]);
     axios.post('http://localhost:8080/chat', {
       SENDER_ID: localStorage.getItem("user"),
       RECEIVER_ID: props.location.state.writer,
-
+      POST_KEY: props.location.state.postnum
     }
       , {
         headers: {
@@ -77,6 +71,7 @@ export default function ChattingPage(props) {
             setAllChat(oldArray => [...oldArray, response.data[i].message]);
             setIsMymessage(oldArray => [...oldArray, response.data[i].who]);
             setMessageTime(oldArray => [...oldArray, response.data[i].time]);
+            
 
 
             // setAllChat(allChat.concat(response.data[i]))
@@ -93,28 +88,16 @@ export default function ChattingPage(props) {
   useEffect(() => {
     getMessagesFromServer();
   }, []);
-  // getMessagesFromServer();
+  console.log(messageTime);
   const writer = props.location.state.writer;
-  const [othersChat, setOthersChat] = useState([
-    "안녕하세요! 😍😍😍저도 참여    하고 싶습니다.ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ!안녕하세요!저도 참여하고 싶습니다.ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ!안녕하세요!저도 참여하고 싶습니다.ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ!",
-
-  ]);
-  const [myChat, setMyChat] = useState([
-    "네 안녕하세요~~~!",
-    "배분 장소랑 물품 품목 확인하셨나요~~~~~~~~~~~~~~~~~~??",
-  ]);
-  var tmpChat = othersChat;
-  const chatUpdate = () => {
-    setOthersChat(["안녕하세요!", "저 참여하고 싶어요"]);
-  };
-
 
   const sendMessage = () => {
     console.log(messageToSend)
     axios.post('http://localhost:8080/chat/message', {
       INPUT_ID: localStorage.getItem("user"),
       RECEIVER_ID: props.location.state.writer,
-      MY_MESSAGE: messageToSend
+      MY_MESSAGE: messageToSend,
+      POST_KEY: props.location.state.postnum
     }
       , {
         headers: {
@@ -126,6 +109,7 @@ export default function ChattingPage(props) {
         console.log('전송됨', messageToSend)
         getMessagesFromServer()
         // console.log(response.data.me)
+        setMessageToSend("");
 
       })
       .catch(function (error) {
@@ -133,6 +117,7 @@ export default function ChattingPage(props) {
         alert('입력란을 모두 완성해주세요!')
         // window.location.href='/login'
       });
+
 
   }
 
@@ -301,7 +286,7 @@ export default function ChattingPage(props) {
                             left: "0.5rem",
                           }}
                         >
-                          오후 <br />11:10
+                          {messagenoon} <br />{messagehour}:{messageminute}
                         </div>
                       </div>
                     </div>

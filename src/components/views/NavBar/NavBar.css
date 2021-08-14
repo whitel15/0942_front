@@ -17,6 +17,7 @@
   float: left;
   padding-left: 15vw;
 }
+
 .nav_login,
 .nav_signup {
   float: right;
@@ -30,7 +31,7 @@
 }
 .nav_login {
   margin-left: 1.5vw;
-  margin-right: 15vw;
+  margin-right: 10vw;
 }
 .nav_login:hover,
 .nav_signup:hover {
@@ -91,13 +92,23 @@
   float: right;
   margin: 25px 0;
   font-size: 1.5rem;
-  color: black;
+  padding: 1rem 1.7rem;
+  border-radius: 30px;
+  text-decoration: underline;
+  color: rgb(58, 58, 58);
+}
+.nav_logout{
+  
+  float: right;
+  margin: 25px 0;
+  font-size: 1.5rem;
+  color: rgb(58, 58, 58);
   
   padding: 1rem 1.7rem;
 
   margin-left: 1.5vw;
-  margin-right: 15vw;
-  text-decoration: underline;
+  margin-right: 10vw;
+  
   font-weight: bold;
 }
 
