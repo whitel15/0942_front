@@ -49,19 +49,23 @@ function DetailPage(props) {
     }
   }
   
+  const [isLoading, setLoading] = useState(false);
   const [isScrapped, setScrapped] = useState(false);
   const [scrapnum, setScrapnum] = useState(post.scrap_num);
   useEffect(() => {
+    setLoading(false);
     axios.post(`http://localhost:8080/main/post/${post.id}/scrapped`, { USER_ID: localStorage.getItem("user")})
     .then((response) => {
       console.log(response.data)
       if (response.data != 0) {
         setScrapped(true);
       }
+      setLoading(true);
     })
   }, [])
 
   const clickScrap = async () => {
+    setLoading(false);
     if (isScrapped == false) {
       setScrapped(true);
       setScrapnum(scrapnum + 1);
@@ -70,6 +74,7 @@ function DetailPage(props) {
       setScrapnum(scrapnum - 1);
     }
     const response = await axios.post(`http://localhost:8080/main/post/${post.id}/scrap`, { USER_ID: localStorage.getItem("user") })
+    setLoading(true);
     console.log(response.data)
     console.log("스크랩" + isScrapped + " " + scrapnum)
   }
@@ -125,7 +130,11 @@ function DetailPage(props) {
                   <span className="post_id">{post.writer}</span>{" "}
                 </Link>
                 <span className="post_date">{post.date}</span>
-                <span className="post_score">{post.writer_score}점</span>
+                {post.writer_score == null ?
+                  <span className="post_score">점</span>
+                  :
+                  <span className="post_score">{post.writer_score}점</span>
+                }
               </div>
               <aside>
                 <div className={imgs.length !== 0 ? "detail_slider" : null}>
@@ -180,22 +189,42 @@ function DetailPage(props) {
           </div>
         </div>
         <div className="detail_button">
-          <Link
-            to={{
-              pathname: `/chat/${post.writer}`,
-              state: {
-                writer: post.writer,
-              },
-            }}
-          >
-            <div>채팅</div>
-          </Link>
-          <div className="detail_scrap" onClick={clickScrap}>
-            <span role="img" aria-level="heart">
-              ❤️
-            </span>{" "}
+        {islogedId !== null && islogedId === post.writer ?
+          null :
+            <Link
+              to={{
+                pathname: `/chat/${post.writer}`,
+                state: {
+                  writer: post.writer,
+                },
+              }}
+            >
+              <div>채팅</div>
+            </Link>
+          }
+          {islogedId !== null && islogedId === post.writer ?
+            <div className="detail_scrap" onClick={() => {alert("내가 쓴 글은 스크랩할 수 없습니다.")}} style={{width:"70vw", maxWidth:"850px"}}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
             {scrapnum}
-          </div>
+            </div>
+            :
+            isLoading ?
+            <div className="detail_scrap" onClick={clickScrap}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {scrapnum}
+            </div>
+            :
+            <div className="detail_scrap">
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {scrapnum}
+            </div>
+          }
         </div>
       </div>
     </div>
