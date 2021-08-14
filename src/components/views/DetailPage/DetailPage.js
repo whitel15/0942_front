@@ -180,22 +180,34 @@ function DetailPage(props) {
           </div>
         </div>
         <div className="detail_button">
-          <Link
-            to={{
-              pathname: `/chat/${post.writer}`,
-              state: {
-                writer: post.writer,
-              },
-            }}
-          >
-            <div>채팅</div>
-          </Link>
-          <div className="detail_scrap" onClick={clickScrap}>
-            <span role="img" aria-level="heart">
-              ❤️
-            </span>{" "}
+        {islogedId !== null && islogedId === post.writer ?
+          null :
+            <Link
+              to={{
+                pathname: `/chat/${post.writer}`,
+                state: {
+                  writer: post.writer,
+                },
+              }}
+            >
+              <div>채팅</div>
+            </Link>
+          }
+          {islogedId !== null && islogedId === post.writer ?
+            <div className="detail_scrap" onClick={() => {alert("내가 쓴 글은 스크랩할 수 없습니다.")}} style={{width:"70vw", maxWidth:"850px"}}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
             {scrapnum}
-          </div>
+            </div>
+            :
+            <div className="detail_scrap" onClick={clickScrap}>
+              <span role="img" aria-level="heart">
+                ❤️
+              </span>{" "}
+              {scrapnum}
+            </div>
+          }
         </div>
       </div>
     </div>
