@@ -196,6 +196,7 @@ function DetailPage(props) {
                 pathname: `/chat/${post.writer}`,
                 state: {
                   writer: post.writer,
+                  postnum:post.id
                 },
               }}
             >

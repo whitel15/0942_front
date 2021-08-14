@@ -27,7 +27,7 @@ function NavBar() {
   const clickOutside = ({ target }) => {
     if (isOpen) setOpen(false);
   }; // leftNav가 아닌 부분 클릭 시 닫히게 함
-  
+
   useEffect(() => {
     window.addEventListener("click", clickOutside);
     return () => {
@@ -39,18 +39,18 @@ function NavBar() {
   const [logedinuser, setLogedinuser] = useState(window.localStorage.getItem("user"));
   const history = useHistory();
   // setLogedinuser( window.localStorage.getItem("user"));
-  useEffect(()=>{
-    setLogedinuser( window.localStorage.getItem("user"));
+  useEffect(() => {
+    setLogedinuser(window.localStorage.getItem("user"));
     // window.addEventListener('unload', function(e){console.log("이동함"); setLogedinuser(logedinuser)})
-    history.listen((location)=>{
-      console.log("이동함"); 
+    history.listen((location) => {
+      // console.log("이동함");
       // window.location.reload();
       // setLogedinuser(window.localStorage.getItem("user"));
     })
     if (logedinuser) {
       // console.log("로그인됨!:", logedinuser);
     }
-    else{
+    else {
       // console.log("로그인안됨!:", logedinuser);
     }
   }, [])
@@ -84,14 +84,23 @@ function NavBar() {
           </span>
           :
           <span>
-            {/* <Link > */}
-            <h3 className="nav_logedinuserId" onClick={()=>{localStorage.removeItem("user"); setLogedinuser(null); window.location.reload();}}>
-              {logedinuser} 님
+
+            <h3 className="nav_logout" onClick={()=>{localStorage.clear(); window.location.reload();}}>
+              로그아웃
             </h3>
-            {/* </Link> */}
-            {/* <h3 onClick={localStorage.clear()}>
-              {logedinuser}
-            </h3> */}
+            
+            <Link
+              to={{
+                pathname: `/mypage/${logedinuser}`,
+                state:{
+                  logedinuser:logedinuser
+                }
+              }}>
+              <h3 className="nav_logedinuserId" >
+                {logedinuser} 님
+              </h3>
+            </Link>
+
           </span>
         }
 
