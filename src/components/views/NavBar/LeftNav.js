@@ -24,10 +24,17 @@ function LeftNav() {
           <Link onClick={logout}>Logout</Link>
           <Link
             to={{
+              pathname: `/mypage/${loginId}`,
+            }}
+          >
+            My Page
+          </Link>
+          <Link
+            to={{
               pathname: `/myscrap/${loginId}`,
             }}
           >
-            내 스크랩
+            My Scraps
           </Link>
         </div>
       )}
