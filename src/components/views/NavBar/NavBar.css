@@ -91,25 +91,32 @@
 .nav_logedinuserId{
   float: right;
   margin: 25px 0;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   padding: 1rem 1.7rem;
   border-radius: 30px;
   text-decoration: underline;
-  color: rgb(58, 58, 58);
+  text-underline-position: under;
+  color: black;
+  
 }
 .nav_logout{
   
   float: right;
   margin: 25px 0;
-  font-size: 1.5rem;
-  color: rgb(58, 58, 58);
-  
+  font-size: 1.6rem;
+  color: black;
   padding: 1rem 1.7rem;
+  background-color: white;
+  border-radius: 30px;
 
   margin-left: 1.5vw;
   margin-right: 10vw;
-  
+}
+.nav_logout:hover {
+  cursor: pointer;
+  background-color: gray;
   font-weight: bold;
+  color: white;
 }
 
 @media (max-width: 768px) {
@@ -137,7 +144,9 @@
   .nav_burger_click {
     left: calc(50vw - 7rem);
   }
-  .nav_logedinuserId{
-    margin-right: 10vw;
+  .nav_logedinuserId, .nav_logout {
+    margin-top: calc((10vh - 1vw - 2rem) / 2);
+    padding: 1rem 1.2rem;
+    font-size: 3vw;
   }
 }

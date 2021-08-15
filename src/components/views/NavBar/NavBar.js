@@ -3,6 +3,7 @@ import { Link, useHistory, withRouter } from "react-router-dom";
 import LeftNav from "./LeftNav";
 import Burger from "./Burger";
 import "./NavBar.css";
+import mypageicon from '../../../asset/mypageicon.png';
 
 function NavBar() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -96,7 +97,8 @@ function NavBar() {
                   logedinuser:logedinuser
                 }
               }}>
-              <h3 className="nav_logedinuserId" >
+              <h3 className="nav_logedinuserId" style={{display:"flex", textAlign:"center"}}>
+                {/* <img src={mypageicon} style={{height:"25px", marginRight:"0.7rem", marginTop:"-0.5rem"}}></img> */}
                 {logedinuser} 님
               </h3>
             </Link>
