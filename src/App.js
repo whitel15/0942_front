@@ -17,11 +17,21 @@ import { BrowserRouter, Route } from "react-router-dom";
 import ChattingList from "./components/views/ChattingList/ChattingList";
 import ScrapPage from "./components/views/ScrapPage/ScrapPage";
 import Mypage from "./components/views/MyPage/Mypage";
+import axios from "axios";
 
 
 /*global kakao*/
 
 function App() {
+  let user = localStorage.getItem("user");
+  console.log(user);
+
+  const saveAddress = (dong) => {
+    console.log(dong)
+    axios.post(`http://localhost:8080/save/current/address/${user}`, {dong})
+    .then((response) => {
+    })
+  }
   
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -32,6 +42,12 @@ function App() {
       var coord = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
       var callback = function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
+          const dong = result[0].address.region_1depth_name + " " + result[0].address.region_2depth_name + " " + result[0].address.region_3depth_name
+          // console.log(dong)
+          if (user !== null) {
+            console.log(user + "!!!!!!!")
+            saveAddress(dong);
+          }
           console.log('그런 너를 마주칠까 ' + result[0].address.address_name + '을 못가');
           localStorage.setItem("currentLocation",result[0].address.address_name);
         }

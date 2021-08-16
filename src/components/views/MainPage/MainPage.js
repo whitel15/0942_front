@@ -57,8 +57,6 @@ function MainPage(props) {
       setAll([...response.data]);
     };
     fetchPost();
-    return () => {
-    }
   }, [history.action]);
   
   useEffect(() => {
@@ -70,8 +68,6 @@ function MainPage(props) {
     })
     console.log(result)
     setPosts(result)
-    return () => {
-    }
   }, [props])
 
   const [currentPage, setCurrentPage] = useState(1);
