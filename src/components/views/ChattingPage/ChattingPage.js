@@ -71,7 +71,7 @@ export default function ChattingPage(props) {
             setAllChat(oldArray => [...oldArray, response.data[i].message]);
             setIsMymessage(oldArray => [...oldArray, response.data[i].who]);
             setMessageTime(oldArray => [...oldArray, response.data[i].time]);
-            
+
 
 
             // setAllChat(allChat.concat(response.data[i]))
@@ -154,6 +154,41 @@ export default function ChattingPage(props) {
     return tmp;
   };
 
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const getSinglePostInfo=()=>{
+    axios.post('http://localhost:8080/getSinglePost', {
+            MY_ID: props.location.state.postnum
+        }
+            , {
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                }
+            }
+        )
+            .then(response => {
+                console.log(response.data);
+                messagecount = Object.keys(response.data).length;
+                // console.log(response.data[0], messagecount);
+
+
+
+                for (let i = 0; i < messagecount; i++) {
+
+                    if (response.data[i]) {
+
+                        setPosts([...response.data]);
+
+                    }
+                }
+                setLoading(false);
+            }) // SUCCESS
+            .catch(response => { console.log(response); }); // ERROR
+  }
+
+
+
   return (
     <div>
       <NavBar />
@@ -179,18 +214,6 @@ export default function ChattingPage(props) {
             </div>
           </div>
           <hr style={{ margin: "15px" }} />
-          {/* <div className="chat_chat_div">
-                    {othersChat.map((chat, i) => {
-                        var tmp = sliceMessage(chat);
-                        console.log(tmp);
-                        return (<div className="chat_chat_not_me_div"><div className="" style={{ width: messageBoxWidth, backgroundColor: "#c4c4c4" , borderRadius:"15px"}}>{tmp.map((m) => { return <div className="chat_message_span">{m}</div>; })}</div><div style={{ height: (window.innerWidth) * 0.03 * chat / maxlength, position: "relative" }}><div style={{ verticalAlign: "bottom", position: "absolute", bottom: 0 }}>오후 11:10</div></div></div>);
-                    })}
-                    {myChat.map((chat, i)=>{
-                         var tmp = sliceMessage(chat);
-                         console.log(tmp);
-                         return (<div><div className="chat_chat_my_div"><div className="" style={{ width: messageBoxWidth, backgroundColor: "#c4c4c4" , borderRadius:"15px"}}>{tmp.map((m) => { return <div className="chat_message_span">{m}</div>; })}</div><div style={{ height: (window.innerWidth) * 0.03 * chat / maxlength, position: "relative" }}><div style={{ verticalAlign: "bottom", position: "absolute", bottom: 0 }}>오후 11:10</div></div></div></div>);
-                    })}
-                </div> */}
 
           <table className="chat_message_table">
 
@@ -211,7 +234,7 @@ export default function ChattingPage(props) {
               else {
                 messagenoon = "오전";
               }
-              
+
               if (isMyMessage[i] == "me") {
                 return (
                   <tr>
@@ -294,62 +317,12 @@ export default function ChattingPage(props) {
                 );
               }
             })}
-
-
-            {/* 상대 채팅 메시지 */}
-            {/* {othersChat.map((chat, i) => {
-              var tmp = sliceMessage(chat);
-              // console.log(tmp);
-              return (
-                <tr>
-                  <div className="chat_chat_not_me_div">
-                    <div
-                      className=""
-                      style={{
-                        width: messageBoxWidth,
-                        backgroundColor: "rgb(220, 220, 220)",
-                        borderRadius: "15px",
-                        padding: "1.5rem",
-                      }}
-                    >
-                      {tmp.map(m => {
-                        return <div className="chat_message_span">{m}</div>;
-                      })}
-                    </div>
-                    <div
-                      style={{
-                        height: (window.innerWidth * 0.03 * chat) / maxlength,
-                        position: "relative",
-                      }}
-                    >
-                      <div
-                        style={{
-                          verticalAlign: "bottom",
-                          position: "absolute",
-                          bottom: 0,
-                          left: "0.5rem",
-                        }}
-                      >
-                        오후 <br />11:10
-                      </div>
-                    </div>
-                  </div>
-                </tr>
-              );
-            })} */}
-
-            {/* 내 채팅 메시지 */}
-            {/* {myChat.map((chat, i) => {
-              var tmp = sliceMessage(chat);
-              // console.log(tmp);
-
-            })} */}
           </table>
 
         </div>
 
         <div className="chat_send_div">
-          <input
+          <textarea
             type="text"
             value={messageToSend}
             onInput={e => setMessageToSend(e.target.value)}
@@ -357,7 +330,34 @@ export default function ChattingPage(props) {
             className="chat_message_textinput"
           />
           <div className="chat_send_empty" />
-          <button className="chat_send_button" onClick={() => { sendMessage(); }}>send</button>
+          <button className="chat_send_button" onClick={() => { sendMessage(); }}>전송</button>
+        </div>
+        <div className="chat_go_to_post_div">
+          {/* <button className="chat_go_to_post_button" onClick={() => { }}>게시글로 이동</button> */}
+          <Link 
+          onClick={()=>{
+            getSinglePostInfo();
+          }} 
+          to={{
+            pathname: `/post/${posts[0].id}`,
+            state: {
+              key:posts[0].id,
+              id:posts[0].id,
+              writer:posts[0].userId,
+              imgs:posts[0].images,
+              date:posts[0].date,
+              title:posts[0].title,
+              cost:posts[0].cost,
+              place:posts[0].place,
+              invite_num:posts[0].invite_num,
+              content:posts[0].content,
+              writer_score:posts[0].writer_score,
+              scrap_num:posts[0].scrap_num,
+              category:posts[0].category
+            },
+          }}>
+            <text className="chat_go_to_post_button">게시글로 이동</text>
+          </Link>
         </div>
       </div>
     </div>
