@@ -17,7 +17,12 @@ import logouticon from '../../../asset/logouticon.png';
 import bookmarkicon from '../../../asset/bookmarkicon.png';
 
 export default function Mypage(props) {
+
     const history = useHistory();
+    if (localStorage.getItem('user') == null) {
+        alert('로그인이 필요한 서비스 입니다.');
+        history.push("/login");
+    }
     console.log(props.logedinuser);
     return (
         <div>
@@ -43,11 +48,6 @@ export default function Mypage(props) {
                     <hr />
                     <div className="mypage_buttons_div">
                         <table className="mypage_button_table">
-                            {/* <tr>
-                                <td>
-                                    <button className="mypage_button--pandora"><span>나의 채팅함</span></button>
-                                </td>
-                            </tr> */}
                             <tr style={{ width: "100%" }}>
                                 <td style={{ width: "100%" }}>
                                     <Link
@@ -65,35 +65,39 @@ export default function Mypage(props) {
                             <tr style={{ height: "5px" }}></tr>
                             <tr style={{ width: "100%" }}>
                                 <td style={{ width: "100%" }}>
-                                    <button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={listicon} className="mypage_button_icon2" /><text>나의 게시글</text></span></div></button>
+                                    <Link
+                                        to={{ pathname: `/mypage/postlist/${localStorage.getItem('user')}` }}
+                                    >
+                                        <button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={listicon} className="mypage_button_icon2" /><text>나의 게시글</text></span></div></button>
+                                    </Link>
                                 </td>
                             </tr>
                             <tr style={{ height: "5px" }}></tr>
                             <tr style={{ width: "100%" }}>
                                 <td style={{ width: "100%" }}>
                                     <Link
-                                        to={{pathname: `/myscrap/${localStorage.getItem('user')}`}}
+                                        to={{ pathname: `/myscrap/${localStorage.getItem('user')}` }}
                                     >
-                                    < button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={bookmarkicon} className="mypage_button_icon2" /><text>나의 스크랩</text></span></div></button>
+                                        < button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={bookmarkicon} className="mypage_button_icon2" /><text>나의 스크랩</text></span></div></button>
                                     </Link>
                                 </td>
                             </tr>
-                        <tr style={{ height: "5px" }}></tr>
-                        <tr style={{ width: "100%" }}>
-                            <td style={{ width: "100%" }}>
-                                <button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={settingicon} className="mypage_button_icon2" /><text>설정</text></span></div></button>
-                            </td>
-                        </tr>
-                        <tr style={{ height: "5px" }}></tr>
-                        <tr style={{ width: "100%" }}>
-                            <td style={{ width: "100%" }}>
-                                <button className=" mypage_button button--bestia"><div className="button__bg" onClick={() => { localStorage.clear(); history.push("/"); }}></div><div className="mypage_button_inner_div"><span><img src={logouticon} className="mypage_button_icon2" /><text>로그아웃</text></span></div></button>
-                            </td>
-                        </tr>
+                            <tr style={{ height: "5px" }}></tr>
+                            <tr style={{ width: "100%" }}>
+                                <td style={{ width: "100%" }}>
+                                    <button className=" mypage_button button--bestia"><div className="button__bg"></div><div className="mypage_button_inner_div"><span><img src={settingicon} className="mypage_button_icon2" /><text>설정</text></span></div></button>
+                                </td>
+                            </tr>
+                            <tr style={{ height: "5px" }}></tr>
+                            <tr style={{ width: "100%" }}>
+                                <td style={{ width: "100%" }}>
+                                    <button className=" mypage_button button--bestia"><div className="button__bg" onClick={() => { localStorage.clear(); history.push("/"); }}></div><div className="mypage_button_inner_div"><span><img src={logouticon} className="mypage_button_icon2" /><text>로그아웃</text></span></div></button>
+                                </td>
+                            </tr>
                         </table>
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     )
 }
