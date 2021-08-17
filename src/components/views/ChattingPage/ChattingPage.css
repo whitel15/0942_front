@@ -45,6 +45,9 @@
     margin-right: 1rem;
 }
 
+.chat_isLoading{
+    text-align: center;
+}
 .chat_message_table{
     width: 70vw;
     margin: 10px;
@@ -114,7 +117,9 @@
 
 .chat_go_to_post_div{
     width: 74vw;
-    margin-top: 5px;
+    margin: auto;
+    /* display: flex; */
+    margin-top: 15px;
 }
 .chat_go_to_post_button{
     float: right;    
