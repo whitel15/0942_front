@@ -18,6 +18,7 @@ import ChattingList from "./components/views/ChattingList/ChattingList";
 import ScrapPage from "./components/views/ScrapPage/ScrapPage";
 import Mypage from "./components/views/MyPage/Mypage";
 import axios from "axios";
+import MyPostList from "./components/views/MyPostList/MyPostList";
 
 
 /*global kakao*/
@@ -42,7 +43,7 @@ function App() {
       var coord = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
       var callback = function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
-          const dong = result[0].address.region_1depth_name + " " + result[0].address.region_2depth_name + " " + result[0].address.region_3depth_name
+          const dong = result[0].address.region_2depth_name + " " + result[0].address.region_3depth_name
           // console.log(dong)
           if (user !== null) {
             console.log(user + "!!!!!!!")
@@ -57,6 +58,7 @@ function App() {
     });
     // KakaoMap();
   })
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -74,6 +76,7 @@ function App() {
       <Route exact path="/user/:id" component={UserPage} />
       <Route exact path="/myscrap/:id" component={ScrapPage} />
       <Route exact path="/mypage/:id" component={Mypage} />
+      <Route exact path="/mypage/postlist/:id" component={MyPostList}/>
       <Footer />
     </BrowserRouter>
   );

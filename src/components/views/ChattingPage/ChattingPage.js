@@ -38,6 +38,8 @@ export default function ChattingPage(props) {
   const [allChat, setAllChat] = useState([]);
   const [isMyMessage, setIsMymessage] = useState([]);
   const [messageTime, setMessageTime] = useState([]);
+  const [post, setPost] = useState({});
+  const [isLoading, setLoading] = useState(true);
 
   const getMessagesFromServer = () => {
     console.log(props.location.state.postnum);
@@ -71,7 +73,8 @@ export default function ChattingPage(props) {
             setAllChat(oldArray => [...oldArray, response.data[i].message]);
             setIsMymessage(oldArray => [...oldArray, response.data[i].who]);
             setMessageTime(oldArray => [...oldArray, response.data[i].time]);
-            
+
+
 
 
             // setAllChat(allChat.concat(response.data[i]))
@@ -85,10 +88,57 @@ export default function ChattingPage(props) {
 
   }
 
+  const getSinglePostInfo = () => {
+    console.log("start!");
+    axios.post('http://localhost:8080/getSinglePost', {
+      postID: props.location.state.postnum
+    }
+      , {
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        }
+      }
+    )
+      .then(response => {
+
+        let tmpcount = Object.keys(response.data).length;
+        // console.log(response.data[0], messagecount);
+
+        console.log(response.data.id, tmpcount);
+
+        setPost(
+          {
+            key: response.data.id,
+            id: response.data.id,
+            writer: response.data.userId,
+            imgs: response.data.images,
+            date: response.data.date,
+            title: response.data.title,
+            cost: response.data.cost,
+            place: response.data.place,
+            invite_num: response.data.invite_num,
+            content: response.data.content,
+            writer_score: response.data.writer_score,
+            scrap_num: response.data.scrap_num,
+            category: response.data.category
+          }
+        );
+
+        setLoading(false);
+        console.log(post);
+      }) // SUCCESS
+      .catch(response => { console.log(response); }); // ERROR
+  }
+
   useEffect(() => {
     getMessagesFromServer();
+
+
   }, []);
-  console.log(messageTime);
+  useEffect(() => {
+    getSinglePostInfo();
+  }, []);
+  // console.log(messageTime);
   const writer = props.location.state.writer;
 
   const sendMessage = () => {
@@ -114,7 +164,7 @@ export default function ChattingPage(props) {
       })
       .catch(function (error) {
         console.log(error)
-        alert('입력란을 모두 완성해주세요!')
+        alert('잠시후 재시도해주세요!')
         // window.location.href='/login'
       });
 
@@ -154,6 +204,11 @@ export default function ChattingPage(props) {
     return tmp;
   };
 
+
+
+
+
+
   return (
     <div>
       <NavBar />
@@ -179,99 +234,35 @@ export default function ChattingPage(props) {
             </div>
           </div>
           <hr style={{ margin: "15px" }} />
-          {/* <div className="chat_chat_div">
-                    {othersChat.map((chat, i) => {
-                        var tmp = sliceMessage(chat);
-                        console.log(tmp);
-                        return (<div className="chat_chat_not_me_div"><div className="" style={{ width: messageBoxWidth, backgroundColor: "#c4c4c4" , borderRadius:"15px"}}>{tmp.map((m) => { return <div className="chat_message_span">{m}</div>; })}</div><div style={{ height: (window.innerWidth) * 0.03 * chat / maxlength, position: "relative" }}><div style={{ verticalAlign: "bottom", position: "absolute", bottom: 0 }}>오후 11:10</div></div></div>);
-                    })}
-                    {myChat.map((chat, i)=>{
-                         var tmp = sliceMessage(chat);
-                         console.log(tmp);
-                         return (<div><div className="chat_chat_my_div"><div className="" style={{ width: messageBoxWidth, backgroundColor: "#c4c4c4" , borderRadius:"15px"}}>{tmp.map((m) => { return <div className="chat_message_span">{m}</div>; })}</div><div style={{ height: (window.innerWidth) * 0.03 * chat / maxlength, position: "relative" }}><div style={{ verticalAlign: "bottom", position: "absolute", bottom: 0 }}>오후 11:10</div></div></div></div>);
-                    })}
-                </div> */}
 
-          <table className="chat_message_table">
+          {isLoading?
+          (<h2 className="chat_isLoading">Loading...</h2>)
+          :
+          (<table className="chat_message_table">
 
-            {allChat.map((chat, i) => {
-              var tmp = sliceMessage(chat);
-              // console.log(tmp);
-              let messageyear = String(messageTime[i]).substring(0, 4);
-              let messagemonth = String(messageTime[i]).substring(5, 7);
-              let messagedate = String(messageTime[i]).substring(8, 10);
-              let messagehour = parseInt(String(messageTime[i]).substring(11, 13));
-              let messageminute = parseInt(String(messageTime[i]).substring(14, 16));
-              let messagesecond = parseInt(String(messageTime[i]).substring(16));
-              let messagenoon = "오후";
-              if (messagehour > 11) {
-                messagenoon = "오후";
-                messagehour = messagehour - 12;
-              }
-              else {
-                messagenoon = "오전";
-              }
-              
-              if (isMyMessage[i] == "me") {
-                return (
-                  <tr>
-                    <div style={{ float: 'right' }}>
-                      <div className="chat_chat_my_div">
-                        <div
-                          style={{
-                            height: (window.innerWidth * 0.03 * chat) / maxlength,
-                            position: "relative",
-                          }}
-                        >
-                          <div
-                            style={{
-                              verticalAlign: "bottom",
-                              position: 'absolute',
-                              right: "0.5rem",
-                              bottom: 0,
-                            }}
-                          >
-                            {messagenoon}
-                            <br />
-                            {messagehour}:{messageminute}
-                          </div>
-                        </div>
-                        <div
-                          className=""
-                          style={{
-                            width: messageBoxWidth,
-                            backgroundColor: "rgb(198, 211, 228)",
-                            borderRadius: "15px",
-                            padding: "1.5rem",
-                          }}
-                        >
-                          {tmp.map(m => {
-                            return <div className="chat_message_span">{m}</div>;
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  </tr>
-                );
-              }
+          {allChat.map((chat, i) => {
+            var tmp = sliceMessage(chat);
+            // console.log(tmp);
+            let messageyear = String(messageTime[i]).substring(0, 4);
+            let messagemonth = String(messageTime[i]).substring(5, 7);
+            let messagedate = String(messageTime[i]).substring(8, 10);
+            let messagehour = parseInt(String(messageTime[i]).substring(11, 13));
+            let messageminute = parseInt(String(messageTime[i]).substring(14, 16));
+            let messagesecond = parseInt(String(messageTime[i]).substring(16));
+            let messagenoon = "오후";
+            if (messagehour > 11) {
+              messagenoon = "오후";
+              messagehour = messagehour - 12;
+            }
+            else {
+              messagenoon = "오전";
+            }
 
-              else {
-                return (
-                  <tr>
-                    <div className="chat_chat_not_me_div">
-                      <div
-                        className=""
-                        style={{
-                          width: messageBoxWidth,
-                          backgroundColor: "rgb(220, 220, 220)",
-                          borderRadius: "15px",
-                          padding: "1.5rem",
-                        }}
-                      >
-                        {tmp.map(m => {
-                          return <div className="chat_message_span">{m}</div>;
-                        })}
-                      </div>
+            if (isMyMessage[i] == "me") {
+              return (
+                <tr>
+                  <div style={{ float: 'right' }}>
+                    <div className="chat_chat_my_div">
                       <div
                         style={{
                           height: (window.innerWidth * 0.03 * chat) / maxlength,
@@ -281,25 +272,36 @@ export default function ChattingPage(props) {
                         <div
                           style={{
                             verticalAlign: "bottom",
-                            position: "absolute",
+                            position: 'absolute',
+                            right: "0.5rem",
                             bottom: 0,
-                            left: "0.5rem",
                           }}
                         >
-                          {messagenoon} <br />{messagehour}:{messageminute}
+                          {messagenoon}
+                          <br />
+                          {messagehour}:{messageminute}
                         </div>
                       </div>
+                      <div
+                        className=""
+                        style={{
+                          width: messageBoxWidth,
+                          backgroundColor: "rgb(198, 211, 228)",
+                          borderRadius: "15px",
+                          padding: "1.5rem",
+                        }}
+                      >
+                        {tmp.map(m => {
+                          return <div className="chat_message_span">{m}</div>;
+                        })}
+                      </div>
                     </div>
-                  </tr>
-                );
-              }
-            })}
+                  </div>
+                </tr>
+              );
+            }
 
-
-            {/* 상대 채팅 메시지 */}
-            {/* {othersChat.map((chat, i) => {
-              var tmp = sliceMessage(chat);
-              // console.log(tmp);
+            else {
               return (
                 <tr>
                   <div className="chat_chat_not_me_div">
@@ -330,26 +332,21 @@ export default function ChattingPage(props) {
                           left: "0.5rem",
                         }}
                       >
-                        오후 <br />11:10
+                        {messagenoon} <br />{messagehour}:{messageminute}
                       </div>
                     </div>
                   </div>
                 </tr>
               );
-            })} */}
-
-            {/* 내 채팅 메시지 */}
-            {/* {myChat.map((chat, i) => {
-              var tmp = sliceMessage(chat);
-              // console.log(tmp);
-
-            })} */}
-          </table>
+            }
+          })}
+        </table>)
+          }
 
         </div>
 
         <div className="chat_send_div">
-          <input
+          <textarea
             type="text"
             value={messageToSend}
             onInput={e => setMessageToSend(e.target.value)}
@@ -357,7 +354,36 @@ export default function ChattingPage(props) {
             className="chat_message_textinput"
           />
           <div className="chat_send_empty" />
-          <button className="chat_send_button" onClick={() => { sendMessage(); }}>send</button>
+          <button className="chat_send_button" onClick={() => { sendMessage(); }}>전송</button>
+        </div>
+        <div className="chat_go_to_post_div">
+          {/* <button className="chat_go_to_post_button" onClick={() => { }}>게시글로 이동</button> */}
+          {/* {post.map((post, index) => {
+            console.log(post);
+            return ( */}
+          <Link
+                to={{
+                  pathname: `/post/${props.location.state.postnum}`,
+                  state: {
+                    key: post.key,
+                    id: post.id,
+                    writer: post.writer,
+                    imgs: post.imgs,
+                    date: post.date,
+                    title: post.title,
+                    cost: post.cost,
+                    place: post.place,
+                    invite_num: post.invite_num,
+                    content: post.content,
+                    writer_score: post.writer_score,
+                    scrap_num: post.scrap_num,
+                    category: post.category
+                  },
+                }}>
+                <text className="chat_go_to_post_button">게시글로 이동</text>
+              </Link>
+          {/* )
+          })} */}
         </div>
       </div>
     </div>

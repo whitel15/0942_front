@@ -47,7 +47,7 @@ function MainPage(props) {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await instance.get("http://localhost:8080/main/post", {
+      const response = await instance.get(`http://localhost:8080/main/post/${islogedId}`, {
         forceUpdate: history.action === "PUSH",
         cache: true,
       });
