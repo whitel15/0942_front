@@ -45,6 +45,7 @@ export default function ChattingList(props) {
     const [postNum, setPostNum] = useState([]);
     const [theArray, setTheArray] = useState([]);
     const [isThereAnyMessage, setIsThereAnyMessage] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const getMessagesFromServer = () => {
         console.log(props.location.state.postnum);
@@ -94,6 +95,7 @@ export default function ChattingList(props) {
                         setReceiver(oldArray => [...oldArray, response.data[i].receiver]);
                     }
                 }
+                setIsLoaded(true);
             }) // SUCCESS
             .catch(response => { console.log(response); }); // ERROR
 
@@ -103,7 +105,7 @@ export default function ChattingList(props) {
         getMessagesFromServer();
     }, []);
 
-    console.log(postNum);
+    // console.log(postNum);
 
     const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
     const isMobile = useMediaQuery({
@@ -126,7 +128,8 @@ export default function ChattingList(props) {
 
 
 
-                {isThereAnyMessage ? (
+                {isLoaded?
+                isThereAnyMessage ? (
                     finalMessage.map((message, i) => {
                         console.log("df");
                         return (
@@ -157,7 +160,9 @@ export default function ChattingList(props) {
                         )
                     }))
                     :
-                    (<div>메세지함이 비었습니다...</div>)}
+                    (<div>메세지함이 비었습니다...</div>)
+                    :
+                    (<h2>Loading...</h2>)}
 
             </div>
         </div>
