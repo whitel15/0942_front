@@ -105,7 +105,8 @@ export default function ChattingPage(props) {
         // console.log(response.data[0], messagecount);
 
         console.log(response.data.id, tmpcount);
-
+        const percost = Math.round(response.data.cost / (response.data.invite_num + 1));
+        
         setPost(
           {
             key: response.data.id,
@@ -120,7 +121,8 @@ export default function ChattingPage(props) {
             content: response.data.content,
             writer_score: response.data.writer_score,
             scrap_num: response.data.scrap_num,
-            category: response.data.category
+            category: response.data.category,
+            percost: percost,
           }
         );
 
@@ -377,7 +379,8 @@ export default function ChattingPage(props) {
                     content: post.content,
                     writer_score: post.writer_score,
                     scrap_num: post.scrap_num,
-                    category: post.category
+                    category: post.category,
+                    percost: post.percost
                   },
                 }}>
                 <text className="chat_go_to_post_button">게시글로 이동</text>
