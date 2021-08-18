@@ -55,7 +55,7 @@ export default function TitleCategory(props) {
 
     const goBack = () => {
         if (history.location.pathname.includes('/post')) {
-            history.goBack();
+            history.push('/main')
         }
         if (history.location.pathname.includes('/write')) {
             history.goBack();
