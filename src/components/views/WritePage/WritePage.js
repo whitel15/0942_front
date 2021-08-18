@@ -7,6 +7,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import TextField from '@material-ui/core/TextField';
+import { Link } from "react-router-dom";
 
 
 export default function WritePage(props) {
@@ -150,6 +151,7 @@ export default function WritePage(props) {
         setCost(e.target.value);
     }
 
+
     const postUpload = () => {
         if (title === "") {
             alert("제목을 입력하세요."); return;
@@ -185,9 +187,28 @@ export default function WritePage(props) {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-            ).then((response) => 
-                history.push('/main')
-            );
+            ).then((response) => {
+                const percost = Math.round(response.data.cost / (response.data.invite_num + 1));
+                history.push({
+                    pathname: `/post/${response.data.id}`,
+                    state: {
+                        key: response.data.id,
+                        id: response.data.id,
+                        writer: response.data.userId,
+                        imgs: response.data.images,
+                        date: response.data.date,
+                        title: response.data.title,
+                        cost: response.data.cost,
+                        place: response.data.place,
+                        invite_num: response.data.invite_num,
+                        content: response.data.content,
+                        writer_score: response.data.writer_score,
+                        scrap_num: response.data.scrap_num,
+                        category: response.data.category,
+                        percost: percost,
+                    },
+                })
+            });
         } else { // 글 수정
             console.log(putImage)
             console.log(deleteImageUrl)
@@ -200,7 +221,26 @@ export default function WritePage(props) {
                     }
                 }
             ).then((response) => {
-                history.push('/main')
+                const percost = Math.round(response.data.cost / (response.data.invite_num + 1));
+                history.push({
+                    pathname: `/post/${response.data.id}`,
+                    state: {
+                        key: response.data.id,
+                        id: response.data.id,
+                        writer: response.data.userId,
+                        imgs: response.data.images,
+                        date: response.data.date,
+                        title: response.data.title,
+                        cost: response.data.cost,
+                        place: response.data.place,
+                        invite_num: response.data.invite_num,
+                        content: response.data.content,
+                        writer_score: response.data.writer_score,
+                        scrap_num: response.data.scrap_num,
+                        category: response.data.category,
+                        percost: percost,
+                    },
+                })
             });
         }
     };
