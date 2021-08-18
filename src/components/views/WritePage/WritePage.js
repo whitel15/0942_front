@@ -15,6 +15,17 @@ export default function WritePage(props) {
     useEffect(() => {
         if(islogedId==null){alert("로그인 먼저 해주세요!"); history.push('/login')}
     }, [])
+    // 주소 인증
+    useEffect(() => {
+        axios.get(`http://localhost:8080/address/certification/${islogedId}`)
+        .then((response) => {
+            console.log(response.data)
+            if (response.data == false) {
+                alert("회원가입 시 입력한 주소와 현재 위치가 동일하지 않습니다.")
+                history.push('/main')
+            }
+        })
+    }, [])
     let post = props.location.state;
     let postImgs = [];
     let postTitle = "";
