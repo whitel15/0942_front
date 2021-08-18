@@ -60,13 +60,10 @@ export default function TitleCategory(props) {
         if (history.location.pathname.includes('/write')) {
             history.goBack();
         }
-        if (history.location.pathname.includes('/user')) {
-            history.goBack();
-            history.goBack();
-        }
         if (history.location.pathname.includes('/main')) {
             history.push('/main')
         }
+        history.push('/main')
     }
 
     return (

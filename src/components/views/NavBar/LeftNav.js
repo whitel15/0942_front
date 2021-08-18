@@ -36,6 +36,13 @@ function LeftNav() {
           >
             My Scraps
           </Link>
+          <Link
+            to={{
+              pathname: `/user/${loginId}`,
+            }}
+          >
+            My Reviews
+          </Link>
         </div>
       )}
     </div>
