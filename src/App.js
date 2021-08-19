@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import ScrollToTop from "./components/views/ScrollToTop";
 import NavBar from "./components/views/NavBar/NavBar";
@@ -26,6 +26,7 @@ import MyPostList from "./components/views/MyPostList/MyPostList";
 function App() {
   let user = localStorage.getItem("user");
   console.log(user);
+  const [dong, setDong] = useState("")
 
   const saveAddress = (dong) => {
     console.log(dong)
@@ -44,13 +45,14 @@ function App() {
       var callback = function (result, status) {
         if (status === kakao.maps.services.Status.OK) {
           const dong = result[0].address.region_2depth_name + " " + result[0].address.region_3depth_name
-          // console.log(dong)
+          setDong(dong)
           if (user !== null) {
             console.log(user + "!!!!!!!")
             saveAddress(dong);
           }
           console.log('그런 너를 마주칠까 ' + result[0].address.address_name + '을 못가');
           localStorage.setItem("currentLocation",result[0].address.address_name);
+          localStorage.setItem("currentDong", dong);
         }
       };
       
@@ -76,7 +78,7 @@ function App() {
       <Route exact path="/user/:id" component={UserPage} />
       <Route exact path="/myscrap/:id" component={ScrapPage} />
       <Route exact path="/mypage/:id" component={Mypage} />
-      <Route exact path="/mypage/postlist/:id" component={MyPostList}/>
+      <Route exact path="/mypage/postlist/:id" component={MyPostList} />
       <Footer />
     </BrowserRouter>
   );

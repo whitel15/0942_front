@@ -87,7 +87,7 @@ function NavBar() {
           <span>
 
             
-            <h3 className="nav_logout" onClick={()=>{localStorage.clear(); window.location.reload();}}>
+            <h3 className="nav_logout" onClick={()=>{localStorage.removeItem("user"); localStorage.removeItem("logined"); window.location.reload();}}>
               로그아웃
             </h3>
             

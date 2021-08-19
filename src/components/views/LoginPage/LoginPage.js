@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../NavBar/NavBar";
 import { Redirect } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 
 export default function LoginPage (){
+
+  let history = useHistory();
 
   const logintomain =React.useRef(null);
 
@@ -51,7 +54,8 @@ export default function LoginPage (){
             localStorage.setItem("user", id);
             localStorage.setItem("logined", "ok");
             console.log(response.data);
-            logintomain.current.click();
+            // logintomain.current.click();
+            history.push('/main');
           }
         }
 
@@ -94,7 +98,7 @@ export default function LoginPage (){
 
 
 
-          <Link to={{ pathname: "/main", state: { search } }} ref={logintomain}/>
+          {/* <Link to={{ pathname: "/main", state: { search } }} ref={logintomain}/> */}
           <button value="LOGIN" className="Login_button" onClick={sendServerLogin} >Login</button>
 
           <div className="Login_register">
