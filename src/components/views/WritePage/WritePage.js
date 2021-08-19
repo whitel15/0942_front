@@ -17,8 +17,9 @@ export default function WritePage(props) {
         if(islogedId==null){alert("로그인 먼저 해주세요!"); history.push('/login')}
     }, [])
     // 주소 인증
+    const [currentAddr, setCurrentAddr] = useState(localStorage.getItem("currentDong"));
     useEffect(() => {
-        axios.get(`http://localhost:8080/address/certification/${islogedId}`)
+        axios.get(`http://localhost:8080/address/certification/${islogedId}/${currentAddr}`)
         .then((response) => {
             console.log(response.data)
             if (response.data == false) {
@@ -151,7 +152,6 @@ export default function WritePage(props) {
         setCost(e.target.value);
     }
 
-
     const postUpload = () => {
         if (title === "") {
             alert("제목을 입력하세요."); return;
@@ -180,6 +180,7 @@ export default function WritePage(props) {
             formData.append('images', putImage[i]);
         }
         formData.append("post", new Blob([JSON.stringify(post)], {type: "application/json"}))
+        formData.append("post", new Blob([JSON.stringify({post})], {type: "application/json"}))
         if (props.match.params.id == 0) { // 글 작성
             axios.post('http://localhost:8080/write/upload', formData,
                 {
