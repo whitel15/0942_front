@@ -30,6 +30,9 @@ function MainPage(props) {
   const [address, setAddress] = useState(localStorage.getItem("currentDong"));
 
   useEffect(() => {
+    if (address == null) {
+      setAddress("");
+    }
     if (address != null) {
       axios.post(`http://localhost:8080/save/current/address/${islogedId}`, {address})
       .then((response) => {
@@ -68,6 +71,9 @@ function MainPage(props) {
   };
 
   useEffect(() => {
+    if (address == null) {
+      setAddress("");
+    }
     fetchPost();
   }, [history.action]);
   

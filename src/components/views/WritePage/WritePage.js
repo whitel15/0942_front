@@ -19,6 +19,9 @@ export default function WritePage(props) {
     // 주소 인증
     const [currentAddr, setCurrentAddr] = useState(localStorage.getItem("currentDong"));
     useEffect(() => {
+        if (currentAddr == null) {
+            setCurrentAddr("");
+          }
         axios.get(`http://localhost:8080/address/certification/${islogedId}/${currentAddr}`)
         .then((response) => {
             console.log(response.data)
