@@ -27,6 +27,17 @@ function MainPage(props) {
     search = props.location.state.search;
   }
 
+  const [address, setAddress] = useState(localStorage.getItem("currentDong"));
+
+  useEffect(() => {
+    if (address != null) {
+      axios.post(`http://localhost:8080/save/current/address/${islogedId}`, {address})
+      .then((response) => {
+      })
+    }
+  }, [])
+
+
   let history = useHistory();
 
   // useEffect(() => {
@@ -45,30 +56,33 @@ function MainPage(props) {
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const response = await instance.get(`http://localhost:8080/main/post/${islogedId}`, {
-        forceUpdate: history.action === "PUSH",
-        cache: true,
-      });
+  const fetchPost = async () => {
+    const response = await instance.get(`http://localhost:8080/main/post/${islogedId}/${address}`, {
+      forceUpdate: history.action === "PUSH",
+      cache: true,
+    });
 
-      setLoading(false);
-      setPosts([...response.data]);
-      setAll([...response.data]);
-    };
+    setLoading(false);
+    setPosts([...response.data]);
+    setAll([...response.data]);
+  };
+
+  useEffect(() => {
     fetchPost();
   }, [history.action]);
   
   useEffect(() => {
-    var result = [];
-    all.map((post, index) => {
-      if (post.title.includes(search) || post.content.includes(search) || post.place.includes(search)) {
-        result.push(post)
-      }
-    })
-    console.log(result)
-    setPosts(result)
-  }, [props])
+    if (search !== "") {
+      var result = [];
+      all.map((post, index) => {
+        if (post.title.includes(search) || post.content.includes(search) || post.place.includes(search)) {
+          result.push(post)
+        }
+      })
+      console.log(result)
+      setPosts(result)
+    }
+  }, [search])
 
   const [currentPage, setCurrentPage] = useState(1);
   let count = 10;

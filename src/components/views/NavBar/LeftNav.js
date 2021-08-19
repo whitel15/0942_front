@@ -6,7 +6,8 @@ function LeftNav() {
   let loginId = localStorage.getItem("user");
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("user");
+    localStorage.removeItem("logined");
     window.location.reload();
   }
 
