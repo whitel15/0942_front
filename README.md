@@ -10,15 +10,15 @@
 - Figma
 
 ## 실행화면 
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/63e0e564-f9ed-4f36-9ba0-665896582085)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/d1c41dfb-a38e-4155-8e57-501634c2b3d3)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/baa1123a-c464-47ce-8da0-ff508d3ba72a)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/238115ce-7373-4587-bd14-ba48d5b0e13b)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/407958df-1173-4714-a865-5325f93a1abb)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/c3365601-4a76-411a-92fa-985b6f8b7884)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/fba15a1b-2bf8-408d-92a7-89ab01b676f5)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/8bd8d05e-f3a0-4f6f-a62f-3617790a6b9b)
-![image](https://github.com/whitel15/2021_SOLUX-0942_front/assets/62291686/194e3c8d-a5fe-4ef8-a78a-38e66e3f01d4)
+![image](https://github.com/whitel15/0942_front/assets/62291686/f175cd2d-8f3d-4a0c-b8d4-a3051b0869dc)
+![image](https://github.com/whitel15/0942_front/assets/62291686/ace87c98-29fa-4c0b-9f25-7a3d3f6550b8)
+![image](https://github.com/whitel15/0942_front/assets/62291686/99a6086d-9515-451f-92f8-2626d2e60f8b)
+![image](https://github.com/whitel15/0942_front/assets/62291686/82dc23f1-29de-44e6-be23-aaecbf77f1ee)
+![image](https://github.com/whitel15/0942_front/assets/62291686/d27d950c-7a82-4e3e-9153-ec03aa657cce)
+![image](https://github.com/whitel15/0942_front/assets/62291686/a5a73857-92d4-42a6-adae-b63aad758a34)
+![image](https://github.com/whitel15/0942_front/assets/62291686/19c25b1a-db48-4c4b-9957-d541d98a538c)
+![image](https://github.com/whitel15/0942_front/assets/62291686/6ab71935-f4b2-47cf-b933-aab02ebf56d4)
+![image](https://github.com/whitel15/0942_front/assets/62291686/b311fe7a-d3a9-482f-b595-015815051cec)
 
 ## 팀원
 김유진, 백지은, 오예지, 황유진
